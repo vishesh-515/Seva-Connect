@@ -7,19 +7,17 @@ interface SevaLogoProps {
 }
 
 /**
- * SevaLogo
- * An innovative, modern emblem for Seva Connect.
- * The geometry fuses:
- * 1. An interlocking continuous flow (intertwined hands of service & community)
- * 2. An iconic 'S' dynamic ribbon
- * 3. A central 4-point beacon of hope & humanitarian dignity
+ * SevaLogo — Refined Earth-Tone Emblem
+ * Geometric harmony of service:
+ * 1. An interlocking continuous flow (hands of community & dignified care)
+ * 2. An iconic 'S' ribbon in Antique Gold & Muted Sage
+ * 3. A central warm beacon of human dignity
  */
 export function SevaLogo({ className = "", size = 32, variant = "badge" }: SevaLogoProps) {
   const id = useId().replace(/:/g, "");
-  const gradPrimary = `seva-grad-primary-${id}`;
-  const gradAccent = `seva-grad-accent-${id}`;
-  const gradGlow = `seva-grad-glow-${id}`;
-  const filterGlow = `seva-glow-${id}`;
+  const gradGold = `seva-grad-gold-${id}`;
+  const gradSage = `seva-grad-sage-${id}`;
+  const gradCenter = `seva-grad-center-${id}`;
 
   const mark = (
     <svg
@@ -28,62 +26,57 @@ export function SevaLogo({ className = "", size = 32, variant = "badge" }: SevaL
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="shrink-0 transition-transform duration-300 group-hover:scale-105"
+      className="shrink-0 transition-transform duration-200 group-hover:scale-105"
       aria-label="Seva Connect Logo"
     >
       <defs>
-        {/* Vibrant Indigo -> Cyan gradient */}
-        <linearGradient id={gradPrimary} x1="6" y1="8" x2="32" y2="28" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#6366F1" />
-          <stop offset="50%" stopColor="#3B82F6" />
-          <stop offset="100%" stopColor="#06B6D4" />
+        {/* Warm Copper Gradient */}
+        <linearGradient id={gradGold} x1="6" y1="8" x2="32" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#EFA66C" />
+          <stop offset="50%" stopColor="#E29555" />
+          <stop offset="100%" stopColor="#C87A38" />
         </linearGradient>
 
-        {/* Warm Radiant Amber -> Rose gradient */}
-        <linearGradient id={gradAccent} x1="34" y1="32" x2="10" y2="12" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#F59E0B" />
-          <stop offset="60%" stopColor="#F97316" />
-          <stop offset="100%" stopColor="#EC4899" />
+        {/* Forest Sage & Warm Cocoa Gradient */}
+        <linearGradient id={gradSage} x1="34" y1="32" x2="10" y2="12" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#2EA063" />
+          <stop offset="50%" stopColor="#24784B" />
+          <stop offset="100%" stopColor="#4A3026" />
         </linearGradient>
 
         {/* Center Spark Glow */}
-        <radialGradient id={gradGlow} cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="60%" stopColor="#FDE68A" />
-          <stop offset="100%" stopColor="#F59E0B" stopOpacity="0" />
+        <radialGradient id={gradCenter} cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#FFFDFB" />
+          <stop offset="60%" stopColor="#F9DFCB" />
+          <stop offset="100%" stopColor="#E29555" stopOpacity="0" />
         </radialGradient>
-
-        {/* Soft Drop Shadow Filter */}
-        <filter id={filterGlow} x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodColor="#4F46E5" floodOpacity="0.25" />
-        </filter>
       </defs>
 
-      <g filter={`url(#${filterGlow})`}>
-        {/* Upper Loop: Rising Hand / Wave of Empowerment */}
+      <g>
+        {/* Upper Loop: Rising Hand / Wave of Empowerment in Warm Copper */}
         <path
           d="M 12 25 C 10 20 11 12 18 9 C 25 6 31 10 30 17 C 29.5 20.5 26.5 22.5 22 22.5 C 16.5 22.5 13 26 13 29.5 C 13 32 15 33.5 17.5 33.5 C 22 33.5 25 30 25.5 27.5"
-          stroke={`url(#${gradPrimary})`}
-          strokeWidth="3.6"
+          stroke={`url(#${gradGold})`}
+          strokeWidth="3.4"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
 
-        {/* Lower Interlocking Ribbon: Sheltering Embrace */}
+        {/* Lower Interlocking Ribbon: Sheltering Embrace in Emerald */}
         <path
           d="M 28 15 C 30 20 29 28 22 31 C 15 34 9 30 10 23 C 10.5 19.5 13.5 17.5 18 17.5 C 23.5 17.5 27 14 27 10.5 C 27 8 25 6.5 22.5 6.5 C 18 6.5 15 10 14.5 12.5"
-          stroke={`url(#${gradAccent})`}
-          strokeWidth="3.6"
+          stroke={`url(#${gradSage})`}
+          strokeWidth="3.4"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
 
-        {/* Central Luminous Node of Service (Spark of Compassion) */}
+        {/* Central Luminous Node of Service */}
         <path
           d="M 20 16.5 Q 20 20 16.5 20 Q 20 20 20 23.5 Q 20 20 23.5 20 Q 20 20 20 16.5 Z"
-          fill={`url(#${gradGlow})`}
+          fill={`url(#${gradCenter})`}
         />
-        <circle cx="20" cy="20" r="1.5" fill="#FFFFFF" />
+        <circle cx="20" cy="20" r="1.5" fill="#FFFDFB" />
       </g>
     </svg>
   );
@@ -94,7 +87,7 @@ export function SevaLogo({ className = "", size = 32, variant = "badge" }: SevaL
 
   return (
     <div
-      className={`relative inline-flex items-center justify-center rounded-xl border border-white/20 bg-gradient-to-br from-card/90 via-background to-card/60 p-1.5 shadow-md shadow-primary/15 backdrop-blur-md dark:border-white/10 dark:from-slate-900/90 dark:to-slate-950/80 ${className}`}
+      className={`relative inline-flex items-center justify-center rounded-xl border border-[#DCD0C1] bg-[#FFFCF6] p-1.5 shadow-2xs dark:border-[#35231C] dark:bg-[#1E1411] ${className}`}
     >
       {mark}
     </div>
@@ -112,11 +105,11 @@ export function SevaBrand({ size = 36, showTagline = true, className = "" }: Sev
     <div className={`group flex items-center gap-2.5 font-bold tracking-tight ${className}`}>
       <SevaLogo size={size - 6} />
       <div className="flex flex-col">
-        <span className="text-base text-foreground leading-none font-bold tracking-tight">
-          Seva <span className="text-primary font-black">Connect</span>
+        <span className="text-base text-[#30241F] dark:text-[#FFFDFB] leading-none font-bold tracking-tight">
+          Seva <span className="text-[#C87A38] dark:text-[#E29555] font-semibold">Connect</span>
         </span>
         {showTagline && (
-          <span className="text-[10px] tracking-wider text-muted-foreground font-medium mt-0.5">
+          <span className="text-[10px] tracking-wider text-[#76695E] dark:text-[#AFA196] font-medium mt-0.5">
             Every Need. The Right Support.
           </span>
         )}

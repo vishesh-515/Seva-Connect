@@ -350,17 +350,18 @@ export function DistributionScanner({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl p-0 overflow-hidden bg-card border-border/80 shadow-2xl sm:rounded-2xl">
-        <DialogHeader className="no-print p-5 border-b border-border/60 bg-muted/30 flex flex-row items-center justify-between">
+      <DialogContent className="max-w-2xl p-0 overflow-hidden bg-[#1E1411] border-[#35231C] text-[#FFFDFB] shadow-2xl sm:rounded-2xl">
+        <DialogHeader className="no-print p-5 border-b border-[#2E1E19] bg-[#160E0C] flex flex-row items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#281A15] border border-[#48291F] text-[#E29555]">
               <Barcode className="h-5 w-5" />
             </div>
             <div>
-              <DialogTitle className="text-base font-bold text-foreground">
-                Field Distribution Station
+              <DialogTitle className="text-base font-bold text-[#FFFDFB] flex items-center gap-2">
+                <span>Field Distribution</span>
+                <span className="heading-copper">Station</span>
               </DialogTitle>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-[#AFA196]">
                 Rapid QR/Barcode scanning & instant kit dispensation
               </p>
             </div>

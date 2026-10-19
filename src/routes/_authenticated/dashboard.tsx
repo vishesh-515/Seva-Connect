@@ -179,25 +179,27 @@ function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Top Editorial Greeting Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-xs">
-        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
-          <div className="space-y-1">
+      {/* Top Luxury Espresso Greeting Banner */}
+      <div className="relative overflow-hidden rounded-2xl border border-[#35231C] bg-[#1E1411] p-6 sm:p-7 shadow-sm">
+        <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
+          <div className="space-y-2">
+            {/* Shubh Style Eyebrow Pill */}
             <div className="flex items-center gap-2">
-              <span className="font-serif italic text-lg sm:text-xl text-primary font-medium">
-                {getGreeting()}, {email ? email.split("@")[0] : "Team"}
+              <span className="shubh-eyebrow">
+                <Sparkles className="h-3 w-3 text-[#E29555]" />
+                Humanitarian Operations & Impact
               </span>
-              <span className="text-muted-foreground">·</span>
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                {org.name}
-              </span>
+              <span className="text-[#827368]">·</span>
+              <span className="text-xs font-semibold text-[#AFA196]">{org.name}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-              Every Need. <span className="font-serif italic text-primary">The Right Support.</span>
+
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#FFFDFB]">
+              Every Need. <span className="heading-copper">The Right Support.</span>
             </h1>
-            <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2 pt-0.5">
-              <Calendar className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-              <span>
+
+            <p className="text-xs text-[#AFA196] flex flex-wrap items-center gap-2 pt-0.5">
+              <span className="inline-flex items-center gap-1.5 text-[#AFA196]">
+                <Calendar className="h-3.5 w-3.5 text-[#E29555] shrink-0" />
                 {new Intl.DateTimeFormat("en-US", {
                   weekday: "long",
                   year: "numeric",
@@ -206,13 +208,18 @@ function Dashboard() {
                 }).format(new Date())}
               </span>
               <span>·</span>
-              <span className="text-foreground font-medium">
-                {urgentList.length} urgent cases require active monitoring
+              <span className="shubh-tag-ruby">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#E05345] animate-pulse" />
+                {urgentList.length} urgent cases in active triage
+              </span>
+              <span className="shubh-tag-emerald">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" />
+                Supabase Live RLS
               </span>
             </p>
           </div>
 
-          {/* Quick Decision Actions */}
+          {/* Quick Decision Actions Styled as Luxury Pill Buttons */}
           <div className="flex flex-wrap items-center gap-2.5">
             {can("assistance.write") && (
               <Button
@@ -220,7 +227,7 @@ function Dashboard() {
                   setSelectedScanBen(null);
                   setScannerOpen(true);
                 }}
-                className="gap-2 shadow-sm bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                className="gap-2 rounded-full font-bold bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] shadow-sm hover:brightness-110 transition-all hover:scale-102"
               >
                 <Barcode className="h-4 w-4" />
                 <span>Scan to Distribute</span>
@@ -228,9 +235,9 @@ function Dashboard() {
             )}
 
             {can("beneficiaries.write") && (
-              <Button asChild variant="outline" className="gap-1.5 font-medium border-border">
+              <Button asChild variant="outline" className="gap-1.5 rounded-full font-semibold border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555]">
                 <Link to="/beneficiaries">
-                  <UserPlus className="h-4 w-4" />
+                  <UserPlus className="h-4 w-4 text-[#E29555]" />
                   <span>New Beneficiary</span>
                 </Link>
               </Button>
@@ -242,16 +249,16 @@ function Dashboard() {
               size="sm"
               onClick={handleSeedDemo}
               disabled={isSeedingDemo}
-              className="gap-1.5 text-xs font-semibold border border-primary/20 text-primary bg-secondary hover:bg-secondary/80"
+              className="gap-1.5 rounded-full text-xs font-semibold border border-[#48291F] bg-[#281A15] text-[#E29555] hover:bg-[#35211A] hover:border-[#E29555]"
               title="Populates realistic beneficiaries, active programmes, and assistance records for live hackathon demonstration."
             >
-              <Sparkles className="h-3.5 w-3.5 text-amber-500 animate-pulse" />
+              <Sparkles className="h-3.5 w-3.5 text-[#E29555]" />
               <span>{isSeedingDemo ? "Seeding..." : "Demo Dataset"}</span>
             </Button>
 
-            <Button asChild variant="outline" size="sm" className="gap-1.5 text-xs font-semibold border-border">
+            <Button asChild variant="outline" size="sm" className="gap-1.5 rounded-full text-xs font-semibold border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18]">
               <Link to="/data-import">
-                <FileSpreadsheet className="h-3.5 w-3.5 text-primary" />
+                <FileSpreadsheet className="h-3.5 w-3.5 text-[#E29555]" />
                 <span>Import Centre</span>
               </Link>
             </Button>
@@ -326,40 +333,41 @@ function Dashboard() {
             </Link>
           </div>
 
-          {/* Core Decision Section 1: Urgent Attention Queue (Phase 4) */}
-          <div className="rounded-2xl border border-amber-500/30 bg-card p-5 shadow-xs">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4 mb-4">
+          {/* Core Decision Section 1: Urgent Attention Queue */}
+          <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 sm:p-6 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#2E1E19] pb-4 mb-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/30">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#2E1513] text-[#E05345] border border-[#5A231E] shadow-2xs">
                   <ShieldAlert className="h-5 w-5" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h2 className="text-base font-bold text-foreground">
+                    <h2 className="text-base font-bold text-[#FFFDFB]">
                       Urgent Attention Queue
                     </h2>
-                    <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-800 dark:text-amber-300">
+                    <span className="shubh-tag-ruby">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#E05345] animate-pulse" />
                       LIVE TRIAGE
                     </span>
                   </div>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-[#AFA196]">
                     Prioritised by acute crisis indicators, household vulnerability, and assistance gaps.
                   </p>
                 </div>
               </div>
 
-              <Button asChild variant="outline" size="sm" className="text-xs font-semibold">
+              <Button asChild variant="outline" size="sm" className="rounded-full text-xs font-semibold border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555] transition-all">
                 <Link to="/beneficiaries">
                   <span>View All Beneficiaries</span>
-                  <ChevronRight className="ml-1 h-3.5 w-3.5" />
+                  <ChevronRight className="ml-1 h-3.5 w-3.5 text-[#E29555]" />
                 </Link>
               </Button>
             </div>
 
             {urgentCasesQuery.isLoading ? (
-              <Skeleton className="h-28 w-full rounded-xl" />
+              <Skeleton className="h-28 w-full rounded-xl bg-[#281A15]" />
             ) : urgentList.length === 0 ? (
-              <div className="py-8 text-center text-xs text-muted-foreground">
+              <div className="py-8 text-center text-xs text-[#AFA196]">
                 No acute priority cases detected in current records. Use "Demo Dataset" above to inspect simulated crisis triage.
               </div>
             ) : (
@@ -367,10 +375,10 @@ function Dashboard() {
                 {urgentList.slice(0, 6).map(({ beneficiary, assessment }) => (
                   <div
                     key={beneficiary["id"]}
-                    className={`flex flex-col justify-between rounded-xl border p-4 transition-all hover:border-primary/60 ${
+                    className={`flex flex-col justify-between rounded-xl border p-4 transition-all interactive-card ${
                       assessment.level === "critical"
-                        ? "bg-destructive/5 border-destructive/30"
-                        : "bg-muted/30 border-amber-500/30"
+                        ? "bg-[#241713] border-[#5A231E] hover:border-[#E05345]"
+                        : "bg-[#221612] border-[#35231C] hover:border-[#E29555]"
                     }`}
                   >
                     <div className="space-y-2">
@@ -379,42 +387,41 @@ function Dashboard() {
                           <Link
                             to="/beneficiaries/$id"
                             params={{ id: beneficiary["id"] }}
-                            className="font-bold text-sm text-foreground hover:text-primary transition-colors flex items-center gap-1.5"
+                            className="font-bold text-sm text-[#FFFDFB] hover:text-[#E29555] transition-colors flex items-center gap-1.5"
                           >
                             <span>{beneficiary["full_name"]}</span>
-                            <ArrowUpRight className="h-3.5 w-3.5 opacity-60" />
+                            <ArrowUpRight className="h-3.5 w-3.5 opacity-60 text-[#E29555]" />
                           </Link>
-                          <span className="font-mono text-[11px] text-muted-foreground">
+                          <span className="font-mono text-[11px] text-[#AFA196]">
                             {beneficiary["code"]}
                           </span>
                         </div>
-                        <Badge variant="outline" className={`text-[10px] ${assessment.badgeClass}`}>
+                        <span className={assessment.level === "critical" ? "shubh-tag-ruby" : "shubh-tag-copper"}>
                           {assessment.label}
-                        </Badge>
+                        </span>
                       </div>
 
-                      <div className="space-y-1 text-xs text-muted-foreground">
-                        <p className="font-medium text-foreground">
+                      <div className="space-y-1 text-xs text-[#AFA196]">
+                        <p className="font-medium text-[#FFFDFB]">
                           Category: {beneficiary["support_category"] || "General Aid"}
                         </p>
-                        <p className="text-[11px] line-clamp-2 italic">
+                        <p className="text-[11px] line-clamp-2 italic text-[#AFA196]">
                           "{assessment.reasons[0]}"
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-3 pt-2.5 border-t border-border/60 flex items-center justify-between">
-                      <span className="text-[11px] text-muted-foreground">
-                        Score: <strong>{assessment.score}/100</strong>
+                    <div className="mt-3 pt-2.5 border-t border-[#2E1E19] flex items-center justify-between">
+                      <span className="text-[11px] text-[#AFA196]">
+                        Score: <strong className="text-[#E29555]">{assessment.score}/100</strong>
                       </span>
                       <Button
                         size="xs"
-                        variant="secondary"
                         onClick={() => handleQuickDistribute(beneficiary)}
-                        className="text-[11px] font-semibold gap-1"
+                        className="shubh-explore-btn text-[11px] font-bold"
                       >
                         <Barcode className="h-3 w-3" />
-                        <span>Dispense Aid</span>
+                        <span>Dispense Aid ↗</span>
                       </Button>
                     </div>
                   </div>
@@ -426,17 +433,17 @@ function Dashboard() {
           {/* Visual Decision Analytics & Programme Capacity */}
           <div className="grid gap-6 lg:grid-cols-3">
             {/* Chart: Monthly Trends */}
-            <div className="lg:col-span-2 rounded-2xl border border-border bg-card p-5 shadow-xs">
-              <div className="flex items-center justify-between border-b border-border pb-3 mb-4">
+            <div className="lg:col-span-2 rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 sm:p-6 shadow-sm">
+              <div className="flex items-center justify-between border-b border-[#2E1E19] pb-3 mb-4">
                 <div>
-                  <h2 className="text-base font-bold text-foreground">Operational Momentum</h2>
-                  <p className="text-xs text-muted-foreground">
+                  <h2 className="text-base font-bold text-[#FFFDFB]">Operational Momentum</h2>
+                  <p className="text-xs text-[#AFA196]">
                     Monthly beneficiary intake & direct aid distributions
                   </p>
                 </div>
-                <Badge variant="secondary" className="font-normal text-xs">
+                <span className="shubh-tag-copper">
                   Past 12 Months
-                </Badge>
+                </span>
               </div>
 
               <ResponsiveContainer width="100%" height={260}>
@@ -444,30 +451,31 @@ function Dashboard() {
                   data={Array.isArray(s?.monthly) ? s.monthly : []}
                   margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
                 >
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#888888" strokeOpacity={0.15} />
-                  <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fontSize: 11 }} />
-                  <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11 }} />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#35231C" strokeOpacity={0.8} />
+                  <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "#AFA196" }} />
+                  <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "#AFA196" }} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: "var(--card)",
-                      borderColor: "var(--border)",
+                      backgroundColor: "#1E1411",
+                      borderColor: "#35231C",
                       borderRadius: "0.75rem",
                       fontSize: "12px",
-                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                      color: "#FFFDFB",
+                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.5)",
                     }}
                   />
                   <Legend verticalAlign="top" align="right" wrapperStyle={{ paddingBottom: "10px", fontSize: "12px" }} />
                   <Bar
                     dataKey="beneficiaries"
                     name="Beneficiaries Intake"
-                    fill="#176B4D"
+                    fill="#E29555"
                     radius={[4, 4, 0, 0]}
                     isAnimationActive={false}
                   />
                   <Bar
                     dataKey="expenses"
                     name="Relief Disbursements"
-                    fill="#D97706"
+                    fill="#2EA063"
                     radius={[4, 4, 0, 0]}
                     isAnimationActive={false}
                   />
@@ -476,22 +484,23 @@ function Dashboard() {
             </div>
 
             {/* Programme Capacity Utilization (Phase 5) */}
-            <div className="rounded-2xl border border-border bg-card p-5 shadow-xs flex flex-col justify-between">
+            <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 sm:p-6 shadow-sm flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between border-b border-border pb-3 mb-3">
-                  <h2 className="text-base font-bold text-foreground">Programme Capacity</h2>
-                  <Link to="/projects" className="text-xs text-primary font-semibold hover:underline">
-                    All Programmes
+                <div className="flex items-center justify-between border-b border-[#2E1E19] pb-3 mb-3">
+                  <h2 className="text-base font-bold text-[#FFFDFB]">Programme Capacity</h2>
+                  <Link to="/projects" className="text-xs text-[#E29555] font-semibold hover:underline flex items-center gap-1">
+                    <span>All Programmes</span>
+                    <span className="text-[10px]">↗</span>
                   </Link>
                 </div>
-                <p className="text-xs text-muted-foreground mb-4">
+                <p className="text-xs text-[#AFA196] mb-4">
                   Active relief programs and target coverage
                 </p>
 
                 {activeProjectsQuery.isLoading ? (
-                  <Skeleton className="h-32 w-full" />
+                  <Skeleton className="h-32 w-full bg-[#281A15]" />
                 ) : (activeProjectsQuery.data?.length ?? 0) === 0 ? (
-                  <p className="text-xs text-muted-foreground py-6 text-center">
+                  <p className="text-xs text-[#AFA196] py-6 text-center">
                     No active programmes. Create your first support programme in Projects.
                   </p>
                 ) : (
@@ -504,17 +513,17 @@ function Dashboard() {
                       return (
                         <div key={p.id} className="space-y-1.5">
                           <div className="flex items-center justify-between text-xs">
-                            <span className="font-semibold text-foreground truncate max-w-[180px]">
+                            <span className="font-semibold text-[#FFFDFB] truncate max-w-[180px]">
                               {p.name}
                             </span>
-                            <span className="font-mono text-muted-foreground">
+                            <span className="font-mono text-[#AFA196]">
                               {enrolled} / {target}
                             </span>
                           </div>
-                          <Progress value={pct} className="h-1.5" />
-                          <div className="flex justify-between text-[10px] text-muted-foreground">
+                          <Progress value={pct} className="h-1.5 bg-[#281A15] [&>div]:bg-gradient-to-r [&>div]:from-[#E29555] [&>div]:to-[#C87A38]" />
+                          <div className="flex justify-between text-[10px] text-[#AFA196]">
                             <span>{p.location || "District Wide"}</span>
-                            <span>{pct}% capacity</span>
+                            <span className="text-[#E29555] font-semibold">{pct}% capacity</span>
                           </div>
                         </div>
                       );
@@ -523,11 +532,11 @@ function Dashboard() {
                 )}
               </div>
 
-              <div className="pt-4 border-t border-border/60 mt-4">
-                <Button asChild size="sm" variant="outline" className="w-full text-xs font-semibold">
+              <div className="pt-4 border-t border-[#2E1E19] mt-4">
+                <Button asChild size="sm" variant="outline" className="w-full text-xs font-semibold rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555]">
                   <Link to="/projects">
-                    <Layers className="h-3.5 w-3.5 mr-1.5" />
-                    <span>Manage Relief Programmes</span>
+                    <Layers className="h-3.5 w-3.5 mr-1.5 text-[#E29555]" />
+                    <span>Manage Relief Programmes ↗</span>
                   </Link>
                 </Button>
               </div>
@@ -535,13 +544,13 @@ function Dashboard() {
           </div>
 
           {/* Recent Field Audit Stream */}
-          <div className="rounded-2xl border border-border bg-card p-5 shadow-xs">
-            <div className="flex items-center justify-between border-b border-border pb-3 mb-4">
+          <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 sm:p-6 shadow-sm">
+            <div className="flex items-center justify-between border-b border-[#2E1E19] pb-3 mb-4">
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-primary" />
-                <h2 className="text-base font-bold text-foreground">Real-Time Operational Audit Trail</h2>
+                <Clock className="h-4 w-4 text-[#E29555]" />
+                <h2 className="text-base font-bold text-[#FFFDFB]">Real-Time Operational Audit Trail</h2>
               </div>
-              <span className="text-[11px] font-semibold text-muted-foreground">Audited in Supabase</span>
+              <span className="shubh-tag-emerald">Audited in Supabase</span>
             </div>
 
             {logs.data?.length ? (
@@ -549,24 +558,24 @@ function Dashboard() {
                 {logs.data.map((l: any) => (
                   <div
                     key={l.id}
-                    className="rounded-xl border border-border/70 bg-muted/20 p-3 text-xs space-y-1"
+                    className="rounded-xl border border-[#35231C] bg-[#221612] p-3 text-xs space-y-1.5 hover:border-[#52362C] transition-all"
                   >
                     <div className="flex items-center justify-between text-[10px]">
-                      <span className="font-bold uppercase tracking-wider text-primary">
+                      <span className="font-bold uppercase tracking-wider text-[#E29555]">
                         {humanize(l.action)} {humanize(l.entity_type)}
                       </span>
-                      <span className="text-muted-foreground">
+                      <span className="text-[#827368]">
                         {formatDate(l.created_at, "d MMM, HH:mm")}
                       </span>
                     </div>
-                    <p className="text-xs text-foreground font-medium leading-snug line-clamp-2">
+                    <p className="text-xs text-[#FFFDFB] font-medium leading-snug line-clamp-2">
                       {l.summary}
                     </p>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-xs text-muted-foreground py-6 text-center">
+              <p className="text-xs text-[#AFA196] py-6 text-center">
                 No activity logged yet. Distributions, enrolments, and edits will appear here in real time.
               </p>
             )}

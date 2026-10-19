@@ -5,9 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Modern Dual-Tone Design System:
- * Tone 1 (Primary / Authority): Deep Slate Indigo & Obsidian Navy (Structure, Trust, Security)
- * Tone 2 (Humanitarian / Energy): Radiant Saffron Amber & Solar Gold (Action, Urgency, Heart)
+ * Seva Connect — Premium Warm Earth-Tone Design System
+ * Primary Palette: Dark Espresso Brown (#30241F), Warm Ivory (#F7F3EC), Soft Cream (#FFFCF6)
+ * Accent Palette: Muted Sage Green (#71866A), Antique Gold (#B58B4A)
+ * Semantic: Muted Brick Red (#A7473D), Forest Sage (#4F7255), Slate Brown (#777C79)
  */
 
 @theme inline {
@@ -48,8 +49,8 @@
   --color-tone-accent: var(--tone-accent);
   --color-tone-accent-foreground: var(--tone-accent-foreground);
   --color-tone-accent-subtle: var(--tone-accent-subtle);
-  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Lora", Georgia, serif;
+  --font-sans: "DM Sans", "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "DM Serif Display", "Lora", Georgia, serif;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -61,95 +62,98 @@
 }
 
 :root {
-  --radius: 0.65rem;
-  /* BIOS 2026 Refined Identity: Warm Ivory, Forest Green, Charcoal & Muted Sage */
-  --background: #F7F3EB; /* Warm ivory */
-  --foreground: #242820; /* Charcoal */
-  --card: #FFFFFF;       /* Pure white */
-  --card-foreground: #242820;
-  --popover: #FFFFFF;
-  --popover-foreground: #242820;
-  --primary: #176B4D;    /* Forest green */
-  --primary-foreground: #FFFFFF;
-  
-  --secondary: #E5EDE4;  /* Muted sage */
-  --secondary-foreground: #104B38; /* Deep green */
-  --muted: #EFECE4;
-  --muted-foreground: #636A5E;
-  --accent: #E5EDE4;
-  --accent-foreground: #104B38;
-  --tone-accent: #104B38; /* Deep green */
+  --radius: 0.75rem;
+
+  /* Warm Earth-Tone Light Theme */
+  --background: #F7F3EC;            /* Warm Ivory Background */
+  --foreground: #30241F;            /* Primary Dark Espresso Text */
+  --card: #FFFCF6;                  /* Soft Cream Surface */
+  --card-foreground: #30241F;
+  --popover: #FFFCF6;
+  --popover-foreground: #30241F;
+
+  --primary: #30241F;               /* Primary Dark Espresso */
+  --primary-foreground: #FFFCF6;
+
+  --secondary: #EDE4D8;
+  --secondary-foreground: #30241F;
+  --muted: #EDE4D8;
+  --muted-foreground: #76695E;
+  --accent: #E7EDE2;
+  --accent-foreground: #30241F;
+  --tone-accent: #C87A38;           /* Warm Copper / Caramel */
   --tone-accent-foreground: #FFFFFF;
-  --tone-accent-subtle: #E5EDE4;
+  --tone-accent-subtle: #F3E7CC;
 
-  --destructive: #DC2626;
+  --destructive: #A7473D;
   --destructive-foreground: #FFFFFF;
-  --success: #176B4D;
-  --warning: #D97706;
-  --border: #E4DED2;     /* Warm neutral border */
-  --input: #E4DED2;
-  --ring: #176B4D;
-  
-  /* Natural Editorial Palette for Analytics */
-  --chart-1: #176B4D;
-  --chart-2: #2E7D5E;
-  --chart-3: #529679;
-  --chart-4: #D97706;
-  --chart-5: #B45309;
+  --success: #4F7255;
+  --warning: #C87A38;
+  --border: #DCD0C1;
+  --input: #DCD0C1;
+  --ring: #C87A38;
 
-  --sidebar: #F4EFE6;
-  --sidebar-foreground: #242820;
-  --sidebar-primary: #176B4D;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E5EDE4;
-  --sidebar-accent-foreground: #104B38;
-  --sidebar-border: #E4DED2;
-  --sidebar-ring: #176B4D;
+  --chart-1: #594438;
+  --chart-2: #C87A38;
+  --chart-3: #71866A;
+  --chart-4: #A7473D;
+  --chart-5: #745744;
+
+  --sidebar: #1E1411;
+  --sidebar-foreground: #F7F3EC;
+  --sidebar-primary: #C87A38;
+  --sidebar-primary-foreground: #1E1411;
+  --sidebar-accent: #2C1E19;
+  --sidebar-accent-foreground: #FFFCF6;
+  --sidebar-border: #35231C;
+  --sidebar-ring: #C87A38;
 }
 
 .dark {
-  /* Dark Mode: Deep Forest Charcoal Slate */
-  --background: #141813;
-  --foreground: #F2EFE9;
-  --card: #1C221B;
-  --card-foreground: #F2EFE9;
-  --popover: #1C221B;
-  --popover-foreground: #F2EFE9;
-  --primary: #2BA075;
-  --primary-foreground: #0B241A;
-  
-  --secondary: #263125;
-  --secondary-foreground: #A7D8B9;
-  --muted: #222B21;
-  --muted-foreground: #98A495;
-  --accent: #263125;
-  --accent-foreground: #A7D8B9;
-  --tone-accent: #2BA075;
-  --tone-accent-foreground: #0B241A;
-  --tone-accent-subtle: #222B21;
+  /* Shubh Dental Luxury Dark Warm Espresso & Copper Palette */
+  --background: #130D0B;            /* Deep Roasted Espresso Obsidian */
+  --foreground: #FFFDFB;            /* Pure Warm White */
+  --card: #1E1411;                  /* Roasted Cocoa Card Surface */
+  --card-foreground: #FFFDFB;
+  --popover: #1E1411;
+  --popover-foreground: #FFFDFB;
 
-  --destructive: #EF4444;
+  --primary: #E29555;               /* Warm Copper / Caramel Accent */
+  --primary-foreground: #130D0B;
+
+  --secondary: #281A15;             /* Warm Cocoa Surface */
+  --secondary-foreground: #E29555;
+  --muted: #251814;
+  --muted-foreground: #AFA196;      /* Warm Stone Muted Text */
+  --accent: #2C1D18;
+  --accent-foreground: #FFFDFB;
+  --tone-accent: #E29555;
+  --tone-accent-foreground: #130D0B;
+  --tone-accent-subtle: #2B1A14;
+
+  --destructive: #E05345;           /* Warm Brick Red */
   --destructive-foreground: #FFFFFF;
-  --success: #2BA075;
-  --warning: #F59E0B;
-  --border: #2B362A;
-  --input: #2B362A;
-  --ring: #2BA075;
-  
-  --chart-1: #2BA075;
-  --chart-2: #34D399;
-  --chart-3: #6EE7B7;
-  --chart-4: #F59E0B;
-  --chart-5: #FB923C;
+  --success: #2EA063;               /* Forest Sage / Emerald */
+  --warning: #E0A545;               /* Warm Amber Gold */
+  --border: #35231C;                /* Subtle Espresso Border */
+  --input: #35231C;
+  --ring: #E29555;
 
-  --sidebar: #121511;
-  --sidebar-foreground: #F2EFE9;
-  --sidebar-primary: #2BA075;
-  --sidebar-primary-foreground: #0B241A;
-  --sidebar-accent: #222B21;
-  --sidebar-accent-foreground: #A7D8B9;
-  --sidebar-border: #263025;
-  --sidebar-ring: #2BA075;
+  --chart-1: #E29555;               /* Copper Accent */
+  --chart-2: #2EA063;               /* Emerald */
+  --chart-3: #967056;               /* Warm Walnut */
+  --chart-4: #E05345;               /* Brick Red */
+  --chart-5: #C87A38;               /* Rich Caramel */
+
+  /* Dark Luxury Espresso Sidebar */
+  --sidebar: #160E0C;               /* Deep Espresso Sidebar */
+  --sidebar-foreground: #AFA196;
+  --sidebar-primary: #E29555;
+  --sidebar-primary-foreground: #130D0B;
+  --sidebar-accent: #261813;
+  --sidebar-accent-foreground: #FFFDFB;
+  --sidebar-border: #2E1E19;
+  --sidebar-ring: #E29555;
 }
 
 @layer base {
@@ -162,16 +166,13 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.012em;
   }
   
   @media print {
     .no-print {
       display: none !important;
     }
-  }
-
-  @media print {
     body {
       background: #ffffff !important;
       color: #000000 !important;
@@ -180,7 +181,7 @@
       display: none !important;
     }
     .id-card-print-target {
-      border: 1.5px solid #000000 !important;
+      border: 1.5px solid #30241F !important;
       box-shadow: none !important;
       background: #ffffff !important;
       color: #000000 !important;
@@ -191,35 +192,119 @@
   }
 }
 
-/* Interactive & Dual-Tone Micro-Utilities */
-.dualtone-mesh {
-  background-image: 
-    radial-gradient(at 15% 15%, oklch(0.42 0.16 262 / 0.12) 0px, transparent 55%),
-    radial-gradient(at 85% 85%, oklch(0.72 0.17 65 / 0.14) 0px, transparent 55%);
-}
+/* ========================================================
+   SHUBH DENTAL LUXURY WARM ESPRESSO & COPPER UTILITIES
+   ======================================================== */
 
-.dark .dualtone-mesh {
-  background-image: 
-    radial-gradient(at 15% 15%, oklch(0.68 0.18 255 / 0.15) 0px, transparent 60%),
-    radial-gradient(at 85% 85%, oklch(0.78 0.16 68 / 0.15) 0px, transparent 60%);
-}
-
-.dualtone-gradient-text {
-  background: linear-gradient(135deg, var(--color-primary) 20%, var(--color-tone-accent) 100%);
+/* Glowing Warm Copper Heading Highlight */
+.heading-copper {
+  background: linear-gradient(135deg, #E29555 0%, #EFA66C 50%, #C87A38 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+/* Shubh Eyebrow Badge */
+.shubh-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 9999px;
+  padding: 0.25rem 0.875rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: #2B1A14;
+  border: 1px solid #4E2E22;
+  color: #E29555;
+}
+
+/* Shubh Luxury Dark Card */
+.shubh-card {
+  border-radius: 1rem;
+  border: 1px solid #35231C;
+  background-color: #1E1411;
+  color: #FFFDFB;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shubh-card:hover {
+  border-color: #52362C;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.5);
+}
+
+/* Pill Tags */
+.shubh-tag-copper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.1875rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background-color: #281A15;
+  border: 1px solid #48291F;
+  color: #E29555;
+}
+
+.shubh-tag-emerald {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.1875rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background-color: #152B1E;
+  border: 1px solid #1F4D34;
+  color: #34D399;
+}
+
+.shubh-tag-ruby {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.1875rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background-color: #2E1513;
+  border: 1px solid #5A231E;
+  color: #E05345;
+}
+
+/* Explore Pill Button */
+.shubh-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background-color: #281A15;
+  border: 1px solid #48291F;
+  color: #E29555;
+  transition: all 0.18s ease;
+}
+
+.shubh-explore-btn:hover {
+  background-color: #35211A;
+  border-color: #E29555;
+  transform: translateY(-1px);
+}
+
+/* Interactive Card */
 .interactive-card {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
 }
 
 .interactive-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+  border-color: #E29555 !important;
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.5);
 }
-
-.dark .interactive-card:hover {
-  box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12);
-}
-

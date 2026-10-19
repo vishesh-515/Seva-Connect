@@ -119,15 +119,15 @@ function Shell() {
   };
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <aside className="no-print hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar md:flex">
+    <div className="flex min-h-screen bg-background text-foreground">
+      <aside className="no-print hidden w-64 shrink-0 flex-col border-r border-[#35231C] bg-[#160E0C] text-[#FFFDFB] md:flex">
         {/* Brand header */}
-        <div className="flex items-center gap-3 border-b border-sidebar-border/70 px-4 py-4">
+        <div className="flex items-center gap-3 border-b border-[#2E1E19] px-4 py-4">
           <SevaLogo size={24} />
           <div className="min-w-0 flex-1">
-            <div className="truncate text-sm font-bold text-sidebar-foreground">{org?.name ?? "Organization"}</div>
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="truncate text-sm font-bold text-[#FFFDFB] tracking-tight">{org?.name ?? "Organization"}</div>
+            <div className="flex items-center gap-1.5 text-xs text-[#AFA196]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2EA063]" />
               <span>{role ? ROLE_LABELS[role] ?? humanize(role) : "Member"}</span>
             </div>
           </div>
@@ -139,9 +139,9 @@ function Shell() {
             <Button
               size="sm"
               onClick={() => setScannerOpen(true)}
-              className="w-full gap-2 shadow-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
+              className="w-full gap-2 shadow-2xs font-semibold bg-[#281A15] border border-[#48291F] text-[#E29555] hover:bg-[#35211A] hover:border-[#E29555] transition-all"
             >
-              <Barcode className="h-4 w-4" />
+              <Barcode className="h-4 w-4 text-[#E29555]" />
               <span>Scan to Distribute</span>
             </Button>
           </div>
@@ -155,17 +155,20 @@ function Shell() {
               <Link
                 key={n.to}
                 to={n.to as any}
-                className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
+                className={`group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
                   isActive
-                    ? "bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground font-semibold shadow-2xs"
-                    : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+                    ? "bg-[#281A15] text-[#FFFDFB] font-semibold"
+                    : "text-[#AFA196] hover:bg-[#201410] hover:text-[#FFFDFB]"
                 }`}
               >
+                {isActive && (
+                  <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-r-full bg-[#E29555]" />
+                )}
                 <div
                   className={`flex h-7 w-7 items-center justify-center rounded-md transition-colors ${
                     isActive
-                      ? "bg-primary text-primary-foreground shadow-xs"
-                      : "text-muted-foreground group-hover:text-sidebar-foreground"
+                      ? "bg-[#E29555] text-[#130D0B]"
+                      : "text-[#AFA196] group-hover:text-[#FFFDFB]"
                   }`}
                 >
                   <n.icon className="h-4 w-4" />
@@ -176,23 +179,23 @@ function Shell() {
           })}
         </nav>
 
-        <div className="p-3 border-t border-sidebar-border/60">
-          <div className="rounded-xl border border-border/70 bg-card p-3 shadow-2xs">
+        <div className="p-3 border-t border-[#2E1E19]">
+          <div className="rounded-xl border border-[#35231C] bg-[#1E1411] p-3 shadow-2xs">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-foreground">NGO Workspace</span>
-              <span className="rounded bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-bold text-amber-600 dark:text-amber-400">PRO</span>
+              <span className="text-xs font-semibold text-[#FFFDFB]">NGO Workspace</span>
+              <span className="rounded-full bg-[#281A15] border border-[#48291F] px-2 py-0.5 text-[10px] font-bold text-[#E29555]">PRO</span>
             </div>
-            <p className="mt-1 text-[11px] text-muted-foreground capitalize">Role: {role ? (ROLE_LABELS[role] ?? humanize(role)) : "Owner"}</p>
+            <p className="mt-1 text-[11px] text-[#AFA196] capitalize">Role: {role ? (ROLE_LABELS[role] ?? humanize(role)) : "Owner"}</p>
           </div>
         </div>
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Top Header */}
-        <header className="sticky top-0 z-40 no-print flex items-center gap-3 border-b border-border/70 bg-card/80 px-4 py-3 backdrop-blur-md">
+        <header className="sticky top-0 z-40 no-print flex items-center gap-3 border-b border-[#35231C] bg-[#160E0C]/90 px-4 py-3 backdrop-blur-md">
           <select
             aria-label="Navigate"
-            className="rounded-lg border border-border bg-background px-2.5 py-1.5 text-sm font-medium md:hidden"
+            className="rounded-lg border border-[#35231C] bg-[#1E1411] px-2.5 py-1.5 text-sm font-medium md:hidden text-[#FFFDFB]"
             value={path}
             onChange={(e) => navigate({ to: e.target.value as any })}
           >
@@ -208,7 +211,7 @@ function Shell() {
             <Button
               size="sm"
               onClick={() => setScannerOpen(true)}
-              className="md:hidden gap-1.5 h-8 px-2.5 text-xs font-semibold"
+              className="md:hidden gap-1.5 h-8 px-2.5 text-xs font-semibold bg-[#281A15] border border-[#48291F] text-[#E29555] hover:bg-[#35211A]"
             >
               <Barcode className="h-3.5 w-3.5" />
               <span>Scan</span>

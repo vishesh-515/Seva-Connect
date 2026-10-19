@@ -128,31 +128,44 @@ function Auth() {
     }
   };
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-background p-4 dualtone-mesh overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="pointer-events-none absolute -top-28 -left-28 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-tone-accent/20 blur-3xl" />
+    <div className="relative flex min-h-screen items-center justify-center bg-[#130D0B] p-4 overflow-hidden">
+      {/* Subtle warm ambient glows */}
+      <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#E29555]/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-[#2EA063]/10 blur-3xl" />
 
       <div className="w-full max-w-md">
         <form
           onSubmit={submit}
-          className="relative rounded-2xl border border-border/80 bg-card/90 p-8 shadow-xl backdrop-blur-xl space-y-5"
+          className="relative rounded-2xl border border-[#35231C] bg-[#1E1411] p-8 shadow-xl space-y-5"
         >
           {/* Brand & Title */}
           <div className="flex flex-col items-center text-center">
             <div className="mb-3">
-              <SevaLogo size={40} />
+              <SevaLogo size={44} />
             </div>
-            <span className="text-sm font-bold tracking-tight text-foreground">
-              Seva <span className="text-primary font-black">Connect</span>
+            <span className="shubh-eyebrow mb-2">
+              <Sparkles className="h-3 w-3 text-[#E29555]" />
+              Humanitarian Operations
             </span>
-            <span className="text-[10px] tracking-wider text-muted-foreground font-medium mt-0.5">
-              Every Need. The Right Support.
+            <span className="text-sm font-bold tracking-tight text-[#FFFDFB]">
+              Seva <span className="text-[#E29555] font-semibold">Connect</span>
             </span>
-            <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-foreground">
-              {mode === "in" ? "Welcome back" : mode === "up" ? "Create your workspace" : "Reset your password"}
+            <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#FFFDFB]">
+              {mode === "in" ? (
+                <>
+                  Welcome <span className="heading-copper">Back</span>
+                </>
+              ) : mode === "up" ? (
+                <>
+                  Create Your <span className="heading-copper">Workspace</span>
+                </>
+              ) : (
+                <>
+                  Reset <span className="heading-copper">Password</span>
+                </>
+              )}
             </h1>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <p className="mt-1 text-xs text-[#AFA196]">
               {mode === "in"
                 ? "Enter your credentials to access your NGO operations"
                 : mode === "up"
@@ -163,14 +176,14 @@ function Auth() {
 
           {/* Mode Switcher Tabs */}
           {mode !== "reset" && (
-            <div className="grid grid-cols-2 rounded-xl border border-border/70 bg-muted/40 p-1">
+            <div className="grid grid-cols-2 rounded-full border border-[#48291F] bg-[#281A15] p-1">
               <button
                 type="button"
                 onClick={() => setMode("in")}
-                className={`rounded-lg py-1.5 text-xs font-bold transition-all ${
+                className={`rounded-full py-1.5 text-xs font-bold transition-all ${
                   mode === "in"
-                    ? "bg-card text-foreground shadow-xs border border-border/50"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] shadow-sm"
+                    : "text-[#AFA196] hover:text-[#FFFDFB]"
                 }`}
               >
                 Sign In
@@ -178,10 +191,10 @@ function Auth() {
               <button
                 type="button"
                 onClick={() => setMode("up")}
-                className={`rounded-lg py-1.5 text-xs font-bold transition-all ${
+                className={`rounded-full py-1.5 text-xs font-bold transition-all ${
                   mode === "up"
-                    ? "bg-card text-foreground shadow-xs border border-border/50"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] shadow-sm"
+                    : "text-[#AFA196] hover:text-[#FFFDFB]"
                 }`}
               >
                 Create Account
@@ -191,7 +204,7 @@ function Auth() {
 
           <div className="space-y-4">
             <div>
-              <Label htmlFor="email" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <Label htmlFor="email" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#AFA196]">
                 Email Address
               </Label>
               <Input
@@ -201,19 +214,19 @@ function Auth() {
                 placeholder="director@ngo.org"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-10 rounded-xl bg-background/80"
+                className="h-10 rounded-xl bg-[#160E0C] border-[#35231C] text-[#FFFDFB] placeholder:text-[#827368] focus-visible:border-[#E29555]"
               />
             </div>
             {mode !== "reset" && (
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <Label htmlFor="pw" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  <Label htmlFor="pw" className="block text-xs font-bold uppercase tracking-wider text-[#AFA196]">
                     Password
                   </Label>
                   {mode === "in" && (
                     <button
                       type="button"
-                      className="text-xs font-semibold text-primary hover:underline"
+                      className="text-xs font-semibold text-[#E29555] hover:underline"
                       onClick={() => setMode("reset")}
                     >
                       Forgot?
@@ -227,36 +240,40 @@ function Auth() {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="h-10 rounded-xl bg-background/80"
+                  className="h-10 rounded-xl bg-[#160E0C] border-[#35231C] text-[#FFFDFB] placeholder:text-[#827368] focus-visible:border-[#E29555]"
                 />
               </div>
             )}
           </div>
 
-          <Button type="submit" className="h-11 w-full rounded-xl font-bold shadow-md shadow-primary/20" disabled={busy}>
+          <Button
+            type="submit"
+            className="h-11 w-full rounded-full font-bold bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] shadow-md hover:brightness-110 transition-all duration-150"
+            disabled={busy}
+          >
             {busy
               ? "Please wait…"
               : mode === "in"
-                ? "Sign in to Workspace"
+                ? "Sign in to Workspace ↗"
                 : mode === "up"
-                  ? "Create Organization"
-                  : "Send Reset Link"}
+                  ? "Create Organization ↗"
+                  : "Send Reset Link ↗"}
           </Button>
 
           {mode !== "reset" && (
             <>
               <div className="relative my-3 flex items-center justify-center">
                 <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t border-border/70" />
+                  <span className="w-full border-t border-[#2E1E19]" />
                 </div>
-                <span className="relative bg-card px-2.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                <span className="relative bg-[#1E1411] px-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#827368]">
                   Or authenticate with
                 </span>
               </div>
               <Button
                 type="button"
                 variant="outline"
-                className="h-11 w-full gap-2 rounded-xl border-border/80 bg-background/50 hover:bg-card"
+                className="h-11 w-full gap-2 rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555]"
                 onClick={google}
                 disabled={busy}
               >
@@ -270,7 +287,7 @@ function Auth() {
             <div className="text-center pt-2">
               <button
                 type="button"
-                className="text-xs font-bold text-primary hover:underline"
+                className="text-xs font-bold text-[#E29555] hover:underline"
                 onClick={() => setMode("in")}
               >
                 ← Return to Sign In
@@ -279,9 +296,9 @@ function Auth() {
           )}
 
           {/* Security footnote */}
-          <div className="border-t border-border/60 pt-4 text-center">
-            <span className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground font-medium">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <div className="border-t border-[#2E1E19] pt-4 text-center">
+            <span className="inline-flex items-center gap-1.5 text-[11px] text-[#AFA196] font-medium">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2EA063]" />
               Secured with Supabase RLS & Role-Based Permissions
             </span>
           </div>

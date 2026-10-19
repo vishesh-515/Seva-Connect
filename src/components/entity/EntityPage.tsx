@@ -303,8 +303,8 @@ export function EntityPage({
         actions={
           <>
             {extraActions}
-            <Button variant="outline" onClick={exportCsv}>
-              <Download className="mr-1.5 h-4 w-4" /> Export CSV
+            <Button variant="outline" onClick={exportCsv} className="rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555]">
+              <Download className="mr-1.5 h-4 w-4 text-[#E29555]" /> Export CSV ↗
             </Button>
             {canWrite && (
               <Button
@@ -312,6 +312,7 @@ export function EntityPage({
                   setEditing(null);
                   setFormOpen(true);
                 }}
+                className="rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold shadow-md hover:brightness-110"
               >
                 <Plus className="mr-1.5 h-4 w-4" /> New {config.singular.toLowerCase()}
               </Button>
@@ -320,14 +321,14 @@ export function EntityPage({
         }
       />
 
-      <div className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-xs">
-        <div className="flex flex-col gap-2.5 border-b border-border/70 bg-card/60 p-3.5 lg:flex-row lg:items-center backdrop-blur-xs">
+      <div className="overflow-hidden rounded-2xl border border-[#35231C] bg-[#1E1411] shadow-sm">
+        <div className="flex flex-col gap-2.5 border-b border-[#2E1E19] bg-[#160E0C] p-3.5 lg:flex-row lg:items-center">
           <div className="relative flex-1">
-            <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-[#E29555]" />
             <Input
               aria-label={`Search ${config.title.toLowerCase()}`}
               placeholder={`Search ${config.title.toLowerCase()}…`}
-              className="pl-9 h-9 rounded-xl bg-background/80"
+              className="pl-9 h-9 rounded-xl bg-[#130D0B] border-[#35231C] text-[#FFFDFB] placeholder:text-[#827368] focus-visible:border-[#E29555]"
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -345,13 +346,13 @@ export function EntityPage({
                   setPage(0);
                 }}
               >
-                <SelectTrigger className="w-[150px]" aria-label={f.label}>
+                <SelectTrigger className="w-[150px] rounded-xl bg-[#130D0B] border-[#35231C] text-[#FFFDFB]" aria-label={f.label}>
                   <SelectValue placeholder={f.label} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="rounded-xl border-[#35231C] bg-[#1E1411] text-[#FFFDFB]">
                   <SelectItem value={ALL}>All {f.label.toLowerCase()}</SelectItem>
                   {f.options.map((o) => (
-                    <SelectItem key={o.value} value={o.value}>
+                    <SelectItem key={o.value} value={o.value} className="hover:bg-[#281A15] hover:text-[#E29555]">
                       {o.label}
                     </SelectItem>
                   ))}
@@ -363,7 +364,7 @@ export function EntityPage({
                 <Input
                   type="date"
                   aria-label="From date"
-                  className="w-[150px]"
+                  className="w-[150px] rounded-xl bg-[#130D0B] border-[#35231C] text-[#FFFDFB]"
                   value={from}
                   onChange={(e) => {
                     setFrom(e.target.value);
@@ -373,7 +374,7 @@ export function EntityPage({
                 <Input
                   type="date"
                   aria-label="To date"
-                  className="w-[150px]"
+                  className="w-[150px] rounded-xl bg-[#130D0B] border-[#35231C] text-[#FFFDFB]"
                   value={to}
                   onChange={(e) => {
                     setTo(e.target.value);
@@ -388,7 +389,7 @@ export function EntityPage({
         {query.isLoading ? (
           <div className="space-y-2 p-4">
             {Array.from({ length: 6 }).map((_, i) => (
-              <Skeleton key={i} className="h-9 w-full" />
+              <Skeleton key={i} className="h-9 w-full bg-[#281A15]" />
             ))}
           </div>
         ) : query.isError ? (
@@ -409,6 +410,7 @@ export function EntityPage({
                     setEditing(null);
                     setFormOpen(true);
                   }}
+                  className="rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold"
                 >
                   <Plus className="mr-1.5 h-4 w-4" />
                   Add the first one
@@ -420,7 +422,7 @@ export function EntityPage({
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border/70 bg-muted/40 text-left text-[11px] uppercase font-bold tracking-wider text-muted-foreground">
+                <tr className="border-b border-[#2E1E19] bg-[#18100D] text-left text-[11px] uppercase font-bold tracking-wider text-[#AFA196]">
                   {config.columns.map((c) => (
                     <th
                       key={c.key}
@@ -428,15 +430,15 @@ export function EntityPage({
                     >
                       {c.sortable ? (
                         <button
-                          className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors"
+                          className="inline-flex items-center gap-1.5 hover:text-[#E29555] transition-colors"
                           onClick={() => toggleSort(c.key)}
                         >
                           {c.label}
                           {sort.column === c.key &&
                             (sort.ascending ? (
-                              <ArrowUp className="h-3 w-3 text-primary" />
+                              <ArrowUp className="h-3 w-3 text-[#E29555]" />
                             ) : (
-                              <ArrowDown className="h-3 w-3 text-primary" />
+                              <ArrowDown className="h-3 w-3 text-[#E29555]" />
                             ))}
                         </button>
                       ) : (
@@ -447,15 +449,15 @@ export function EntityPage({
                   <th className="w-10 px-2" aria-label="Actions" />
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/50">
+              <tbody className="divide-y divide-[#2E1E19]">
                 {query.data!.rows.map((row) => (
-                  <tr key={row["id"]} className="hover:bg-muted/30 transition-colors">
+                  <tr key={row["id"]} className="hover:bg-[#251914] transition-colors">
                     {config.columns.map((c, i) => (
-                      <td key={c.key} className={`px-4 py-3.5 align-middle ${c.className ?? ""}`}>
+                      <td key={c.key} className={`px-4 py-3.5 align-middle text-[#FFFDFB] ${c.className ?? ""}`}>
                         {i === 0 && config.detailPath ? (
                           <Link
                             to={config.detailPath(row) as any}
-                            className="font-medium text-foreground hover:text-primary hover:underline"
+                            className="font-medium text-[#FFFDFB] hover:text-[#E29555] hover:underline"
                           >
                             {c.render ? c.render(row, org) : (row[c.key] ?? "—")}
                           </Link>

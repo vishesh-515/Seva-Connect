@@ -328,10 +328,10 @@ export function ImportWizard({
                 size="sm"
                 onClick={handleLoadSampleDataset}
                 disabled={isLoadingFile}
-                className="gap-2 border-primary/40 bg-primary/5 text-primary hover:bg-primary/10 font-semibold"
+                className="gap-2 rounded-full border-[#48291F] bg-[#281A15] text-[#E29555] hover:bg-[#35211A] hover:border-[#E29555] font-semibold"
               >
                 <Sparkles className="h-3.5 w-3.5" />
-                Load Sample {activeSchema.sampleFileName}
+                Load Sample {activeSchema.sampleFileName} ↗
               </Button>
             </div>
 
@@ -344,13 +344,13 @@ export function ImportWizard({
                   handleFileSelected(e.dataTransfer.files[0]);
                 }
               }}
-              className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-border/80 bg-muted/20 p-10 text-center transition-all hover:border-primary/60 hover:bg-muted/40"
+              className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#35231C] bg-[#1E1411] p-10 text-center transition-all hover:border-[#E29555] hover:bg-[#251914]"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#281A15] border border-[#48291F] text-[#E29555] mb-4">
                 <UploadCloud className="h-7 w-7" />
               </div>
-              <div className="text-sm font-bold text-foreground">Drag and drop your spreadsheet here</div>
-              <p className="mt-1 text-xs text-muted-foreground max-w-sm">
+              <div className="text-sm font-bold text-[#FFFDFB]">Drag and drop your spreadsheet here</div>
+              <p className="mt-1 text-xs text-[#AFA196] max-w-sm">
                 Or browse files from your computer. Standard CSV and Excel files up to 10MB are supported.
               </p>
 
@@ -371,10 +371,10 @@ export function ImportWizard({
                   size="sm"
                   onClick={() => document.getElementById(fileInputId)?.click()}
                   disabled={isLoadingFile}
-                  className="gap-2 font-medium"
+                  className="gap-2 rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555] font-medium"
                 >
-                  <FileSpreadsheet className="h-4 w-4" />
-                  {isLoadingFile ? "Reading Spreadsheet..." : "Browse Spreadsheet"}
+                  <FileSpreadsheet className="h-4 w-4 text-[#E29555]" />
+                  {isLoadingFile ? "Reading Spreadsheet..." : "Browse Spreadsheet ↗"}
                 </Button>
               </div>
             </div>

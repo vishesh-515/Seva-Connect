@@ -86,15 +86,21 @@ function DataImportCentrePage() {
       {/* Page Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div>
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <FileSpreadsheet className="h-5 w-5" />
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#281A15] border border-[#48291F] text-[#E29555] shadow-xs">
+              <FileSpreadsheet className="h-6 w-6" />
             </div>
             <div>
-              <h1 className="font-serif text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-                Data Import Centre
+              <div className="flex items-center gap-2">
+                <span className="shubh-eyebrow">
+                  <Sparkles className="h-3 w-3 text-[#E29555]" />
+                  Spreadsheet Ingestion
+                </span>
+              </div>
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-[#FFFDFB] mt-1">
+                Data Import <span className="heading-copper">Centre</span>
               </h1>
-              <p className="text-sm text-muted-foreground mt-0.5">
+              <p className="text-xs text-[#AFA196] mt-0.5">
                 Import, validate, and organise NGO records from your existing spreadsheets.
               </p>
             </div>
@@ -108,23 +114,23 @@ function DataImportCentrePage() {
             variant="outline"
             size="sm"
             onClick={handleDownloadSampleDataset}
-            className="gap-2 border-border/80 font-semibold text-foreground hover:bg-muted"
+            className="gap-2 rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555] font-semibold"
           >
-            <Archive className="h-4 w-4 text-primary" />
-            <span>Download Sample Dataset</span>
+            <Archive className="h-4 w-4 text-[#E29555]" />
+            <span>Download Sample Dataset ↗</span>
           </Button>
 
           {/* Download CSV Templates Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="gap-2 border-border/80 font-semibold text-foreground hover:bg-muted">
-                <FileDown className="h-4 w-4 text-primary" />
+              <Button variant="outline" size="sm" className="gap-2 rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] font-semibold">
+                <FileDown className="h-4 w-4 text-[#E29555]" />
                 <span>Download CSV Templates</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel className="text-xs">Database CSV Templates</DropdownMenuLabel>
-              <DropdownMenuSeparator />
+            <DropdownMenuContent align="end" className="w-56 rounded-xl border-[#35231C] bg-[#1E1411] text-[#FFFDFB]">
+              <DropdownMenuLabel className="text-xs text-[#AFA196]">Database CSV Templates</DropdownMenuLabel>
+              <DropdownMenuSeparator className="bg-[#2E1E19]" />
               {Object.values(IMPORT_SCHEMAS).map((s) => (
                 <DropdownMenuItem
                   key={s.type}
@@ -132,9 +138,9 @@ function DataImportCentrePage() {
                     downloadCsvTemplate(s.type);
                     toast.success(`Downloaded template for ${s.title}`);
                   }}
-                  className="text-xs cursor-pointer"
+                  className="text-xs cursor-pointer hover:bg-[#281A15] hover:text-[#E29555]"
                 >
-                  <FileSpreadsheet className="h-3.5 w-3.5 mr-2 text-primary" />
+                  <FileSpreadsheet className="h-3.5 w-3.5 mr-2 text-[#E29555]" />
                   <span>{s.title} Template</span>
                 </DropdownMenuItem>
               ))}
@@ -148,79 +154,107 @@ function DataImportCentrePage() {
               setShowWizard(true);
               window.scrollTo({ top: 350, behavior: "smooth" });
             }}
-            className="gap-2 bg-primary text-primary-foreground font-semibold shadow-xs hover:bg-primary/90"
+            className="gap-2 rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold shadow-md hover:brightness-110"
           >
             <UploadCloud className="h-4 w-4" />
-            <span>Upload Data</span>
+            <span>Upload Data ↗</span>
           </Button>
         </div>
       </div>
 
       {/* Summary Metrics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="rounded-2xl border border-border/80 bg-card p-4 shadow-2xs">
-          <div className="flex items-center justify-between text-xs font-medium text-muted-foreground">
-            <span>Total Records Imported</span>
-            <Database className="h-4 w-4 text-primary" />
+        <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 shadow-xs interactive-card">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#AFA196]">
+            <span>Total Records</span>
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#281A15] border border-[#48291F] text-[#E29555]">
+              <Database className="h-3.5 w-3.5" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-foreground mt-2">{totalImported}</div>
-          <div className="text-[11px] text-muted-foreground mt-1">Persisted into Supabase</div>
+          <div className="text-3xl font-bold text-[#FFFDFB] mt-2">{totalImported}</div>
+          <div className="text-[11px] text-[#AFA196] mt-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#E29555]" />
+            Persisted into Supabase
+          </div>
         </div>
 
-        <div className="rounded-2xl border border-border/80 bg-card p-4 shadow-2xs">
-          <div className="flex items-center justify-between text-xs font-medium text-emerald-600 dark:text-emerald-400">
+        <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 shadow-xs interactive-card">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#34D399]">
             <span>Successful Imports</span>
-            <CheckCircle2 className="h-4 w-4" />
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#152B1E] border border-[#1F4D34] text-[#34D399]">
+              <CheckCircle2 className="h-3.5 w-3.5" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-2">{successfulRuns}</div>
-          <div className="text-[11px] text-muted-foreground mt-1">Fully validated jobs</div>
+          <div className="text-3xl font-bold text-[#34D399] mt-2">{successfulRuns}</div>
+          <div className="text-[11px] text-[#AFA196] mt-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" />
+            Fully validated jobs
+          </div>
         </div>
 
-        <div className="rounded-2xl border border-border/80 bg-card p-4 shadow-2xs">
-          <div className="flex items-center justify-between text-xs font-medium text-destructive">
+        <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 shadow-xs interactive-card">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#E05345]">
             <span>Rejected Records</span>
-            <XCircle className="h-4 w-4" />
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#2E1513] border border-[#5A231E] text-[#E05345]">
+              <XCircle className="h-3.5 w-3.5" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-destructive mt-2">{rejectedRecords}</div>
-          <div className="text-[11px] text-muted-foreground mt-1">Failed schema or FK checks</div>
+          <div className="text-3xl font-bold text-[#E05345] mt-2">{rejectedRecords}</div>
+          <div className="text-[11px] text-[#AFA196] mt-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#E05345]" />
+            Failed schema checks
+          </div>
         </div>
 
-        <div className="rounded-2xl border border-border/80 bg-card p-4 shadow-2xs">
-          <div className="flex items-center justify-between text-xs font-medium text-amber-600 dark:text-amber-400">
+        <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 shadow-xs interactive-card">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#E29555]">
             <span>Duplicates Skipped</span>
-            <AlertTriangle className="h-4 w-4" />
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#281A15] border border-[#48291F] text-[#E29555]">
+              <AlertTriangle className="h-3.5 w-3.5" />
+            </div>
           </div>
-          <div className="text-2xl font-bold text-amber-600 dark:text-amber-400 mt-2">{totalSkipped}</div>
-          <div className="text-[11px] text-muted-foreground mt-1">Protected by deduplication</div>
+          <div className="text-3xl font-bold text-[#E29555] mt-2">{totalSkipped}</div>
+          <div className="text-[11px] text-[#AFA196] mt-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#E29555]" />
+            Protected by deduplication
+          </div>
         </div>
       </div>
 
       {/* Guided Dependency Sequence Banner */}
-      <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5">
-        <div className="flex items-center gap-2">
-          <Layers className="h-4 w-4 text-primary" />
-          <h3 className="text-sm font-bold text-foreground">Recommended Multi-File Import Order</h3>
+      <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-6 shadow-sm">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <span className="shubh-eyebrow">
+              <Layers className="h-3 w-3 text-[#E29555]" />
+              Relational Architecture
+            </span>
+            <h3 className="text-sm font-bold text-[#FFFDFB]">Recommended Multi-File Import Order</h3>
+          </div>
+          <span className="text-[11px] text-[#AFA196] hidden sm:inline">6 Core Schemas</span>
         </div>
-        <p className="text-xs text-muted-foreground mt-1 max-w-3xl">
+        <p className="text-xs text-[#AFA196] mt-2 max-w-3xl">
           When populating a complete workspace from relational spreadsheets, import files in this sequence.
-          This ensures foreign-key references (e.g. beneficiary IDs in cases and assistance records) link seamlessly without errors.
+          This ensures foreign-key references link seamlessly without database integrity violations.
         </p>
 
-        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
           {Object.values(IMPORT_SCHEMAS).map((s) => (
             <button
               key={s.type}
               onClick={() => startImportFor(s.type)}
-              className="group flex flex-col items-start rounded-xl border border-border/70 bg-card p-3 text-left transition-all hover:border-primary hover:shadow-2xs"
+              className="group flex flex-col items-start rounded-xl border border-[#35231C] bg-[#221612] p-3 text-left transition-all hover:border-[#E29555] hover:bg-[#281A15]"
             >
               <div className="flex w-full items-center justify-between">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#281A15] border border-[#48291F] text-[10px] font-bold text-[#E29555]">
                   {s.order}
                 </span>
-                <ArrowRight className="h-3 w-3 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                <span className="text-[11px] font-bold text-[#E29555] opacity-60 group-hover:opacity-100 transition-opacity">
+                  ↗
+                </span>
               </div>
-              <div className="mt-2 text-xs font-bold text-foreground truncate w-full">{s.title}</div>
-              <span className="text-[10px] text-muted-foreground font-mono">{s.sampleFileName}</span>
+              <div className="mt-2 text-xs font-bold text-[#FFFDFB] truncate w-full">{s.title}</div>
+              <span className="text-[10px] text-[#AFA196] font-mono">{s.sampleFileName}</span>
             </button>
           ))}
         </div>
