@@ -164,14 +164,14 @@ export function EntityFormDialog({
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
+        <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl bg-white dark:bg-[#1E1411] border-[#E8DFD5] dark:border-[#35231C] text-[#2A1D17] dark:text-[#FFFDFB]">
           <DialogHeader>
-            <DialogTitle>
+            <DialogTitle className="text-[#2A1D17] dark:text-[#FFFDFB] text-xl font-bold">
               {row
                 ? `Edit ${config.singular.toLowerCase()}`
                 : `New ${config.singular.toLowerCase()}`}
             </DialogTitle>
-            <DialogDescription>
+            <DialogDescription className="text-[#7D6E63] dark:text-[#AFA196] text-xs">
               Fields marked * are required. Changes are recorded in the activity log.
             </DialogDescription>
           </DialogHeader>
@@ -191,16 +191,16 @@ export function EntityFormDialog({
         </DialogContent>
       </Dialog>
       <AlertDialog open={!!pending} onOpenChange={(o) => !o && setPending(null)}>
-        <AlertDialogContent>
+        <AlertDialogContent className="bg-white dark:bg-[#1E1411] border-[#E8DFD5] dark:border-[#35231C] text-[#2A1D17] dark:text-[#FFFDFB]">
           <AlertDialogHeader>
-            <AlertDialogTitle>Please confirm</AlertDialogTitle>
-            <AlertDialogDescription className="whitespace-pre-line">
+            <AlertDialogTitle className="text-[#2A1D17] dark:text-[#FFFDFB]">Please confirm</AlertDialogTitle>
+            <AlertDialogDescription className="whitespace-pre-line text-[#7D6E63] dark:text-[#AFA196] text-xs">
               {pending?.message}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Go back</AlertDialogCancel>
-            <AlertDialogAction onClick={() => pending && doSave(pending.values)}>
+            <AlertDialogCancel className="rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18]">Go back</AlertDialogCancel>
+            <AlertDialogAction onClick={() => pending && doSave(pending.values)} className="rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold">
               Confirm and save
             </AlertDialogAction>
           </AlertDialogFooter>
@@ -312,7 +312,7 @@ export function EntityPage({
                   setEditing(null);
                   setFormOpen(true);
                 }}
-                className="rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold shadow-md hover:brightness-110"
+                className="rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold shadow-md hover:brightness-105"
               >
                 <Plus className="mr-1.5 h-4 w-4" /> New {config.singular.toLowerCase()}
               </Button>
@@ -321,14 +321,14 @@ export function EntityPage({
         }
       />
 
-      <div className="overflow-hidden rounded-2xl border border-[#35231C] bg-[#1E1411] shadow-sm">
-        <div className="flex flex-col gap-2.5 border-b border-[#2E1E19] bg-[#160E0C] p-3.5 lg:flex-row lg:items-center">
+      <div className="overflow-hidden rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] shadow-sm">
+        <div className="flex flex-col gap-2.5 border-b border-[#E8DFD5] dark:border-[#2E1E19] bg-[#FAF7F2] dark:bg-[#160E0C] p-3.5 lg:flex-row lg:items-center">
           <div className="relative flex-1">
-            <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-[#E29555]" />
+            <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-[#C87A38] dark:text-[#E29555]" />
             <Input
               aria-label={`Search ${config.title.toLowerCase()}`}
               placeholder={`Search ${config.title.toLowerCase()}…`}
-              className="pl-9 h-9 rounded-xl bg-[#130D0B] border-[#35231C] text-[#FFFDFB] placeholder:text-[#827368] focus-visible:border-[#E29555]"
+              className="pl-9 h-9 rounded-xl bg-white dark:bg-[#130D0B] border-[#E2D8CC] dark:border-[#35231C] text-[#2A1D17] dark:text-[#FFFDFB] placeholder:text-[#AFA196] focus-visible:border-[#C87A38] dark:focus-visible:border-[#E29555]"
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -346,13 +346,13 @@ export function EntityPage({
                   setPage(0);
                 }}
               >
-                <SelectTrigger className="w-[150px] rounded-xl bg-[#130D0B] border-[#35231C] text-[#FFFDFB]" aria-label={f.label}>
+                <SelectTrigger className="w-[150px] rounded-xl bg-white dark:bg-[#130D0B] border-[#E2D8CC] dark:border-[#35231C] text-[#2A1D17] dark:text-[#FFFDFB]" aria-label={f.label}>
                   <SelectValue placeholder={f.label} />
                 </SelectTrigger>
-                <SelectContent className="rounded-xl border-[#35231C] bg-[#1E1411] text-[#FFFDFB]">
+                <SelectContent className="rounded-xl border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]">
                   <SelectItem value={ALL}>All {f.label.toLowerCase()}</SelectItem>
                   {f.options.map((o) => (
-                    <SelectItem key={o.value} value={o.value} className="hover:bg-[#281A15] hover:text-[#E29555]">
+                    <SelectItem key={o.value} value={o.value} className="hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#C87A38] dark:hover:text-[#E29555]">
                       {o.label}
                     </SelectItem>
                   ))}
@@ -364,7 +364,7 @@ export function EntityPage({
                 <Input
                   type="date"
                   aria-label="From date"
-                  className="w-[150px] rounded-xl bg-[#130D0B] border-[#35231C] text-[#FFFDFB]"
+                  className="w-[150px] rounded-xl bg-white dark:bg-[#130D0B] border-[#E2D8CC] dark:border-[#35231C] text-[#2A1D17] dark:text-[#FFFDFB]"
                   value={from}
                   onChange={(e) => {
                     setFrom(e.target.value);
@@ -374,7 +374,7 @@ export function EntityPage({
                 <Input
                   type="date"
                   aria-label="To date"
-                  className="w-[150px] rounded-xl bg-[#130D0B] border-[#35231C] text-[#FFFDFB]"
+                  className="w-[150px] rounded-xl bg-white dark:bg-[#130D0B] border-[#E2D8CC] dark:border-[#35231C] text-[#2A1D17] dark:text-[#FFFDFB]"
                   value={to}
                   onChange={(e) => {
                     setTo(e.target.value);
@@ -389,7 +389,7 @@ export function EntityPage({
         {query.isLoading ? (
           <div className="space-y-2 p-4">
             {Array.from({ length: 6 }).map((_, i) => (
-              <Skeleton key={i} className="h-9 w-full bg-[#281A15]" />
+              <Skeleton key={i} className="h-9 w-full bg-[#F0E8DC] dark:bg-[#281A15]" />
             ))}
           </div>
         ) : query.isError ? (
@@ -410,7 +410,7 @@ export function EntityPage({
                     setEditing(null);
                     setFormOpen(true);
                   }}
-                  className="rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold"
+                  className="rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold"
                 >
                   <Plus className="mr-1.5 h-4 w-4" />
                   Add the first one
@@ -422,7 +422,7 @@ export function EntityPage({
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#2E1E19] bg-[#18100D] text-left text-[11px] uppercase font-bold tracking-wider text-[#AFA196]">
+                <tr className="border-b border-[#E8DFD5] dark:border-[#2E1E19] bg-[#F7F2EA] dark:bg-[#18100D] text-left text-[11px] uppercase font-bold tracking-wider text-[#7D6E63] dark:text-[#AFA196]">
                   {config.columns.map((c) => (
                     <th
                       key={c.key}
@@ -430,15 +430,15 @@ export function EntityPage({
                     >
                       {c.sortable ? (
                         <button
-                          className="inline-flex items-center gap-1.5 hover:text-[#E29555] transition-colors"
+                          className="inline-flex items-center gap-1.5 hover:text-[#C87A38] dark:hover:text-[#E29555] transition-colors"
                           onClick={() => toggleSort(c.key)}
                         >
                           {c.label}
                           {sort.column === c.key &&
                             (sort.ascending ? (
-                              <ArrowUp className="h-3 w-3 text-[#E29555]" />
+                              <ArrowUp className="h-3 w-3 text-[#C87A38] dark:text-[#E29555]" />
                             ) : (
-                              <ArrowDown className="h-3 w-3 text-[#E29555]" />
+                              <ArrowDown className="h-3 w-3 text-[#C87A38] dark:text-[#E29555]" />
                             ))}
                         </button>
                       ) : (
@@ -449,15 +449,15 @@ export function EntityPage({
                   <th className="w-10 px-2" aria-label="Actions" />
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#2E1E19]">
+              <tbody className="divide-y divide-[#EFE8DE] dark:divide-[#2E1E19]">
                 {query.data!.rows.map((row) => (
-                  <tr key={row["id"]} className="hover:bg-[#251914] transition-colors">
+                  <tr key={row["id"]} className="hover:bg-[#FAF7F2] dark:hover:bg-[#251914] transition-colors">
                     {config.columns.map((c, i) => (
-                      <td key={c.key} className={`px-4 py-3.5 align-middle text-[#FFFDFB] ${c.className ?? ""}`}>
+                      <td key={c.key} className={`px-4 py-3.5 align-middle text-[#2A1D17] dark:text-[#FFFDFB] ${c.className ?? ""}`}>
                         {i === 0 && config.detailPath ? (
                           <Link
                             to={config.detailPath(row) as any}
-                            className="font-medium text-[#FFFDFB] hover:text-[#E29555] hover:underline"
+                            className="font-medium text-[#2A1D17] dark:text-[#FFFDFB] hover:text-[#C87A38] dark:hover:text-[#E29555] hover:underline"
                           >
                             {c.render ? c.render(row, org) : (row[c.key] ?? "—")}
                           </Link>
@@ -476,7 +476,7 @@ export function EntityPage({
                               <MoreHorizontal className="h-4 w-4" />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
+                          <DropdownMenuContent align="end" className="bg-white dark:bg-[#1E1411] border-[#E8DFD5] dark:border-[#35231C] text-[#2A1D17] dark:text-[#FFFDFB]">
                             {config.rowActions?.(row, org)}
                             {canWrite && (
                               <DropdownMenuItem
@@ -484,8 +484,9 @@ export function EntityPage({
                                   setEditing(row);
                                   setFormOpen(true);
                                 }}
+                                className="hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#C87A38] dark:hover:text-[#E29555] cursor-pointer"
                               >
-                                <Pencil className="mr-2 h-4 w-4" /> Edit
+                                <Pencil className="mr-2 h-4 w-4 text-[#C87A38] dark:text-[#E29555]" /> Edit
                               </DropdownMenuItem>
                             )}
                             {canWrite &&
@@ -493,8 +494,9 @@ export function EntityPage({
                               row["status"] !== config.archiveStatus && (
                                 <DropdownMenuItem
                                   onClick={() => setConfirm({ row, mode: "archive" })}
+                                  className="hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#C87A38] dark:hover:text-[#E29555] cursor-pointer"
                                 >
-                                  <Archive className="mr-2 h-4 w-4" />{" "}
+                                  <Archive className="mr-2 h-4 w-4 text-[#C87A38] dark:text-[#E29555]" />{" "}
                                   {config.archiveStatus === "archived"
                                     ? "Archive"
                                     : "Cancel record"}
@@ -502,7 +504,7 @@ export function EntityPage({
                               )}
                             {canDelete && (
                               <DropdownMenuItem
-                                className="text-destructive"
+                                className="text-[#D32F2F] dark:text-[#E05345] hover:bg-[#FFF5F5] dark:hover:bg-[#2E1513] cursor-pointer"
                                 onClick={() => setConfirm({ row, mode: "delete" })}
                               >
                                 <Trash2 className="mr-2 h-4 w-4" /> Delete
@@ -519,7 +521,7 @@ export function EntityPage({
           </div>
         )}
 
-        <div className="flex items-center justify-between border-t px-4 py-3 text-sm text-muted-foreground">
+        <div className="flex items-center justify-between border-t border-[#E8DFD5] dark:border-[#2E1E19] bg-[#FAF7F2] dark:bg-[#160E0C] px-4 py-3 text-sm text-[#7D6E63] dark:text-[#AFA196]">
           <span>
             {total} record{total === 1 ? "" : "s"}
           </span>
@@ -529,10 +531,11 @@ export function EntityPage({
               size="sm"
               disabled={page === 0}
               onClick={() => setPage((p) => p - 1)}
+              className="rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#F0E8DC] dark:hover:bg-[#2C1D18] hover:border-[#C87A38] dark:hover:border-[#E29555] disabled:opacity-30"
             >
               Previous
             </Button>
-            <span>
+            <span className="text-xs font-medium text-[#7D6E63] dark:text-[#AFA196]">
               Page {page + 1} of {pages}
             </span>
             <Button
@@ -540,6 +543,7 @@ export function EntityPage({
               size="sm"
               disabled={page + 1 >= pages}
               onClick={() => setPage((p) => p + 1)}
+              className="rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#F0E8DC] dark:hover:bg-[#2C1D18] hover:border-[#C87A38] dark:hover:border-[#E29555] disabled:opacity-30"
             >
               Next
             </Button>
@@ -550,20 +554,20 @@ export function EntityPage({
       <EntityFormDialog config={config} open={formOpen} onOpenChange={setFormOpen} row={editing} />
 
       <AlertDialog open={!!confirm} onOpenChange={(o) => !o && setConfirm(null)}>
-        <AlertDialogContent>
+        <AlertDialogContent className="bg-white dark:bg-[#1E1411] border-[#E8DFD5] dark:border-[#35231C] text-[#2A1D17] dark:text-[#FFFDFB]">
           <AlertDialogHeader>
-            <AlertDialogTitle>
+            <AlertDialogTitle className="text-[#2A1D17] dark:text-[#FFFDFB] text-lg font-bold">
               {confirm?.mode === "delete" ? "Delete permanently?" : "Archive this record?"}
             </AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogDescription className="text-[#7D6E63] dark:text-[#AFA196] text-xs">
               {confirm?.mode === "delete"
                 ? "This removes the record. Linked history may block deletion — archiving is usually safer."
                 : "The record stays in history but is marked inactive. You can change its status later."}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => confirm && remove.mutate(confirm)}>
+            <AlertDialogCancel className="rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18]">Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={() => confirm && remove.mutate(confirm)} className="rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold">
               Confirm
             </AlertDialogAction>
           </AlertDialogFooter>

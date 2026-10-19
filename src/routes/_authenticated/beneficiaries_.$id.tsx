@@ -118,16 +118,16 @@ function Page() {
             variant="outline"
             size="sm"
             onClick={() => setIdCardOpen(true)}
-            className="gap-1.5"
+            className="rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555]"
           >
-            <QrCode className="h-4 w-4 text-primary" />
+            <QrCode className="h-4 w-4 text-[#E29555]" />
             <span className="hidden sm:inline">View ID Pass</span>
           </Button>
           {can("assistance.write") && (
             <Button
               size="sm"
               onClick={() => setScannerOpen(true)}
-              className="gap-1.5 shadow-sm shadow-primary/25"
+              className="rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold shadow-md hover:brightness-110"
             >
               <Barcode className="h-4 w-4" />
               <span>Quick Distribute</span>
@@ -151,40 +151,52 @@ function Page() {
           <>
             {/* Urgent-Case Prioritization Banner */}
             <div
-              className={`rounded-xl border p-4 sm:p-5 shadow-xs transition-colors ${
+              className={`rounded-2xl border p-4 sm:p-5 shadow-xs transition-colors ${
                 urgency.level === "critical"
-                  ? "bg-destructive/10 border-destructive/30"
+                  ? "bg-[#FFF5F5] border-[#FCDAD7] text-[#D32F2F] dark:bg-[#2E1513] dark:border-[#5A231E]"
                   : urgency.level === "high"
-                    ? "bg-amber-500/10 border-amber-500/30"
-                    : "bg-muted/40 border-border"
+                    ? "bg-[#FFF9F3] border-[#F8E3D2] text-[#C87A38] dark:bg-[#281A15] dark:border-[#48291F]"
+                    : "bg-white border-[#E8DFD5] text-[#2A1D17] dark:bg-[#1E1411] dark:border-[#35231C]"
               }`}
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-start gap-3">
                   <div
-                    className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border ${urgency.badgeClass}`}
+                    className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${
+                      urgency.level === "critical"
+                        ? "bg-[#FFEAEA] border-[#FCDAD7] text-[#D32F2F] dark:bg-[#3D1A17] dark:border-[#5A231E] dark:text-[#E05345]"
+                        : urgency.level === "high"
+                          ? "bg-[#FFF0E0] border-[#F8E3D2] text-[#C87A38] dark:bg-[#2E1A10] dark:border-[#48291F] dark:text-[#E29555]"
+                          : "bg-[#FAF7F2] border-[#E8DFD5] text-[#7D6E63] dark:bg-[#221612] dark:border-[#35231C] dark:text-[#AFA196]"
+                    }`}
                   >
                     {urgency.level === "critical" ? (
-                      <AlertTriangle className="h-5 w-5 animate-pulse text-destructive" />
+                      <AlertTriangle className="h-5 w-5 animate-pulse text-[#D32F2F] dark:text-[#E05345]" />
                     ) : urgency.level === "high" ? (
-                      <AlertCircle className="h-5 w-5 text-amber-500" />
+                      <AlertCircle className="h-5 w-5 text-[#C87A38] dark:text-[#E29555]" />
                     ) : (
-                      <HeartHandshake className="h-5 w-5 text-muted-foreground" />
+                      <HeartHandshake className="h-5 w-5 text-[#7D6E63] dark:text-[#AFA196]" />
                     )}
                   </div>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="font-semibold text-foreground text-base">
+                      <h3 className="font-bold text-[#2A1D17] dark:text-[#FFFDFB] text-base">
                         Case Prioritization Assessment
                       </h3>
-                      <Badge variant="outline" className={urgency.badgeClass}>
+                      <Badge variant="outline" className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${
+                        urgency.level === "critical"
+                          ? "bg-[#FFEAEA] border-[#FCDAD7] text-[#D32F2F] dark:bg-[#2E1513] dark:border-[#5A231E] dark:text-[#E05345]"
+                          : urgency.level === "high"
+                            ? "bg-[#FFF0E0] border-[#F8E3D2] text-[#C87A38] dark:bg-[#281A15] dark:border-[#48291F] dark:text-[#E29555]"
+                            : "bg-[#FAF7F2] border-[#E8DFD5] text-[#7D6E63] dark:bg-[#221612] dark:border-[#35231C] dark:text-[#AFA196]"
+                      }`}>
                         {urgency.label} ({urgency.score}/100)
                       </Badge>
                     </div>
-                    <ul className="mt-1.5 space-y-0.5 text-xs text-muted-foreground">
+                    <ul className="mt-1.5 space-y-0.5 text-xs text-[#7D6E63] dark:text-[#AFA196]">
                       {urgency.reasons.map((r, i) => (
                         <li key={i} className="flex items-center gap-1.5">
-                          <span className="h-1 w-1 rounded-full bg-foreground/60" />
+                          <span className="h-1 w-1 rounded-full bg-[#C87A38] dark:bg-[#E29555]" />
                           <span>{r}</span>
                         </li>
                       ))}
@@ -194,12 +206,7 @@ function Page() {
                 {can("assistance.write") && (
                   <Button
                     size="sm"
-                    className="shrink-0 sm:self-center"
-                    variant={
-                      urgency.level === "critical" || urgency.level === "high"
-                        ? "default"
-                        : "outline"
-                    }
+                    className="shrink-0 sm:self-center rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold shadow-sm hover:brightness-105"
                     onClick={() => {
                       setSelectedProjectId(undefined);
                       setOpenAidDialog(true);
@@ -216,21 +223,21 @@ function Page() {
             <Section
               title="Smart Support-Program Matching"
               actions={
-                <Badge variant="secondary" className="font-normal text-xs">
+                <Badge variant="secondary" className="font-normal text-xs rounded-full border border-[#E8DFD5] dark:border-[#35231C] bg-[#FAF7F2] dark:bg-[#221612] text-[#7D6E63] dark:text-[#AFA196]">
                   {matches.filter((m) => !m.isEnrolled).length} recommended match
                   {matches.filter((m) => !m.isEnrolled).length === 1 ? "" : "es"}
                 </Badge>
               }
             >
               <div className="space-y-3">
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-[#7D6E63] dark:text-[#AFA196]">
                   Programs matched dynamically based on category alignment, location proximity, and
                   stated requirements.
                 </p>
                 {allProjectsQuery.isLoading ? (
-                  <p className="text-sm text-muted-foreground">Calculating program matches…</p>
+                  <p className="text-sm text-[#7D6E63] dark:text-[#AFA196]">Calculating program matches…</p>
                 ) : matches.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-[#7D6E63] dark:text-[#AFA196]">
                     No active programs available for matching in this organization.
                   </p>
                 ) : (
@@ -238,10 +245,10 @@ function Page() {
                     {matches.slice(0, 4).map((m) => (
                       <div
                         key={m.project["id"]}
-                        className={`flex flex-col justify-between rounded-lg border p-3.5 transition-colors ${
+                        className={`flex flex-col justify-between rounded-xl border p-3.5 transition-colors ${
                           m.isEnrolled
-                            ? "bg-accent/30 border-accent/60"
-                            : "bg-card hover:border-primary/50"
+                            ? "bg-[#EBF7F0] border-[#C3E6D2] dark:bg-[#16271D] dark:border-[#1F4D34]"
+                            : "bg-white border-[#E8DFD5] hover:border-[#C87A38] dark:bg-[#18100D] dark:border-[#35231C] dark:hover:border-[#E29555]"
                         }`}
                       >
                         <div>
@@ -249,17 +256,17 @@ function Page() {
                             <Link
                               to="/projects/$id"
                               params={{ id: m.project["id"] }}
-                              className="font-medium text-sm text-foreground hover:text-primary hover:underline"
+                              className="font-bold text-sm text-[#2A1D17] dark:text-[#FFFDFB] hover:text-[#C87A38] dark:hover:text-[#E29555] hover:underline"
                             >
                               {m.project["name"]}
                             </Link>
                             <Badge
                               variant="outline"
-                              className={
+                              className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${
                                 m.score >= 70
-                                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30"
-                                  : "bg-blue-500/10 text-blue-600 border-blue-500/30"
-                              }
+                                  ? "bg-[#EBF7F0] text-[#2E7D5B] border-[#C3E6D2] dark:bg-[#152B1E] dark:text-[#2EA063] dark:border-[#1F4D34]"
+                                  : "bg-[#FFF0E0] text-[#C87A38] border-[#F8E3D2] dark:bg-[#281A15] dark:text-[#E29555] dark:border-[#48291F]"
+                              }`}
                             >
                               {m.score}% match
                             </Badge>
@@ -268,7 +275,7 @@ function Page() {
                             {m.reasons.map((r, i) => (
                               <span
                                 key={i}
-                                className="inline-flex items-center rounded-md bg-muted px-1.5 py-0.5 text-[11px] text-muted-foreground"
+                                className="inline-flex items-center rounded-md bg-[#FAF7F2] border border-[#E8DFD5] px-2 py-0.5 text-[10px] text-[#7D6E63] dark:bg-[#251814] dark:border-[#35231C] dark:text-[#AFA196]"
                               >
                                 {r}
                               </span>
@@ -276,10 +283,10 @@ function Page() {
                           </div>
                         </div>
 
-                        <div className="mt-3.5 flex items-center justify-between border-t pt-2.5">
-                          <span className="text-xs text-muted-foreground">
+                        <div className="mt-3.5 flex items-center justify-between border-t border-[#E8DFD5] dark:border-[#2E1E19] pt-2.5">
+                          <span className="text-xs text-[#7D6E63] dark:text-[#AFA196]">
                             {m.isEnrolled ? (
-                              <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
+                              <span className="inline-flex items-center gap-1 text-[#2E7D5B] dark:text-[#2EA063] font-medium">
                                 <CheckCircle2 className="h-3.5 w-3.5" /> Enrolled
                               </span>
                             ) : m.remainingCapacity !== null ? (
@@ -292,11 +299,11 @@ function Page() {
                             <Button
                               size="sm"
                               variant="outline"
-                              className="h-7 text-xs"
+                              className="h-7 text-xs rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18] hover:border-[#C87A38] dark:hover:border-[#E29555]"
                               disabled={enrollMutation.isPending}
                               onClick={() => enrollMutation.mutate(m.project["id"])}
                             >
-                              <FolderPlus className="mr-1 h-3.5 w-3.5" />
+                              <FolderPlus className="mr-1 h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555]" />
                               Enroll
                             </Button>
                           )}
@@ -320,8 +327,9 @@ function Page() {
                       setSelectedProjectId(undefined);
                       setOpenAidDialog(true);
                     }}
+                    className="rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18] hover:border-[#C87A38] dark:hover:border-[#E29555]"
                   >
-                    <PackagePlus className="mr-1 h-3.5 w-3.5" />
+                    <PackagePlus className="mr-1 h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555]" />
                     Record assistance
                   </Button>
                 )

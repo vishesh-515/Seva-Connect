@@ -179,27 +179,27 @@ function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Top Luxury Espresso Greeting Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-[#35231C] bg-[#1E1411] p-6 sm:p-7 shadow-sm">
+      {/* Top Greeting Banner */}
+      <div className="relative overflow-hidden rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-6 sm:p-7 shadow-xs">
         <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
           <div className="space-y-2">
-            {/* Shubh Style Eyebrow Pill */}
+            {/* Eyebrow Pill */}
             <div className="flex items-center gap-2">
               <span className="shubh-eyebrow">
-                <Sparkles className="h-3 w-3 text-[#E29555]" />
+                <Sparkles className="h-3 w-3 text-[#C87A38] dark:text-[#E29555]" />
                 Humanitarian Operations & Impact
               </span>
-              <span className="text-[#827368]">·</span>
-              <span className="text-xs font-semibold text-[#AFA196]">{org.name}</span>
+              <span className="text-[#AFA196]">·</span>
+              <span className="text-xs font-semibold text-[#7D6E63] dark:text-[#AFA196]">{org.name}</span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#FFFDFB]">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#2A1D17] dark:text-[#FFFDFB]">
               Every Need. <span className="heading-copper">The Right Support.</span>
             </h1>
 
-            <p className="text-xs text-[#AFA196] flex flex-wrap items-center gap-2 pt-0.5">
-              <span className="inline-flex items-center gap-1.5 text-[#AFA196]">
-                <Calendar className="h-3.5 w-3.5 text-[#E29555] shrink-0" />
+            <p className="text-xs text-[#7D6E63] dark:text-[#AFA196] flex flex-wrap items-center gap-2 pt-0.5">
+              <span className="inline-flex items-center gap-1.5 text-[#7D6E63] dark:text-[#AFA196]">
+                <Calendar className="h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555] shrink-0" />
                 {new Intl.DateTimeFormat("en-US", {
                   weekday: "long",
                   year: "numeric",
@@ -209,11 +209,11 @@ function Dashboard() {
               </span>
               <span>·</span>
               <span className="shubh-tag-ruby">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#E05345] animate-pulse" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#C04B3E] dark:bg-[#E05345] animate-pulse" />
                 {urgentList.length} urgent cases in active triage
               </span>
               <span className="shubh-tag-emerald">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#2D7A4D] dark:bg-[#34D399]" />
                 Supabase Live RLS
               </span>
             </p>
@@ -227,7 +227,7 @@ function Dashboard() {
                   setSelectedScanBen(null);
                   setScannerOpen(true);
                 }}
-                className="gap-2 rounded-full font-bold bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] shadow-sm hover:brightness-110 transition-all hover:scale-102"
+                className="gap-2 rounded-full font-bold bg-gradient-to-r from-[#D4843D] to-[#B86B28] dark:from-[#E29555] dark:to-[#C87A38] text-white dark:text-[#130D0B] shadow-sm hover:brightness-105 transition-all hover:scale-102"
               >
                 <Barcode className="h-4 w-4" />
                 <span>Scan to Distribute</span>
@@ -235,9 +235,9 @@ function Dashboard() {
             )}
 
             {can("beneficiaries.write") && (
-              <Button asChild variant="outline" className="gap-1.5 rounded-full font-semibold border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555]">
+              <Button asChild variant="outline" className="gap-1.5 rounded-full font-semibold border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18] hover:border-[#C87A38] dark:hover:border-[#E29555]">
                 <Link to="/beneficiaries">
-                  <UserPlus className="h-4 w-4 text-[#E29555]" />
+                  <UserPlus className="h-4 w-4 text-[#C87A38] dark:text-[#E29555]" />
                   <span>New Beneficiary</span>
                 </Link>
               </Button>
@@ -249,16 +249,16 @@ function Dashboard() {
               size="sm"
               onClick={handleSeedDemo}
               disabled={isSeedingDemo}
-              className="gap-1.5 rounded-full text-xs font-semibold border border-[#48291F] bg-[#281A15] text-[#E29555] hover:bg-[#35211A] hover:border-[#E29555]"
+              className="gap-1.5 rounded-full text-xs font-semibold border border-[#F5D5B8] dark:border-[#48291F] bg-[#FDF3E7] dark:bg-[#281A15] text-[#C87A38] dark:text-[#E29555] hover:bg-[#F8E5D1] dark:hover:bg-[#35211A]"
               title="Populates realistic beneficiaries, active programmes, and assistance records for live hackathon demonstration."
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#E29555]" />
+              <Sparkles className="h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555]" />
               <span>{isSeedingDemo ? "Seeding..." : "Demo Dataset"}</span>
             </Button>
 
-            <Button asChild variant="outline" size="sm" className="gap-1.5 rounded-full text-xs font-semibold border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18]">
+            <Button asChild variant="outline" size="sm" className="gap-1.5 rounded-full text-xs font-semibold border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18]">
               <Link to="/data-import">
-                <FileSpreadsheet className="h-3.5 w-3.5 text-[#E29555]" />
+                <FileSpreadsheet className="h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555]" />
                 <span>Import Centre</span>
               </Link>
             </Button>
@@ -334,40 +334,40 @@ function Dashboard() {
           </div>
 
           {/* Core Decision Section 1: Urgent Attention Queue */}
-          <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 sm:p-6 shadow-sm">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#2E1E19] pb-4 mb-4">
+          <div className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 sm:p-6 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E8DFD5] dark:border-[#2E1E19] pb-4 mb-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#2E1513] text-[#E05345] border border-[#5A231E] shadow-2xs">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FFF5F5] dark:bg-[#2E1513] text-[#D32F2F] dark:text-[#E05345] border border-[#FCDAD7] dark:border-[#5A231E] shadow-2xs">
                   <ShieldAlert className="h-5 w-5" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h2 className="text-base font-bold text-[#FFFDFB]">
+                    <h2 className="text-base font-bold text-[#2A1D17] dark:text-[#FFFDFB]">
                       Urgent Attention Queue
                     </h2>
                     <span className="shubh-tag-ruby">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#E05345] animate-pulse" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#D32F2F] dark:bg-[#E05345] animate-pulse" />
                       LIVE TRIAGE
                     </span>
                   </div>
-                  <p className="text-xs text-[#AFA196]">
+                  <p className="text-xs text-[#7D6E63] dark:text-[#AFA196]">
                     Prioritised by acute crisis indicators, household vulnerability, and assistance gaps.
                   </p>
                 </div>
               </div>
 
-              <Button asChild variant="outline" size="sm" className="rounded-full text-xs font-semibold border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555] transition-all">
+              <Button asChild variant="outline" size="sm" className="rounded-full text-xs font-semibold border-[#E8DFD5] dark:border-[#35231C] bg-[#FAF7F2] dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#F0E8DC] dark:hover:bg-[#2C1D18] hover:border-[#C87A38] dark:hover:border-[#E29555] transition-all">
                 <Link to="/beneficiaries">
                   <span>View All Beneficiaries</span>
-                  <ChevronRight className="ml-1 h-3.5 w-3.5 text-[#E29555]" />
+                  <ChevronRight className="ml-1 h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555]" />
                 </Link>
               </Button>
             </div>
 
             {urgentCasesQuery.isLoading ? (
-              <Skeleton className="h-28 w-full rounded-xl bg-[#281A15]" />
+              <Skeleton className="h-28 w-full rounded-xl bg-[#F0E8DC] dark:bg-[#281A15]" />
             ) : urgentList.length === 0 ? (
-              <div className="py-8 text-center text-xs text-[#AFA196]">
+              <div className="py-8 text-center text-xs text-[#7D6E63] dark:text-[#AFA196]">
                 No acute priority cases detected in current records. Use "Demo Dataset" above to inspect simulated crisis triage.
               </div>
             ) : (
@@ -377,8 +377,8 @@ function Dashboard() {
                     key={beneficiary["id"]}
                     className={`flex flex-col justify-between rounded-xl border p-4 transition-all interactive-card ${
                       assessment.level === "critical"
-                        ? "bg-[#241713] border-[#5A231E] hover:border-[#E05345]"
-                        : "bg-[#221612] border-[#35231C] hover:border-[#E29555]"
+                        ? "bg-[#FFF5F5] border-[#FCDAD7] hover:border-[#D32F2F] dark:bg-[#241713] dark:border-[#5A231E] dark:hover:border-[#E05345]"
+                        : "bg-[#FAF7F2] border-[#E8DFD5] hover:border-[#C87A38] dark:bg-[#221612] dark:border-[#35231C] dark:hover:border-[#E29555]"
                     }`}
                   >
                     <div className="space-y-2">
@@ -387,12 +387,12 @@ function Dashboard() {
                           <Link
                             to="/beneficiaries/$id"
                             params={{ id: beneficiary["id"] }}
-                            className="font-bold text-sm text-[#FFFDFB] hover:text-[#E29555] transition-colors flex items-center gap-1.5"
+                            className="font-bold text-sm text-[#2A1D17] dark:text-[#FFFDFB] hover:text-[#C87A38] dark:hover:text-[#E29555] transition-colors flex items-center gap-1.5"
                           >
                             <span>{beneficiary["full_name"]}</span>
-                            <ArrowUpRight className="h-3.5 w-3.5 opacity-60 text-[#E29555]" />
+                            <ArrowUpRight className="h-3.5 w-3.5 opacity-60 text-[#C87A38] dark:text-[#E29555]" />
                           </Link>
-                          <span className="font-mono text-[11px] text-[#AFA196]">
+                          <span className="font-mono text-[11px] text-[#7D6E63] dark:text-[#AFA196]">
                             {beneficiary["code"]}
                           </span>
                         </div>
@@ -401,19 +401,19 @@ function Dashboard() {
                         </span>
                       </div>
 
-                      <div className="space-y-1 text-xs text-[#AFA196]">
-                        <p className="font-medium text-[#FFFDFB]">
+                      <div className="space-y-1 text-xs text-[#7D6E63] dark:text-[#AFA196]">
+                        <p className="font-medium text-[#2A1D17] dark:text-[#FFFDFB]">
                           Category: {beneficiary["support_category"] || "General Aid"}
                         </p>
-                        <p className="text-[11px] line-clamp-2 italic text-[#AFA196]">
+                        <p className="text-[11px] line-clamp-2 italic text-[#7D6E63] dark:text-[#AFA196]">
                           "{assessment.reasons[0]}"
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-3 pt-2.5 border-t border-[#2E1E19] flex items-center justify-between">
-                      <span className="text-[11px] text-[#AFA196]">
-                        Score: <strong className="text-[#E29555]">{assessment.score}/100</strong>
+                    <div className="mt-3 pt-2.5 border-t border-[#E8DFD5] dark:border-[#2E1E19] flex items-center justify-between">
+                      <span className="text-[11px] text-[#7D6E63] dark:text-[#AFA196]">
+                        Score: <strong className="text-[#C87A38] dark:text-[#E29555]">{assessment.score}/100</strong>
                       </span>
                       <Button
                         size="xs"
@@ -433,11 +433,11 @@ function Dashboard() {
           {/* Visual Decision Analytics & Programme Capacity */}
           <div className="grid gap-6 lg:grid-cols-3">
             {/* Chart: Monthly Trends */}
-            <div className="lg:col-span-2 rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 sm:p-6 shadow-sm">
-              <div className="flex items-center justify-between border-b border-[#2E1E19] pb-3 mb-4">
+            <div className="lg:col-span-2 rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 sm:p-6 shadow-sm">
+              <div className="flex items-center justify-between border-b border-[#E8DFD5] dark:border-[#2E1E19] pb-3 mb-4">
                 <div>
-                  <h2 className="text-base font-bold text-[#FFFDFB]">Operational Momentum</h2>
-                  <p className="text-xs text-[#AFA196]">
+                  <h2 className="text-base font-bold text-[#2A1D17] dark:text-[#FFFDFB]">Operational Momentum</h2>
+                  <p className="text-xs text-[#7D6E63] dark:text-[#AFA196]">
                     Monthly beneficiary intake & direct aid distributions
                   </p>
                 </div>
@@ -451,31 +451,31 @@ function Dashboard() {
                   data={Array.isArray(s?.monthly) ? s.monthly : []}
                   margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
                 >
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#35231C" strokeOpacity={0.8} />
-                  <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "#AFA196" }} />
-                  <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "#AFA196" }} />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E8DFD5" strokeOpacity={0.8} />
+                  <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "#7D6E63" }} />
+                  <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "#7D6E63" }} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: "#1E1411",
-                      borderColor: "#35231C",
+                      backgroundColor: "#FFFFFF",
+                      borderColor: "#E8DFD5",
                       borderRadius: "0.75rem",
                       fontSize: "12px",
-                      color: "#FFFDFB",
-                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.5)",
+                      color: "#2A1D17",
+                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
                     }}
                   />
                   <Legend verticalAlign="top" align="right" wrapperStyle={{ paddingBottom: "10px", fontSize: "12px" }} />
                   <Bar
                     dataKey="beneficiaries"
                     name="Beneficiaries Intake"
-                    fill="#E29555"
+                    fill="#C87A38"
                     radius={[4, 4, 0, 0]}
                     isAnimationActive={false}
                   />
                   <Bar
                     dataKey="expenses"
                     name="Relief Disbursements"
-                    fill="#2EA063"
+                    fill="#2E7D5B"
                     radius={[4, 4, 0, 0]}
                     isAnimationActive={false}
                   />
@@ -484,23 +484,23 @@ function Dashboard() {
             </div>
 
             {/* Programme Capacity Utilization (Phase 5) */}
-            <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 sm:p-6 shadow-sm flex flex-col justify-between">
+            <div className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 sm:p-6 shadow-sm flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between border-b border-[#2E1E19] pb-3 mb-3">
-                  <h2 className="text-base font-bold text-[#FFFDFB]">Programme Capacity</h2>
-                  <Link to="/projects" className="text-xs text-[#E29555] font-semibold hover:underline flex items-center gap-1">
+                <div className="flex items-center justify-between border-b border-[#E8DFD5] dark:border-[#2E1E19] pb-3 mb-3">
+                  <h2 className="text-base font-bold text-[#2A1D17] dark:text-[#FFFDFB]">Programme Capacity</h2>
+                  <Link to="/projects" className="text-xs text-[#C87A38] dark:text-[#E29555] font-semibold hover:underline flex items-center gap-1">
                     <span>All Programmes</span>
                     <span className="text-[10px]">↗</span>
                   </Link>
                 </div>
-                <p className="text-xs text-[#AFA196] mb-4">
+                <p className="text-xs text-[#7D6E63] dark:text-[#AFA196] mb-4">
                   Active relief programs and target coverage
                 </p>
 
                 {activeProjectsQuery.isLoading ? (
-                  <Skeleton className="h-32 w-full bg-[#281A15]" />
+                  <Skeleton className="h-32 w-full bg-[#F0E8DC] dark:bg-[#281A15]" />
                 ) : (activeProjectsQuery.data?.length ?? 0) === 0 ? (
-                  <p className="text-xs text-[#AFA196] py-6 text-center">
+                  <p className="text-xs text-[#7D6E63] dark:text-[#AFA196] py-6 text-center">
                     No active programmes. Create your first support programme in Projects.
                   </p>
                 ) : (
@@ -513,17 +513,17 @@ function Dashboard() {
                       return (
                         <div key={p.id} className="space-y-1.5">
                           <div className="flex items-center justify-between text-xs">
-                            <span className="font-semibold text-[#FFFDFB] truncate max-w-[180px]">
+                            <span className="font-semibold text-[#2A1D17] dark:text-[#FFFDFB] truncate max-w-[180px]">
                               {p.name}
                             </span>
-                            <span className="font-mono text-[#AFA196]">
+                            <span className="font-mono text-[#7D6E63] dark:text-[#AFA196]">
                               {enrolled} / {target}
                             </span>
                           </div>
-                          <Progress value={pct} className="h-1.5 bg-[#281A15] [&>div]:bg-gradient-to-r [&>div]:from-[#E29555] [&>div]:to-[#C87A38]" />
-                          <div className="flex justify-between text-[10px] text-[#AFA196]">
+                          <Progress value={pct} className="h-1.5 bg-[#F0E8DC] dark:bg-[#281A15] [&>div]:bg-gradient-to-r [&>div]:from-[#D4843D] [&>div]:to-[#B86B28]" />
+                          <div className="flex justify-between text-[10px] text-[#7D6E63] dark:text-[#AFA196]">
                             <span>{p.location || "District Wide"}</span>
-                            <span className="text-[#E29555] font-semibold">{pct}% capacity</span>
+                            <span className="text-[#C87A38] dark:text-[#E29555] font-semibold">{pct}% capacity</span>
                           </div>
                         </div>
                       );
@@ -532,10 +532,10 @@ function Dashboard() {
                 )}
               </div>
 
-              <div className="pt-4 border-t border-[#2E1E19] mt-4">
-                <Button asChild size="sm" variant="outline" className="w-full text-xs font-semibold rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555]">
+              <div className="pt-4 border-t border-[#E8DFD5] dark:border-[#2E1E19] mt-4">
+                <Button asChild size="sm" variant="outline" className="w-full text-xs font-semibold rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-[#FAF7F2] dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#F0E8DC] dark:hover:bg-[#2C1D18] hover:border-[#C87A38] dark:hover:border-[#E29555]">
                   <Link to="/projects">
-                    <Layers className="h-3.5 w-3.5 mr-1.5 text-[#E29555]" />
+                    <Layers className="h-3.5 w-3.5 mr-1.5 text-[#C87A38] dark:text-[#E29555]" />
                     <span>Manage Relief Programmes ↗</span>
                   </Link>
                 </Button>
@@ -544,11 +544,11 @@ function Dashboard() {
           </div>
 
           {/* Recent Field Audit Stream */}
-          <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 sm:p-6 shadow-sm">
-            <div className="flex items-center justify-between border-b border-[#2E1E19] pb-3 mb-4">
+          <div className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 sm:p-6 shadow-sm">
+            <div className="flex items-center justify-between border-b border-[#E8DFD5] dark:border-[#2E1E19] pb-3 mb-4">
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-[#E29555]" />
-                <h2 className="text-base font-bold text-[#FFFDFB]">Real-Time Operational Audit Trail</h2>
+                <Clock className="h-4 w-4 text-[#C87A38] dark:text-[#E29555]" />
+                <h2 className="text-base font-bold text-[#2A1D17] dark:text-[#FFFDFB]">Real-Time Operational Audit Trail</h2>
               </div>
               <span className="shubh-tag-emerald">Audited in Supabase</span>
             </div>
@@ -558,24 +558,24 @@ function Dashboard() {
                 {logs.data.map((l: any) => (
                   <div
                     key={l.id}
-                    className="rounded-xl border border-[#35231C] bg-[#221612] p-3 text-xs space-y-1.5 hover:border-[#52362C] transition-all"
+                    className="rounded-xl border border-[#E8DFD5] dark:border-[#35231C] bg-[#FAF7F2] dark:bg-[#221612] p-3 text-xs space-y-1.5 hover:border-[#C87A38] dark:hover:border-[#52362C] transition-all"
                   >
                     <div className="flex items-center justify-between text-[10px]">
-                      <span className="font-bold uppercase tracking-wider text-[#E29555]">
+                      <span className="font-bold uppercase tracking-wider text-[#C87A38] dark:text-[#E29555]">
                         {humanize(l.action)} {humanize(l.entity_type)}
                       </span>
-                      <span className="text-[#827368]">
+                      <span className="text-[#7D6E63] dark:text-[#827368]">
                         {formatDate(l.created_at, "d MMM, HH:mm")}
                       </span>
                     </div>
-                    <p className="text-xs text-[#FFFDFB] font-medium leading-snug line-clamp-2">
+                    <p className="text-xs text-[#2A1D17] dark:text-[#FFFDFB] font-medium leading-snug line-clamp-2">
                       {l.summary}
                     </p>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-xs text-[#AFA196] py-6 text-center">
+              <p className="text-xs text-[#7D6E63] dark:text-[#AFA196] py-6 text-center">
                 No activity logged yet. Distributions, enrolments, and edits will appear here in real time.
               </p>
             )}

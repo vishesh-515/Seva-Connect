@@ -62,7 +62,7 @@ function Index() {
       <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-primary/15 to-tone-accent/20 blur-3xl" />
       
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-[#E8DFD5] dark:border-[#35231C] bg-white/90 dark:bg-[#160E0C]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link to="/" className="transition-opacity hover:opacity-95">
             <SevaBrand size={38} />
@@ -72,14 +72,14 @@ function Index() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border/70 bg-card/60 text-muted-foreground transition-all hover:bg-card hover:text-foreground hover:border-primary/40"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#7D6E63] dark:text-[#AFA196] transition-all hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#2A1D17] dark:hover:text-[#FFFDFB]"
             >
-              {isDark ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4" />}
+              {isDark ? <Sun className="h-4 w-4 text-amber-500" /> : <Moon className="h-4 w-4" />}
             </button>
-            <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
+            <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex rounded-full text-[#7D6E63] dark:text-[#AFA196] hover:text-[#2A1D17] dark:hover:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#251814]">
               <Link to="/auth">Sign in</Link>
             </Button>
-            <Button asChild size="sm" className="shadow-xs shadow-primary/20">
+            <Button asChild size="sm" className="rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold shadow-md hover:brightness-105">
               <Link to="/dashboard" className="gap-1.5">
                 <span>Workspace</span>
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -93,26 +93,26 @@ function Index() {
       <main className="mx-auto max-w-6xl px-6 pt-12 pb-24">
         <div className="flex flex-col items-center text-center">
           {/* Announcement badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-semibold text-primary backdrop-blur-xs mb-8 transition-all hover:border-primary/40 hover:bg-primary/10">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="shubh-eyebrow mb-8">
+            <span className="flex h-2 w-2 rounded-full bg-[#2EA063] animate-pulse" />
             <span>Enterprise NGO Architecture</span>
-            <span className="text-muted-foreground">·</span>
-            <span className="text-tone-accent font-medium">Real-time Operations</span>
+            <span className="text-[#AFA196]">·</span>
+            <span className="text-[#C87A38] dark:text-[#E29555] font-semibold">Real-time Operations</span>
           </div>
 
-          <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground">
+          <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-[#2A1D17] dark:text-[#FFFDFB]">
             Smart Beneficiary Care &{" "}
-            <span className="font-serif italic font-normal text-primary">Urgent Relief Operations</span>
+            <span className="heading-copper font-serif italic font-normal">Urgent Relief Operations</span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base sm:text-lg text-[#7D6E63] dark:text-[#AFA196] leading-relaxed">
             The next-generation NGO workspace engineered for speed, dignity, and transparency.
             Prioritize crisis cases with acute vulnerability scores, automatically match relief programs,
             and maintain an uncompromised audit trail.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
-            <Button asChild size="lg" className="h-12 px-6 text-base font-semibold shadow-md shadow-primary/25">
+            <Button asChild size="lg" className="h-12 px-8 text-base font-bold rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white shadow-lg shadow-[#D4843D]/25 hover:shadow-xl hover:shadow-[#D4843D]/35 transition-all hover:brightness-105 hover:-translate-y-0.5 active:translate-y-0">
               <Link to="/auth" className="gap-2">
                 <span>Launch Your Workspace</span>
                 <ArrowRight className="h-4 w-4" />
@@ -121,46 +121,46 @@ function Index() {
           </div>
 
           {/* Key Stat Ribbon */}
-          <div className="mt-12 grid w-full max-w-3xl grid-cols-2 gap-4 rounded-2xl border border-border/70 bg-card/60 p-4 shadow-sm backdrop-blur-md sm:grid-cols-4">
-            <div className="flex flex-col items-center border-r border-border/50 last:border-0 p-2">
-              <span className="text-2xl font-bold tracking-tight text-foreground">99.4%</span>
-              <span className="text-xs text-muted-foreground font-medium">Allocation Accuracy</span>
+          <div className="mt-12 grid w-full max-w-3xl grid-cols-2 gap-4 rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white/95 dark:bg-[#1E1411]/80 p-5 shadow-md shadow-[#2A1D17]/5 backdrop-blur-md sm:grid-cols-4">
+            <div className="flex flex-col items-center border-r border-[#E8DFD5] dark:border-[#2E1E19] last:border-0 p-2">
+              <span className="text-2xl font-bold tracking-tight text-[#2A1D17] dark:text-[#FFFDFB]">99.4%</span>
+              <span className="text-xs text-[#7D6E63] dark:text-[#AFA196] font-medium">Allocation Accuracy</span>
             </div>
-            <div className="flex flex-col items-center border-r border-border/50 last:border-0 p-2">
-              <span className="text-2xl font-bold tracking-tight text-tone-accent">15 min</span>
-              <span className="text-xs text-muted-foreground font-medium">Crisis Triage Speed</span>
+            <div className="flex flex-col items-center border-r border-[#E8DFD5] dark:border-[#2E1E19] last:border-0 p-2">
+              <span className="text-2xl font-bold tracking-tight text-[#C87A38] dark:text-[#E29555]">15 min</span>
+              <span className="text-xs text-[#7D6E63] dark:text-[#AFA196] font-medium">Crisis Triage Speed</span>
             </div>
-            <div className="flex flex-col items-center border-r border-border/50 last:border-0 p-2">
-              <span className="text-2xl font-bold tracking-tight text-primary">100%</span>
-              <span className="text-xs text-muted-foreground font-medium">Row-Level RLS Security</span>
+            <div className="flex flex-col items-center border-r border-[#E8DFD5] dark:border-[#2E1E19] last:border-0 p-2">
+              <span className="text-2xl font-bold tracking-tight text-[#C87A38] dark:text-[#E29555]">100%</span>
+              <span className="text-xs text-[#7D6E63] dark:text-[#AFA196] font-medium">Row-Level RLS Security</span>
             </div>
             <div className="flex flex-col items-center p-2">
-              <span className="text-2xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">Zero</span>
-              <span className="text-xs text-muted-foreground font-medium">Duplicate Wastage</span>
+              <span className="text-2xl font-bold tracking-tight text-[#2E7D5B] dark:text-[#34D399]">Zero</span>
+              <span className="text-xs text-[#7D6E63] dark:text-[#AFA196] font-medium">Duplicate Wastage</span>
             </div>
           </div>
         </div>
 
         {/* Interactive Dual-Tone Simulator Card */}
-        <div className="mt-16 overflow-hidden rounded-2xl border border-border/80 bg-card/90 shadow-xl backdrop-blur-xl">
+        <div className="mt-16 overflow-hidden rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white/95 dark:bg-[#1E1411]/90 shadow-xl backdrop-blur-xl">
           {/* Card Top Control Bar */}
-          <div className="flex flex-wrap items-center justify-between border-b border-border/70 bg-muted/40 px-6 py-4">
+          <div className="flex flex-wrap items-center justify-between border-b border-[#E8DFD5] dark:border-[#2E1E19] bg-[#FAF7F2] dark:bg-[#160E0C] px-6 py-4">
             <div className="flex items-center gap-2">
               <span className="h-3 w-3 rounded-full bg-rose-500/80" />
               <span className="h-3 w-3 rounded-full bg-amber-500/80" />
               <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
-              <span className="ml-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <span className="ml-3 text-xs font-semibold uppercase tracking-wider text-[#7D6E63] dark:text-[#AFA196]">
                 Live Interactive Triage Simulator
               </span>
             </div>
             {/* Interactive Mode Pills */}
-            <div className="mt-2 flex rounded-lg border border-border/60 bg-background/80 p-1 sm:mt-0">
+            <div className="mt-2 flex rounded-lg border border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#130D0B] p-1 sm:mt-0">
               <button
                 onClick={() => setActiveTab("triage")}
                 className={`rounded-md px-3 py-1 text-xs font-semibold transition-all ${
                   activeTab === "triage"
-                    ? "bg-primary text-primary-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white shadow-xs"
+                    : "text-[#7D6E63] dark:text-[#AFA196] hover:text-[#2A1D17] dark:hover:text-[#FFFDFB]"
                 }`}
               >
                 Acute Need Scoring
@@ -169,8 +169,8 @@ function Index() {
                 onClick={() => setActiveTab("matching")}
                 className={`rounded-md px-3 py-1 text-xs font-semibold transition-all ${
                   activeTab === "matching"
-                    ? "bg-primary text-primary-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white shadow-xs"
+                    : "text-[#7D6E63] dark:text-[#AFA196] hover:text-[#2A1D17] dark:hover:text-[#FFFDFB]"
                 }`}
               >
                 Smart Program Match
@@ -179,8 +179,8 @@ function Index() {
                 onClick={() => setActiveTab("relief")}
                 className={`rounded-md px-3 py-1 text-xs font-semibold transition-all ${
                   activeTab === "relief"
-                    ? "bg-primary text-primary-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white shadow-xs"
+                    : "text-[#7D6E63] dark:text-[#AFA196] hover:text-[#2A1D17] dark:hover:text-[#FFFDFB]"
                 }`}
               >
                 Dispensation Ledger

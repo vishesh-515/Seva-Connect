@@ -212,10 +212,10 @@ function Page() {
         description={`Totals in ${cur}. Only recorded/confirmed donations and recorded/approved expenses are counted.`}
         actions={
           <div className="flex gap-2">
-            <Button variant="outline" onClick={() => window.print()} className="no-print">
+            <Button variant="outline" onClick={() => window.print()} className="no-print rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18]">
               Print
             </Button>
-            <Button onClick={exportAll} disabled={!data} className="no-print">
+            <Button onClick={exportAll} disabled={!data} className="no-print rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold shadow-md hover:brightness-110">
               <Download className="mr-1 h-4 w-4" />
               Export CSV
             </Button>
@@ -224,18 +224,18 @@ function Page() {
       />
       <div className="no-print flex flex-wrap items-end gap-3">
         <div className="space-y-1">
-          <Label htmlFor="from">From</Label>
-          <Input id="from" type="date" value={from} onChange={(e) => setFrom(e.target.value)} />
+          <Label htmlFor="from" className="text-xs font-semibold uppercase tracking-wider text-[#7D6E63] dark:text-[#AFA196]">From</Label>
+          <Input id="from" type="date" value={from} onChange={(e) => setFrom(e.target.value)} className="rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]" />
         </div>
         <div className="space-y-1">
-          <Label htmlFor="to">To</Label>
-          <Input id="to" type="date" value={to} onChange={(e) => setTo(e.target.value)} />
+          <Label htmlFor="to" className="text-xs font-semibold uppercase tracking-wider text-[#7D6E63] dark:text-[#AFA196]">To</Label>
+          <Input id="to" type="date" value={to} onChange={(e) => setTo(e.target.value)} className="rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]" />
         </div>
       </div>
       {q.isError ? (
         <ErrorState message="Couldn't load reports." onRetry={() => q.refetch()} />
       ) : !data ? (
-        <Skeleton className="h-64 w-full" />
+        <Skeleton className="h-64 w-full bg-[#F0E8DC] dark:bg-[#281A15]" />
       ) : (
         <>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -261,19 +261,19 @@ function Page() {
           </div>
           <div className="grid gap-4 lg:grid-cols-2">
             {sections.map((s) => (
-              <div key={s.title} className="rounded-lg border bg-card p-4">
-                <h3 className="mb-3 text-sm font-semibold">{s.title}</h3>
+              <div key={s.title} className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 shadow-xs">
+                <h3 className="mb-3 text-sm font-bold text-[#2A1D17] dark:text-[#FFFDFB] tracking-tight">{s.title}</h3>
                 {s.rows.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">No data in this period.</p>
+                  <p className="text-xs text-[#7D6E63] dark:text-[#AFA196]">No data in this period.</p>
                 ) : (
                   <table className="w-full text-sm">
-                    <tbody>
+                    <tbody className="divide-y divide-[#EFE8DE] dark:divide-[#2E1E19]">
                       {s.rows.map((r) => (
-                        <tr key={r.label} className="border-t first:border-0">
-                          <td className="py-1.5">{r.label}</td>
-                          <td className="py-1.5 text-right text-muted-foreground">{r.count}</td>
+                        <tr key={r.label} className="hover:bg-[#FAF7F2] dark:hover:bg-[#251914] transition-colors">
+                          <td className="py-2 text-[#2A1D17] dark:text-[#FFFDFB]">{r.label}</td>
+                          <td className="py-2 text-right text-xs text-[#7D6E63] dark:text-[#AFA196]">{r.count}</td>
                           {s.money && (
-                            <td className="py-1.5 text-right font-medium">
+                            <td className="py-2 text-right font-medium text-[#C87A38] dark:text-[#E29555]">
                               {formatCurrency(r.amount, cur)}
                             </td>
                           )}

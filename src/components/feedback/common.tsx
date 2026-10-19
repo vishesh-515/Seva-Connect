@@ -19,12 +19,12 @@ export function PageHeader({
     <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <div className="flex items-center gap-2">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+          <h1 className="text-2xl font-bold tracking-tight text-[#2A1D17] dark:text-[#FFFDFB] md:text-3xl">
             {title}
           </h1>
         </div>
         {description && (
-          <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{description}</p>
+          <p className="mt-1 text-xs text-[#7D6E63] dark:text-[#AFA196] leading-relaxed max-w-2xl">{description}</p>
         )}
       </div>
       {actions && <div className="no-print flex flex-wrap items-center gap-2.5">{actions}</div>}
@@ -158,12 +158,12 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border/80 bg-card/50 px-6 py-16 text-center backdrop-blur-xs">
-      <div className="relative mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#281A15] text-[#E29555] border border-[#48291F] shadow-xs">
+    <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
+      <div className="relative mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FDF3E7] text-[#C87A38] border border-[#F5D5B8] shadow-xs dark:bg-[#281A15] dark:text-[#E29555] dark:border-[#48291F]">
         <Icon className="h-6 w-6" />
       </div>
-      <h3 className="text-base font-semibold text-foreground">{title}</h3>
-      <p className="mt-1.5 max-w-sm text-sm text-muted-foreground leading-normal">{description}</p>
+      <h3 className="text-base font-bold text-[#2A1D17] dark:text-[#FFFDFB]">{title}</h3>
+      <p className="mt-1.5 max-w-sm text-xs text-[#7D6E63] dark:text-[#AFA196] leading-normal">{description}</p>
       {action && <div className="mt-5">{action}</div>}
     </div>
   );
@@ -171,13 +171,13 @@ export function EmptyState({
 
 export function ErrorState({ message, onRetry }: { message: string; onRetry?: () => void }) {
   return (
-    <div className="flex flex-col items-center gap-3.5 rounded-2xl border border-destructive/20 bg-destructive/5 px-6 py-12 text-center">
-      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-destructive/10 text-destructive">
+    <div className="flex flex-col items-center gap-3.5 rounded-2xl border border-[#C04B3E]/30 bg-[#FDEEEC]/60 dark:bg-[#2E1513]/40 px-6 py-12 text-center">
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FCDAD7] text-[#C04B3E] dark:bg-[#3D1A17] dark:text-[#E05345]">
         <AlertTriangle className="h-6 w-6" />
       </div>
-      <p className="text-sm font-medium text-destructive">{message}</p>
+      <p className="text-sm font-medium text-[#C04B3E] dark:text-[#E05345]">{message}</p>
       {onRetry && (
-        <Button variant="outline" size="sm" onClick={onRetry} className="mt-2 border-destructive/30 hover:bg-destructive/10">
+        <Button variant="outline" size="sm" onClick={onRetry} className="mt-2 rounded-full border-[#F8C8C4] bg-white text-[#C04B3E] hover:bg-[#FDEEEC] dark:border-[#5A231E] dark:bg-[#2E1513] dark:text-[#FFFDFB] dark:hover:bg-[#3D1A17]">
           Try again
         </Button>
       )}
@@ -199,43 +199,43 @@ export function StatCard({
   toneVariant?: "primary" | "amber" | "emerald" | "coral" | "sage" | "walnut";
 }) {
   const iconAccentClasses = {
-    primary: "bg-[#EFEBE7] text-[#594438] border-[#DCD0C1] dark:bg-[#281A15] dark:text-[#E29555] dark:border-[#48291F]",
-    amber: "bg-[#F7F0E1] text-[#B58B4A] border-[#EBDCBF] dark:bg-[#281A15] dark:text-[#E29555] dark:border-[#48291F]",
-    emerald: "bg-[#E6EDE7] text-[#4F7255] border-[#D4E0D2] dark:bg-[#152B1E] dark:text-[#34D399] dark:border-[#1F4D34]",
-    sage: "bg-[#E7EDE2] text-[#71866A] border-[#D2DEC8] dark:bg-[#152B1E] dark:text-[#34D399] dark:border-[#1F4D34]",
-    coral: "bg-[#F9ECEB] text-[#A7473D] border-[#E8D2CF] dark:bg-[#2E1513] dark:text-[#E05345] dark:border-[#5A231E]",
-    walnut: "bg-[#EFEBE7] text-[#594438] border-[#DCD0C1] dark:bg-[#261A15] dark:text-[#E29555] dark:border-[#3D2820]",
-  }[toneVariant] || "bg-[#EDE4D8] text-[#594438] border-[#DCD0C1]";
+    primary: "bg-[#FDF3E7] text-[#C87A38] border-[#F5D5B8] dark:bg-[#281A15] dark:text-[#E29555] dark:border-[#48291F]",
+    amber: "bg-[#FFF9EE] text-[#B87333] border-[#FDEAC9] dark:bg-[#281A15] dark:text-[#E29555] dark:border-[#48291F]",
+    emerald: "bg-[#EDF7F0] text-[#237A47] border-[#C4E7CE] dark:bg-[#152B1E] dark:text-[#34D399] dark:border-[#1F4D34]",
+    sage: "bg-[#EDF7F0] text-[#237A47] border-[#C4E7CE] dark:bg-[#152B1E] dark:text-[#34D399] dark:border-[#1F4D34]",
+    coral: "bg-[#FDEEEC] text-[#C04B3E] border-[#F8C8C4] dark:bg-[#2E1513] dark:text-[#E05345] dark:border-[#5A231E]",
+    walnut: "bg-[#F5EFE7] text-[#7D6E63] border-[#E8DFD5] dark:bg-[#261A15] dark:text-[#E29555] dark:border-[#3D2820]",
+  }[toneVariant] || "bg-[#FDF3E7] text-[#C87A38] border-[#F5D5B8] dark:bg-[#281A15] dark:text-[#E29555] dark:border-[#48291F]";
 
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-[#DCD0C1] bg-[#FFFCF6] p-5 shadow-2xs interactive-card transition-all duration-200 dark:border-[#35231C] dark:bg-[#1E1411]"
+        "group relative overflow-hidden rounded-2xl border border-[#E8DFD5] bg-white p-5 shadow-xs interactive-card transition-all duration-200 dark:border-[#35231C] dark:bg-[#1E1411]"
       )}
     >
       <div className="relative flex items-center justify-between">
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-[#76695E] dark:text-[#AFA196]">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-[#7D6E63] dark:text-[#AFA196]">
           {label}
         </span>
         <div
           className={cn(
-            "flex h-8 w-8 items-center justify-center rounded-lg border shadow-2xs transition-transform duration-200 group-hover:scale-105",
+            "flex h-8 w-8 items-center justify-center rounded-lg border shadow-xs transition-transform duration-200 group-hover:scale-105",
             iconAccentClasses
           )}
         >
           <Icon className="h-4 w-4" />
         </div>
       </div>
-      <div className="relative mt-3 text-2xl font-bold tracking-tight text-[#30241F] md:text-3xl dark:text-[#FFFDFB]">
+      <div className="relative mt-3 text-2xl font-bold tracking-tight text-[#2A1D17] dark:text-[#FFFDFB] md:text-3xl">
         {value}
       </div>
       {hint && (
-        <div className="relative mt-2 flex items-center justify-between text-xs text-[#76695E] dark:text-[#AFA196]">
+        <div className="relative mt-2 flex items-center justify-between text-xs text-[#7D6E63] dark:text-[#AFA196]">
           <div className="flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-[#C87A38] dark:bg-[#E29555]" />
             <span>{hint}</span>
           </div>
-          <span className="text-[11px] font-bold text-[#E29555] opacity-0 transition-opacity group-hover:opacity-100">
+          <span className="text-[11px] font-bold text-[#C87A38] dark:text-[#E29555] opacity-0 transition-opacity group-hover:opacity-100">
             EXPLORE ↗
           </span>
         </div>
@@ -246,9 +246,9 @@ export function StatCard({
 
 export function DetailItem({ label, value }: { label: string; value: ReactNode }) {
   return (
-    <div className="rounded-lg border border-border/50 bg-card/60 p-3 transition-colors hover:bg-card">
-      <dt className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{label}</dt>
-      <dd className="mt-1 text-sm font-medium text-foreground">{value || "—"}</dd>
+    <div className="rounded-xl border border-[#E8DFD5] bg-[#FAF7F2] p-3 transition-colors hover:bg-white dark:border-[#35231C] dark:bg-[#18100D] dark:hover:bg-[#201511]">
+      <dt className="text-[11px] font-semibold uppercase tracking-wider text-[#7D6E63] dark:text-[#AFA196]">{label}</dt>
+      <dd className="mt-1 text-sm font-medium text-[#2A1D17] dark:text-[#FFFDFB]">{value || "—"}</dd>
     </div>
   );
 }

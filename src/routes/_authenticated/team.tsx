@@ -123,14 +123,14 @@ function Page() {
       />
       {manage && (
         <form
-          className="flex flex-wrap items-end gap-2 rounded-lg border bg-card p-4"
+          className="flex flex-wrap items-end gap-3 rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 shadow-xs"
           onSubmit={(e) => {
             e.preventDefault();
             invite.mutate();
           }}
         >
           <div className="min-w-56 flex-1">
-            <label className="mb-1 block text-sm font-medium" htmlFor="inv">
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#7D6E63] dark:text-[#AFA196]" htmlFor="inv">
               Invite by email
             </label>
             <Input
@@ -139,52 +139,53 @@ function Page() {
               placeholder="name@example.org"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB] placeholder:text-[#AFA196] focus-visible:border-[#C87A38] dark:focus-visible:border-[#E29555]"
             />
           </div>
           <Select value={role} onValueChange={(v) => setRole(v as OrgRole)}>
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-48 rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="rounded-xl border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]">
               {roles.map((r) => (
-                <SelectItem key={r} value={r}>
+                <SelectItem key={r} value={r} className="hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#C87A38] dark:hover:text-[#E29555]">
                   {ROLE_LABELS[r]}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-          <Button type="submit" disabled={invite.isPending}>
+          <Button type="submit" disabled={invite.isPending} className="rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold shadow-sm hover:brightness-105">
             Send invite
           </Button>
         </form>
       )}
-      <div className="rounded-lg border bg-card">
+      <div className="overflow-hidden rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] shadow-xs">
         {members.isError ? (
           <ErrorState message="Couldn't load team." onRetry={() => members.refetch()} />
         ) : !members.data ? (
-          <Skeleton className="h-40" />
+          <Skeleton className="h-40 bg-[#F0E8DC] dark:bg-[#281A15]" />
         ) : (
           <table className="w-full text-sm">
-            <thead className="text-left text-muted-foreground">
+            <thead className="border-b border-[#E8DFD5] dark:border-[#2E1E19] bg-[#FAF7F2] dark:bg-[#160E0C] text-left text-[11px] uppercase font-bold tracking-wider text-[#7D6E63] dark:text-[#AFA196]">
               <tr>
-                <th className="p-3">Name</th>
-                <th className="p-3">Role</th>
-                <th className="p-3">Status</th>
-                <th className="p-3">Joined</th>
-                {manage && <th className="p-3" />}
+                <th className="p-3.5">Name</th>
+                <th className="p-3.5">Role</th>
+                <th className="p-3.5">Status</th>
+                <th className="p-3.5">Joined</th>
+                {manage && <th className="p-3.5" />}
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-[#EFE8DE] dark:divide-[#2E1E19]">
               {members.data.map((m: any) => {
                 const editable =
                   manage && m.user_id !== userId && (m.role !== "owner" || myRole === "owner");
                 return (
-                  <tr key={m.member_id} className="border-t">
-                    <td className="p-3">
-                      <div className="font-medium">{m.full_name || m.email}</div>
-                      <div className="text-xs text-muted-foreground">{m.email}</div>
+                  <tr key={m.member_id} className="hover:bg-[#FAF7F2] dark:hover:bg-[#251914] transition-colors">
+                    <td className="p-3.5">
+                      <div className="font-bold text-[#2A1D17] dark:text-[#FFFDFB]">{m.full_name || m.email}</div>
+                      <div className="text-xs text-[#7D6E63] dark:text-[#AFA196]">{m.email}</div>
                     </td>
-                    <td className="p-3">
+                    <td className="p-3.5 text-[#2A1D17] dark:text-[#FFFDFB]">
                       {editable ? (
                         <Select
                           value={m.role}
@@ -192,12 +193,12 @@ function Page() {
                             updateMember.mutate({ id: m.member_id, patch: { role: v } })
                           }
                         >
-                          <SelectTrigger className="h-8 w-44">
+                          <SelectTrigger className="h-8 w-44 rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB]">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="rounded-xl border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]">
                             {roles.map((r) => (
-                              <SelectItem key={r} value={r}>
+                              <SelectItem key={r} value={r} className="hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#C87A38] dark:hover:text-[#E29555]">
                                 {ROLE_LABELS[r]}
                               </SelectItem>
                             ))}
@@ -207,12 +208,12 @@ function Page() {
                         ROLE_LABELS[m.role as OrgRole]
                       )}
                     </td>
-                    <td className="p-3">
+                    <td className="p-3.5">
                       <StatusBadge status={m.status} />
                     </td>
-                    <td className="p-3">{formatDate(m.joined_at)}</td>
+                    <td className="p-3.5 text-xs text-[#7D6E63] dark:text-[#AFA196]">{formatDate(m.joined_at)}</td>
                     {manage && (
-                      <td className="p-3 text-right">
+                      <td className="p-3.5 text-right">
                         {editable && (
                           <Button
                             size="sm"

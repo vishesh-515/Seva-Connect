@@ -123,14 +123,14 @@ function DataImportCentrePage() {
           {/* Download CSV Templates Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="gap-2 rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] font-semibold">
-                <FileDown className="h-4 w-4 text-[#E29555]" />
+              <Button variant="outline" size="sm" className="gap-2 rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18] font-semibold">
+                <FileDown className="h-4 w-4 text-[#C87A38] dark:text-[#E29555]" />
                 <span>Download CSV Templates</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 rounded-xl border-[#35231C] bg-[#1E1411] text-[#FFFDFB]">
-              <DropdownMenuLabel className="text-xs text-[#AFA196]">Database CSV Templates</DropdownMenuLabel>
-              <DropdownMenuSeparator className="bg-[#2E1E19]" />
+            <DropdownMenuContent align="end" className="w-56 rounded-xl border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]">
+              <DropdownMenuLabel className="text-xs text-[#7D6E63] dark:text-[#AFA196]">Database CSV Templates</DropdownMenuLabel>
+              <DropdownMenuSeparator className="bg-[#E8DFD5] dark:bg-[#2E1E19]" />
               {Object.values(IMPORT_SCHEMAS).map((s) => (
                 <DropdownMenuItem
                   key={s.type}
@@ -138,9 +138,9 @@ function DataImportCentrePage() {
                     downloadCsvTemplate(s.type);
                     toast.success(`Downloaded template for ${s.title}`);
                   }}
-                  className="text-xs cursor-pointer hover:bg-[#281A15] hover:text-[#E29555]"
+                  className="text-xs cursor-pointer hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#C87A38] dark:hover:text-[#E29555]"
                 >
-                  <FileSpreadsheet className="h-3.5 w-3.5 mr-2 text-[#E29555]" />
+                  <FileSpreadsheet className="h-3.5 w-3.5 mr-2 text-[#C87A38] dark:text-[#E29555]" />
                   <span>{s.title} Template</span>
                 </DropdownMenuItem>
               ))}
@@ -154,7 +154,7 @@ function DataImportCentrePage() {
               setShowWizard(true);
               window.scrollTo({ top: 350, behavior: "smooth" });
             }}
-            className="gap-2 rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold shadow-md hover:brightness-110"
+            className="gap-2 rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold shadow-md hover:brightness-105"
           >
             <UploadCloud className="h-4 w-4" />
             <span>Upload Data ↗</span>
@@ -164,76 +164,76 @@ function DataImportCentrePage() {
 
       {/* Summary Metrics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 shadow-xs interactive-card">
-          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#AFA196]">
+        <div className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 shadow-xs interactive-card">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#7D6E63] dark:text-[#AFA196]">
             <span>Total Records</span>
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#281A15] border border-[#48291F] text-[#E29555]">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#FAF7F2] dark:bg-[#281A15] border border-[#E8DFD5] dark:border-[#48291F] text-[#C87A38] dark:text-[#E29555]">
               <Database className="h-3.5 w-3.5" />
             </div>
           </div>
-          <div className="text-3xl font-bold text-[#FFFDFB] mt-2">{totalImported}</div>
-          <div className="text-[11px] text-[#AFA196] mt-1 flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#E29555]" />
+          <div className="text-3xl font-bold text-[#2A1D17] dark:text-[#FFFDFB] mt-2">{totalImported}</div>
+          <div className="text-[11px] text-[#7D6E63] dark:text-[#AFA196] mt-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#C87A38] dark:bg-[#E29555]" />
             Persisted into Supabase
           </div>
         </div>
 
-        <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 shadow-xs interactive-card">
-          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#34D399]">
+        <div className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 shadow-xs interactive-card">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#2E7D5B] dark:text-[#34D399]">
             <span>Successful Imports</span>
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#152B1E] border border-[#1F4D34] text-[#34D399]">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#EBF7F0] dark:bg-[#152B1E] border border-[#C3E6D2] dark:border-[#1F4D34] text-[#2E7D5B] dark:text-[#34D399]">
               <CheckCircle2 className="h-3.5 w-3.5" />
             </div>
           </div>
-          <div className="text-3xl font-bold text-[#34D399] mt-2">{successfulRuns}</div>
-          <div className="text-[11px] text-[#AFA196] mt-1 flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" />
+          <div className="text-3xl font-bold text-[#2E7D5B] dark:text-[#34D399] mt-2">{successfulRuns}</div>
+          <div className="text-[11px] text-[#7D6E63] dark:text-[#AFA196] mt-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#2E7D5B] dark:bg-[#34D399]" />
             Fully validated jobs
           </div>
         </div>
 
-        <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 shadow-xs interactive-card">
-          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#E05345]">
+        <div className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 shadow-xs interactive-card">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#D32F2F] dark:text-[#E05345]">
             <span>Rejected Records</span>
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#2E1513] border border-[#5A231E] text-[#E05345]">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#FFF5F5] dark:bg-[#2E1513] border border-[#FCDAD7] dark:border-[#5A231E] text-[#D32F2F] dark:text-[#E05345]">
               <XCircle className="h-3.5 w-3.5" />
             </div>
           </div>
-          <div className="text-3xl font-bold text-[#E05345] mt-2">{rejectedRecords}</div>
-          <div className="text-[11px] text-[#AFA196] mt-1 flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#E05345]" />
+          <div className="text-3xl font-bold text-[#D32F2F] dark:text-[#E05345] mt-2">{rejectedRecords}</div>
+          <div className="text-[11px] text-[#7D6E63] dark:text-[#AFA196] mt-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#D32F2F] dark:bg-[#E05345]" />
             Failed schema checks
           </div>
         </div>
 
-        <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-5 shadow-xs interactive-card">
-          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#E29555]">
+        <div className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-5 shadow-xs interactive-card">
+          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#C87A38] dark:text-[#E29555]">
             <span>Duplicates Skipped</span>
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#281A15] border border-[#48291F] text-[#E29555]">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#FAF7F2] dark:bg-[#281A15] border border-[#E8DFD5] dark:border-[#48291F] text-[#C87A38] dark:text-[#E29555]">
               <AlertTriangle className="h-3.5 w-3.5" />
             </div>
           </div>
-          <div className="text-3xl font-bold text-[#E29555] mt-2">{totalSkipped}</div>
-          <div className="text-[11px] text-[#AFA196] mt-1 flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#E29555]" />
+          <div className="text-3xl font-bold text-[#C87A38] dark:text-[#E29555] mt-2">{totalSkipped}</div>
+          <div className="text-[11px] text-[#7D6E63] dark:text-[#AFA196] mt-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#C87A38] dark:bg-[#E29555]" />
             Protected by deduplication
           </div>
         </div>
       </div>
 
       {/* Guided Dependency Sequence Banner */}
-      <div className="rounded-2xl border border-[#35231C] bg-[#1E1411] p-6 shadow-sm">
+      <div className="rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] p-6 shadow-sm">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <span className="shubh-eyebrow">
-              <Layers className="h-3 w-3 text-[#E29555]" />
+              <Layers className="h-3 w-3 text-[#C87A38] dark:text-[#E29555]" />
               Relational Architecture
             </span>
-            <h3 className="text-sm font-bold text-[#FFFDFB]">Recommended Multi-File Import Order</h3>
+            <h3 className="text-sm font-bold text-[#2A1D17] dark:text-[#FFFDFB]">Recommended Multi-File Import Order</h3>
           </div>
-          <span className="text-[11px] text-[#AFA196] hidden sm:inline">6 Core Schemas</span>
+          <span className="text-[11px] text-[#7D6E63] dark:text-[#AFA196] hidden sm:inline">6 Core Schemas</span>
         </div>
-        <p className="text-xs text-[#AFA196] mt-2 max-w-3xl">
+        <p className="text-xs text-[#7D6E63] dark:text-[#AFA196] mt-2 max-w-3xl">
           When populating a complete workspace from relational spreadsheets, import files in this sequence.
           This ensures foreign-key references link seamlessly without database integrity violations.
         </p>
@@ -243,18 +243,18 @@ function DataImportCentrePage() {
             <button
               key={s.type}
               onClick={() => startImportFor(s.type)}
-              className="group flex flex-col items-start rounded-xl border border-[#35231C] bg-[#221612] p-3 text-left transition-all hover:border-[#E29555] hover:bg-[#281A15]"
+              className="group flex flex-col items-start rounded-xl border border-[#E8DFD5] dark:border-[#35231C] bg-[#FAF7F2] dark:bg-[#221612] p-3 text-left transition-all hover:border-[#C87A38] dark:hover:border-[#E29555] hover:bg-white dark:hover:bg-[#281A15]"
             >
               <div className="flex w-full items-center justify-between">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#281A15] border border-[#48291F] text-[10px] font-bold text-[#E29555]">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F0E8DC] dark:bg-[#281A15] border border-[#E2D8CC] dark:border-[#48291F] text-[10px] font-bold text-[#C87A38] dark:text-[#E29555]">
                   {s.order}
                 </span>
-                <span className="text-[11px] font-bold text-[#E29555] opacity-60 group-hover:opacity-100 transition-opacity">
+                <span className="text-[11px] font-bold text-[#C87A38] dark:text-[#E29555] opacity-60 group-hover:opacity-100 transition-opacity">
                   ↗
                 </span>
               </div>
-              <div className="mt-2 text-xs font-bold text-[#FFFDFB] truncate w-full">{s.title}</div>
-              <span className="text-[10px] text-[#AFA196] font-mono">{s.sampleFileName}</span>
+              <div className="mt-2 text-xs font-bold text-[#2A1D17] dark:text-[#FFFDFB] truncate w-full">{s.title}</div>
+              <span className="text-[10px] text-[#7D6E63] dark:text-[#AFA196] font-mono">{s.sampleFileName}</span>
             </button>
           ))}
         </div>

@@ -119,14 +119,14 @@ function Shell() {
   };
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
-      <aside className="no-print hidden w-64 shrink-0 flex-col border-r border-[#35231C] bg-[#160E0C] text-[#FFFDFB] md:flex">
+    <div className="flex min-h-screen bg-[#FAF7F2] dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB]">
+      <aside className="no-print hidden w-64 shrink-0 flex-col border-r border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#160E0C] text-[#2A1D17] dark:text-[#FFFDFB] md:flex">
         {/* Brand header */}
-        <div className="flex items-center gap-3 border-b border-[#2E1E19] px-4 py-4">
+        <div className="flex items-center gap-3 border-b border-[#E8DFD5] dark:border-[#2E1E19] px-4 py-4">
           <SevaLogo size={24} />
           <div className="min-w-0 flex-1">
-            <div className="truncate text-sm font-bold text-[#FFFDFB] tracking-tight">{org?.name ?? "Organization"}</div>
-            <div className="flex items-center gap-1.5 text-xs text-[#AFA196]">
+            <div className="truncate text-sm font-bold text-[#2A1D17] dark:text-[#FFFDFB] tracking-tight">{org?.name ?? "Organization"}</div>
+            <div className="flex items-center gap-1.5 text-xs text-[#7D6E63] dark:text-[#AFA196]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#2EA063]" />
               <span>{role ? ROLE_LABELS[role] ?? humanize(role) : "Member"}</span>
             </div>
@@ -139,9 +139,9 @@ function Shell() {
             <Button
               size="sm"
               onClick={() => setScannerOpen(true)}
-              className="w-full gap-2 shadow-2xs font-semibold bg-[#281A15] border border-[#48291F] text-[#E29555] hover:bg-[#35211A] hover:border-[#E29555] transition-all"
+              className="w-full gap-2 shadow-2xs font-semibold bg-[#FDF3E7] dark:bg-[#281A15] border border-[#F5D5B8] dark:border-[#48291F] text-[#C87A38] dark:text-[#E29555] hover:bg-[#F8E5D1] dark:hover:bg-[#35211A] transition-all"
             >
-              <Barcode className="h-4 w-4 text-[#E29555]" />
+              <Barcode className="h-4 w-4 text-[#C87A38] dark:text-[#E29555]" />
               <span>Scan to Distribute</span>
             </Button>
           </div>
@@ -155,20 +155,20 @@ function Shell() {
               <Link
                 key={n.to}
                 to={n.to as any}
-                className={`group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
+                className={`group relative flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition-all ${
                   isActive
-                    ? "bg-[#281A15] text-[#FFFDFB] font-semibold"
-                    : "text-[#AFA196] hover:bg-[#201410] hover:text-[#FFFDFB]"
+                    ? "bg-[#FDF3E7] dark:bg-[#281A15] text-[#C87A38] dark:text-[#FFFDFB] font-bold shadow-2xs"
+                    : "text-[#7D6E63] dark:text-[#AFA196] hover:bg-[#F5EFE7] dark:hover:bg-[#201410] hover:text-[#2A1D17] dark:hover:text-[#FFFDFB]"
                 }`}
               >
                 {isActive && (
-                  <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-r-full bg-[#E29555]" />
+                  <span className="absolute left-0 top-2 bottom-2 w-1 rounded-r-full bg-[#C87A38] dark:bg-[#E29555]" />
                 )}
                 <div
-                  className={`flex h-7 w-7 items-center justify-center rounded-md transition-colors ${
+                  className={`flex h-7 w-7 items-center justify-center rounded-lg transition-colors ${
                     isActive
-                      ? "bg-[#E29555] text-[#130D0B]"
-                      : "text-[#AFA196] group-hover:text-[#FFFDFB]"
+                      ? "bg-[#C87A38] dark:bg-[#E29555] text-white dark:text-[#130D0B]"
+                      : "text-[#7D6E63] dark:text-[#AFA196] group-hover:text-[#2A1D17] dark:group-hover:text-[#FFFDFB]"
                   }`}
                 >
                   <n.icon className="h-4 w-4" />
@@ -179,23 +179,23 @@ function Shell() {
           })}
         </nav>
 
-        <div className="p-3 border-t border-[#2E1E19]">
-          <div className="rounded-xl border border-[#35231C] bg-[#1E1411] p-3 shadow-2xs">
+        <div className="p-3 border-t border-[#E8DFD5] dark:border-[#2E1E19]">
+          <div className="rounded-xl border border-[#E8DFD5] dark:border-[#35231C] bg-[#FAF7F2] dark:bg-[#1E1411] p-3 shadow-2xs">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-[#FFFDFB]">NGO Workspace</span>
-              <span className="rounded-full bg-[#281A15] border border-[#48291F] px-2 py-0.5 text-[10px] font-bold text-[#E29555]">PRO</span>
+              <span className="text-xs font-semibold text-[#2A1D17] dark:text-[#FFFDFB]">NGO Workspace</span>
+              <span className="rounded-full bg-[#FDF3E7] dark:bg-[#281A15] border border-[#F5D5B8] dark:border-[#48291F] px-2 py-0.5 text-[10px] font-bold text-[#C87A38] dark:text-[#E29555]">PRO</span>
             </div>
-            <p className="mt-1 text-[11px] text-[#AFA196] capitalize">Role: {role ? (ROLE_LABELS[role] ?? humanize(role)) : "Owner"}</p>
+            <p className="mt-1 text-[11px] text-[#7D6E63] dark:text-[#AFA196] capitalize">Role: {role ? (ROLE_LABELS[role] ?? humanize(role)) : "Owner"}</p>
           </div>
         </div>
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Top Header */}
-        <header className="sticky top-0 z-40 no-print flex items-center gap-3 border-b border-[#35231C] bg-[#160E0C]/90 px-4 py-3 backdrop-blur-md">
+        <header className="sticky top-0 z-40 no-print flex items-center gap-3 border-b border-[#E8DFD5] dark:border-[#35231C] bg-white/90 dark:bg-[#160E0C]/90 px-4 py-3 backdrop-blur-md">
           <select
             aria-label="Navigate"
-            className="rounded-lg border border-[#35231C] bg-[#1E1411] px-2.5 py-1.5 text-sm font-medium md:hidden text-[#FFFDFB]"
+            className="rounded-lg border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] px-2.5 py-1.5 text-sm font-medium md:hidden text-[#2A1D17] dark:text-[#FFFDFB]"
             value={path}
             onChange={(e) => navigate({ to: e.target.value as any })}
           >
@@ -211,7 +211,7 @@ function Shell() {
             <Button
               size="sm"
               onClick={() => setScannerOpen(true)}
-              className="md:hidden gap-1.5 h-8 px-2.5 text-xs font-semibold bg-[#281A15] border border-[#48291F] text-[#E29555] hover:bg-[#35211A]"
+              className="md:hidden gap-1.5 h-8 px-2.5 text-xs font-semibold bg-[#FDF3E7] dark:bg-[#281A15] border border-[#F5D5B8] dark:border-[#48291F] text-[#C87A38] dark:text-[#E29555] hover:bg-[#F8E5D1]"
             >
               <Barcode className="h-3.5 w-3.5" />
               <span>Scan</span>
@@ -220,10 +220,10 @@ function Shell() {
           
           {memberships.length > 1 && org && (
             <Select value={org.id} onValueChange={setOrgId}>
-              <SelectTrigger className="w-48 text-xs font-semibold" aria-label="Organization">
+              <SelectTrigger className="w-48 text-xs font-semibold rounded-xl border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB]" aria-label="Organization">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="rounded-xl border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]">
                 {memberships.filter((m) => m?.organization?.id).map((m) => (
                   <SelectItem key={m.organization.id} value={m.organization.id}>
                     {m.organization.name}
@@ -240,23 +240,23 @@ function Shell() {
             size="icon"
             aria-label="Toggle theme"
             onClick={toggleTheme}
-            className="rounded-lg hover:bg-muted"
+            className="rounded-full hover:bg-[#FAF7F2] dark:hover:bg-[#251814]"
           >
-            {isDark ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4" />}
+            {isDark ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-[#7D6E63]" />}
           </Button>
 
-          <div className="hidden items-center gap-2 rounded-lg border border-border/60 bg-card px-2.5 py-1 text-xs sm:flex">
-            <span className="h-2 w-2 rounded-full bg-emerald-500" />
-            <span className="font-medium text-foreground truncate max-w-[140px]">{email}</span>
+          <div className="hidden items-center gap-2 rounded-full border border-[#E8DFD5] dark:border-[#35231C] bg-[#FAF7F2] dark:bg-[#1E1411] px-3 py-1 text-xs sm:flex">
+            <span className="h-2 w-2 rounded-full bg-[#2EA063]" />
+            <span className="font-medium text-[#2A1D17] dark:text-[#FFFDFB] truncate max-w-[140px]">{email}</span>
           </div>
 
-          <Button variant="outline" size="sm" onClick={signOut} className="gap-1.5 border-border/80 hover:border-destructive/40 hover:text-destructive">
-            <LogOut className="h-3.5 w-3.5" />
+          <Button variant="outline" size="sm" onClick={signOut} className="gap-1.5 rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18] hover:border-[#C04B3E] hover:text-[#C04B3E]">
+            <LogOut className="h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555]" />
             <span className="hidden sm:inline">Sign out</span>
           </Button>
         </header>
 
-        <main className="mx-auto w-full max-w-7xl flex-1 p-4 md:p-8">
+        <main className="mx-auto w-full max-w-7xl flex-1 p-4 md:p-8 bg-[#FAF7F2] dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB]">
           <Outlet />
         </main>
       </div>

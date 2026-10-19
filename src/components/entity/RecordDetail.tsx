@@ -60,9 +60,9 @@ export function Section({
   actions?: ReactNode;
 }) {
   return (
-    <section className="rounded-lg border bg-card shadow-xs">
-      <div className="flex items-center justify-between border-b px-4 py-3">
-        <h2 className="text-sm font-semibold">{title}</h2>
+    <section className="overflow-hidden rounded-2xl border border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] shadow-xs">
+      <div className="flex items-center justify-between border-b border-[#E8DFD5] dark:border-[#2E1E19] bg-[#FAF7F2] dark:bg-[#160E0C] px-4 py-3.5">
+        <h2 className="text-sm font-bold text-[#2A1D17] dark:text-[#FFFDFB] tracking-tight">{title}</h2>
         {actions}
       </div>
       <div className="p-4">{children}</div>
@@ -79,25 +79,25 @@ export function MiniTable({
   cols: { label: string; render: (r: Row) => ReactNode }[];
   empty: string;
 }) {
-  if (!rows) return <Skeleton className="h-16 w-full" />;
-  if (!rows.length) return <p className="text-sm text-muted-foreground">{empty}</p>;
+  if (!rows) return <Skeleton className="h-16 w-full bg-[#F0E8DC] dark:bg-[#281A15]" />;
+  if (!rows.length) return <p className="text-xs text-[#7D6E63] dark:text-[#AFA196] py-3">{empty}</p>;
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b text-left text-xs uppercase text-muted-foreground">
+          <tr className="border-b border-[#E8DFD5] dark:border-[#2E1E19] text-left text-[11px] uppercase font-bold tracking-wider text-[#7D6E63] dark:text-[#AFA196]">
             {cols.map((c) => (
-              <th key={c.label} className="py-2 pr-4 font-medium">
+              <th key={c.label} className="py-2.5 pr-4 font-semibold">
                 {c.label}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-[#EFE8DE] dark:divide-[#2E1E19]">
           {rows.map((r, i) => (
-            <tr key={r["id"] ?? i} className="border-b last:border-0">
+            <tr key={r["id"] ?? i} className="hover:bg-[#FAF7F2] dark:hover:bg-[#251914] transition-colors">
               {cols.map((c) => (
-                <td key={c.label} className="py-2 pr-4">
+                <td key={c.label} className="py-3 pr-4 text-[#2A1D17] dark:text-[#FFFDFB]">
                   {c.render(r)}
                 </td>
               ))}
@@ -127,7 +127,7 @@ export function RecordDetail({
   const { can } = useCurrentOrg();
   const q = useRecord(config.table, id, config.select);
   const [edit, setEdit] = useState(false);
-  if (q.isLoading) return <Skeleton className="h-64 w-full" />;
+  if (q.isLoading) return <Skeleton className="h-64 w-full bg-[#F0E8DC] dark:bg-[#281A15]" />;
   if (q.isError)
     return <ErrorState message={(q.error as Error).message} onRetry={() => q.refetch()} />;
   const row = q.data;
@@ -150,18 +150,18 @@ export function RecordDetail({
         <div>
           <Link
             to={back as any}
-            className="mb-1 inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
+            className="mb-1.5 inline-flex items-center text-xs font-medium text-[#7D6E63] dark:text-[#AFA196] hover:text-[#C87A38] dark:hover:text-[#E29555] transition-colors"
           >
-            <ArrowLeft className="mr-1 h-4 w-4" />
-            {config.title}
+            <ArrowLeft className="mr-1.5 h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555]" />
+            Back to {config.title}
           </Link>
-          <h1 className="text-2xl font-semibold tracking-tight">{row[titleKey]}</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-[#2A1D17] dark:text-[#FFFDFB]">{row[titleKey]}</h1>
         </div>
         <div className="flex items-center gap-2">
           {extraActions?.(row)}
           {can(config.writePermission) && (
-            <Button variant="outline" onClick={() => setEdit(true)}>
-              <Pencil className="mr-1.5 h-4 w-4" />
+            <Button variant="outline" size="sm" onClick={() => setEdit(true)} className="rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18] hover:border-[#C87A38] dark:hover:border-[#E29555]">
+              <Pencil className="mr-1.5 h-3.5 w-3.5 text-[#C87A38] dark:text-[#E29555]" />
               Edit
             </Button>
           )}

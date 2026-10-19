@@ -89,13 +89,13 @@ function RelationSelect({
   });
   return (
     <Select value={value || NONE} onValueChange={onChange}>
-      <SelectTrigger id={field.name}>
+      <SelectTrigger id={field.name} className="rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB]">
         <SelectValue placeholder="Select…" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="rounded-xl border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]">
         {!field.required && <SelectItem value={NONE}>None</SelectItem>}
         {(data ?? []).map((o) => (
-          <SelectItem key={o["id"]} value={o["id"]!}>
+          <SelectItem key={o["id"]} value={o["id"]!} className="hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#C87A38] dark:hover:text-[#E29555]">
             {o[rel.label]}
           </SelectItem>
         ))}
@@ -134,15 +134,16 @@ export function EntityForm({
           const v = values[f.name] ?? "";
           return (
             <div key={f.name} className={f.full || f.type === "textarea" ? "sm:col-span-2" : ""}>
-              <Label htmlFor={f.name} className="mb-1.5 block">
+              <Label htmlFor={f.name} className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#7D6E63] dark:text-[#AFA196]">
                 {f.label}
-                {f.required && <span className="text-destructive"> *</span>}
+                {f.required && <span className="text-[#D32F2F] dark:text-[#E05345]"> *</span>}
               </Label>
               {f.type === "textarea" ? (
                 <Textarea
                   id={f.name}
                   rows={3}
                   placeholder={f.placeholder}
+                  className="rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB] placeholder:text-[#AFA196] focus-visible:border-[#C87A38] dark:focus-visible:border-[#E29555]"
                   {...form.register(f.name)}
                 />
               ) : f.type === "select" ? (
@@ -152,13 +153,13 @@ export function EntityForm({
                     form.setValue(f.name, x === NONE ? "" : x, { shouldValidate: true })
                   }
                 >
-                  <SelectTrigger id={f.name}>
+                  <SelectTrigger id={f.name} className="rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB]">
                     <SelectValue placeholder="Select…" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="rounded-xl border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#1E1411] text-[#2A1D17] dark:text-[#FFFDFB]">
                     {!f.required && <SelectItem value={NONE}>None</SelectItem>}
                     {f.options!.map((o) => (
-                      <SelectItem key={o.value} value={o.value}>
+                      <SelectItem key={o.value} value={o.value} className="hover:bg-[#FAF7F2] dark:hover:bg-[#281A15] hover:text-[#C87A38] dark:hover:text-[#E29555]">
                         {o.label}
                       </SelectItem>
                     ))}
@@ -188,20 +189,21 @@ export function EntityForm({
                   step={f.type === "number" ? "any" : undefined}
                   placeholder={f.placeholder}
                   aria-invalid={!!err}
+                  className="rounded-xl border-[#E2D8CC] dark:border-[#35231C] bg-white dark:bg-[#130D0B] text-[#2A1D17] dark:text-[#FFFDFB] placeholder:text-[#AFA196] focus-visible:border-[#C87A38] dark:focus-visible:border-[#E29555]"
                   {...form.register(f.name)}
                 />
               )}
-              {f.help && !err && <p className="mt-1 text-xs text-muted-foreground">{f.help}</p>}
-              {err && <p className="mt-1 text-xs text-destructive">{err}</p>}
+              {f.help && !err && <p className="mt-1 text-xs text-[#7D6E63] dark:text-[#AFA196]">{f.help}</p>}
+              {err && <p className="mt-1 text-xs text-[#D32F2F] dark:text-[#E05345]">{err}</p>}
             </div>
           );
         })}
       </div>
-      <div className="flex justify-end gap-2 border-t pt-4">
-        <Button type="button" variant="outline" onClick={onCancel}>
+      <div className="flex justify-end gap-2 border-t border-[#E8DFD5] dark:border-[#35231C] pt-4">
+        <Button type="button" variant="outline" onClick={onCancel} className="rounded-full border-[#E8DFD5] dark:border-[#35231C] bg-white dark:bg-[#221612] text-[#2A1D17] dark:text-[#FFFDFB] hover:bg-[#FAF7F2] dark:hover:bg-[#2C1D18]">
           Cancel
         </Button>
-        <Button type="submit" disabled={submitting}>
+        <Button type="submit" disabled={submitting} className="rounded-full bg-gradient-to-r from-[#D4843D] to-[#B86B28] text-white font-bold shadow-sm hover:brightness-105">
           {submitting ? "Saving…" : "Save"}
         </Button>
       </div>

@@ -51,15 +51,15 @@ function OptionSelect({
     <select
       id={id}
       required={f.required}
-      className="h-9 w-full rounded-md border bg-background px-2 text-sm"
+      className="h-9 w-full rounded-xl border border-[#35231C] bg-[#130D0B] text-[#FFFDFB] px-3 text-sm focus:border-[#E29555] outline-none"
       value={value}
       onChange={(e) => onChange(e.target.value)}
     >
-      <option value="">Select…</option>
+      <option value="" className="bg-[#1E1411] text-[#AFA196]">Select…</option>
       {(q.data as any[] | undefined)
         ?.filter((o) => !f.options!.exclude?.includes(o.id))
         .map((o) => (
-          <option key={o.id} value={o.id}>
+          <option key={o.id} value={o.id} className="bg-[#1E1411] text-[#FFFDFB]">
             {o[f.options!.label]}
           </option>
         ))}
@@ -108,15 +108,15 @@ export function QuickAdd({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {trigger ?? (
-          <Button size="sm" variant="outline">
-            <Plus className="mr-1 h-4 w-4" />
+          <Button size="sm" variant="outline" className="rounded-full border-[#35231C] bg-[#221612] text-[#FFFDFB] hover:bg-[#2C1D18] hover:border-[#E29555]">
+            <Plus className="mr-1 h-4 w-4 text-[#E29555]" />
             {label}
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="bg-[#1E1411] border-[#35231C] text-[#FFFDFB] sm:rounded-2xl">
         <DialogHeader>
-          <DialogTitle>{label}</DialogTitle>
+          <DialogTitle className="text-lg font-bold text-[#FFFDFB]">{label}</DialogTitle>
         </DialogHeader>
         <form
           className="space-y-3"
@@ -127,9 +127,9 @@ export function QuickAdd({
         >
           {fields.map((f) => (
             <div key={f.name}>
-              <Label htmlFor={`qa-${f.name}`} className="mb-1.5 block">
+              <Label htmlFor={`qa-${f.name}`} className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#AFA196]">
                 {f.label}
-                {f.required && " *"}
+                {f.required && <span className="text-[#E05345]"> *</span>}
               </Label>
               {f.options ? (
                 <OptionSelect
@@ -146,11 +146,12 @@ export function QuickAdd({
                   required={f.required}
                   value={v[f.name] ?? ""}
                   onChange={(e) => setV({ ...v, [f.name]: e.target.value })}
+                  className="rounded-xl border-[#35231C] bg-[#130D0B] text-[#FFFDFB] placeholder:text-[#827368] focus-visible:border-[#E29555]"
                 />
               )}
             </div>
           ))}
-          <Button type="submit" className="w-full" disabled={m.isPending}>
+          <Button type="submit" className="w-full rounded-full bg-gradient-to-r from-[#E29555] to-[#C87A38] text-[#130D0B] font-bold shadow-sm hover:brightness-110" disabled={m.isPending}>
             {m.isPending ? "Saving…" : "Save"}
           </Button>
         </form>
