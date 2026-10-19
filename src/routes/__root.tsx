@@ -44,21 +44,40 @@ function NotFoundComponent() {
 }
 
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
-  console.error(error);
+  console.error("[TanStack Root Error]", error);
   const router = useRouter();
   useEffect(() => {
     reportAppError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
+  const errorMessage =
+    error instanceof Error
+      ? error.message
+      : typeof error === "object" && error !== null
+        ? (error as any).message || JSON.stringify(error)
+        : String(error || "Unknown error");
+
+  const errorStack = error instanceof Error ? error.stack : undefined;
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
+      <div className="max-w-md w-full text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
+        {errorMessage && (
+          <div className="mt-4 rounded-xl border border-destructive/30 bg-destructive/10 p-3.5 text-left font-mono text-xs text-destructive">
+            <div className="font-semibold break-words">{errorMessage}</div>
+            {errorStack && (
+              <pre className="mt-2 max-h-36 overflow-auto text-[10px] text-muted-foreground whitespace-pre-wrap">
+                {errorStack}
+              </pre>
+            )}
+          </div>
+        )}
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {

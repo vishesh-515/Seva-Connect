@@ -58,8 +58,11 @@ type Summary = {
   monthly: { month: string; donations: number; expenses: number; beneficiaries: number }[];
 };
 
-const money = (list: { currency: string; total: number }[], fallback: string) =>
-  list.length
+const money = (
+  list: { currency: string; total: number }[] | null | undefined,
+  fallback: string
+) =>
+  Array.isArray(list) && list.length
     ? list.map((x) => formatCurrency(x.total, x.currency)).join(" · ")
     : formatCurrency(0, fallback);
 
@@ -294,7 +297,10 @@ function Dashboard() {
                 </div>
               </div>
               <ResponsiveContainer width="100%" height={260}>
-                <BarChart data={s.monthly} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <BarChart
+                  data={Array.isArray(s?.monthly) ? s.monthly : []}
+                  margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                >
                   <CartesianGrid strokeDasharray="3 3" stroke="#888888" strokeOpacity={0.2} />
                   <XAxis dataKey="month" fontSize={11} stroke="#888888" />
                   <YAxis fontSize={11} stroke="#888888" />

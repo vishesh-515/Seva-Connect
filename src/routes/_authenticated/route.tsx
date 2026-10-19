@@ -120,10 +120,10 @@ function Shell() {
             <Leaf className="h-5 w-5" />
           </div>
           <div className="min-w-0 flex-1">
-            <div className="truncate text-sm font-bold text-sidebar-foreground">{org!.name}</div>
+            <div className="truncate text-sm font-bold text-sidebar-foreground">{org?.name ?? "Organization"}</div>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>{role && ROLE_LABELS[role]}</span>
+              <span>{role ? ROLE_LABELS[role] ?? humanize(role) : "Member"}</span>
             </div>
           </div>
         </div>
@@ -186,13 +186,13 @@ function Shell() {
           </select>
           <div className="flex-1" />
           
-          {memberships.length > 1 && (
-            <Select value={org!.id} onValueChange={setOrgId}>
+          {memberships.length > 1 && org && (
+            <Select value={org.id} onValueChange={setOrgId}>
               <SelectTrigger className="w-48 text-xs font-semibold" aria-label="Organization">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                {memberships.map((m) => (
+                {memberships.filter((m) => m?.organization?.id).map((m) => (
                   <SelectItem key={m.organization.id} value={m.organization.id}>
                     {m.organization.name}
                   </SelectItem>
