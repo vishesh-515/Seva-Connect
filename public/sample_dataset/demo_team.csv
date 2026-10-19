@@ -1,0 +1,5 @@
+demo_user_id,full_name,email,role,status
+ADM-001,Demo Administrator,admin.demo@example.test,Administrator,Active
+CW-001,Demo Case Worker One,worker1.demo@example.test,Case Manager,Active
+CW-002,Demo Field Worker,field.demo@example.test,Field Worker,Active
+CW-003,Demo Programme Coordinator,programmes.demo@example.test,Programme Coordinator,Active

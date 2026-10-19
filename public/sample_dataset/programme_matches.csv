@@ -1,0 +1,13 @@
+match_id,beneficiary_id,programme_id,compatibility_score,match_label,status,match_explanation,eligibility_or_availability_warning,reviewed_by
+MAT-0001,BEN-0001,PRG-001,92,Strong Match,Suggested,Food need and location match; programme has capacity,,CW-001
+MAT-0002,BEN-0002,PRG-002,95,Strong Match,Under Review,Healthcare need and location match,,CW-002
+MAT-0003,BEN-0003,PRG-003,90,Strong Match,Shortlisted,Education support and location match,,CW-001
+MAT-0004,BEN-0004,PRG-004,88,Strong Match,Referred,Shelter support; location served,,CW-003
+MAT-0005,BEN-0005,PRG-005,86,Strong Match,Enrolled,Employment support and location match,,CW-002
+MAT-0006,BEN-0006,PRG-003,91,Strong Match,Referred,Education support and location match,,CW-001
+MAT-0007,BEN-0007,PRG-002,80,Strong Match,Suggested,Healthcare support; confirm programme-specific requirements,,CW-003
+MAT-0008,BEN-0011,PRG-006,78,Potential Match,Under Review,Emergency support category matches; programme is at capacity,Programme currently full,CW-002
+MAT-0009,BEN-0012,PRG-007,82,Strong Match,Not Eligible,Healthcare category matches but programme is paused,Programme paused,CW-003
+MAT-0010,BEN-0016,PRG-003,89,Strong Match,Suggested,Education support and location match,,CW-001
+MAT-0011,BEN-0018,PRG-005,84,Strong Match,Shortlisted,Employment support and location match,,CW-003
+MAT-0012,BEN-0025,PRG-008,87,Strong Match,Suggested,Disability support; assessment required,Assessment pending,CW-001

@@ -16,6 +16,7 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthenticatedAssistanceRouteImport } from './routes/_authenticated/assistance'
 import { Route as AuthenticatedBeneficiariesRouteImport } from './routes/_authenticated/beneficiaries'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDataImportRouteImport } from './routes/_authenticated/data-import'
 import { Route as AuthenticatedDonationsRouteImport } from './routes/_authenticated/donations'
 import { Route as AuthenticatedDonorsRouteImport } from './routes/_authenticated/donors'
 import { Route as AuthenticatedExpensesRouteImport } from './routes/_authenticated/expenses'
@@ -62,6 +63,11 @@ const AuthenticatedBeneficiariesRoute =
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDataImportRoute = AuthenticatedDataImportRouteImport.update({
+  id: '/data-import',
+  path: '/data-import',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedDonationsRoute = AuthenticatedDonationsRouteImport.update({
@@ -134,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/assistance': typeof AuthenticatedAssistanceRoute
   '/beneficiaries': typeof AuthenticatedBeneficiariesRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/data-import': typeof AuthenticatedDataImportRoute
   '/donations': typeof AuthenticatedDonationsRoute
   '/donors': typeof AuthenticatedDonorsRoute
   '/expenses': typeof AuthenticatedExpensesRoute
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/assistance': typeof AuthenticatedAssistanceRoute
   '/beneficiaries': typeof AuthenticatedBeneficiariesRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/data-import': typeof AuthenticatedDataImportRoute
   '/donations': typeof AuthenticatedDonationsRoute
   '/donors': typeof AuthenticatedDonorsRoute
   '/expenses': typeof AuthenticatedExpensesRoute
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/_authenticated/assistance': typeof AuthenticatedAssistanceRoute
   '/_authenticated/beneficiaries': typeof AuthenticatedBeneficiariesRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/data-import': typeof AuthenticatedDataImportRoute
   '/_authenticated/donations': typeof AuthenticatedDonationsRoute
   '/_authenticated/donors': typeof AuthenticatedDonorsRoute
   '/_authenticated/expenses': typeof AuthenticatedExpensesRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/assistance'
     | '/beneficiaries'
     | '/dashboard'
+    | '/data-import'
     | '/donations'
     | '/donors'
     | '/expenses'
@@ -218,6 +228,7 @@ export interface FileRouteTypes {
     | '/assistance'
     | '/beneficiaries'
     | '/dashboard'
+    | '/data-import'
     | '/donations'
     | '/donors'
     | '/expenses'
@@ -239,6 +250,7 @@ export interface FileRouteTypes {
     | '/_authenticated/assistance'
     | '/_authenticated/beneficiaries'
     | '/_authenticated/dashboard'
+    | '/_authenticated/data-import'
     | '/_authenticated/donations'
     | '/_authenticated/donors'
     | '/_authenticated/expenses'
@@ -309,6 +321,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/data-import': {
+      id: '/_authenticated/data-import'
+      path: '/data-import'
+      fullPath: '/data-import'
+      preLoaderRoute: typeof AuthenticatedDataImportRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/donations': {
@@ -402,6 +421,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAssistanceRoute: typeof AuthenticatedAssistanceRoute
   AuthenticatedBeneficiariesRoute: typeof AuthenticatedBeneficiariesRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDataImportRoute: typeof AuthenticatedDataImportRoute
   AuthenticatedDonationsRoute: typeof AuthenticatedDonationsRoute
   AuthenticatedDonorsRoute: typeof AuthenticatedDonorsRoute
   AuthenticatedExpensesRoute: typeof AuthenticatedExpensesRoute
@@ -420,6 +440,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAssistanceRoute: AuthenticatedAssistanceRoute,
   AuthenticatedBeneficiariesRoute: AuthenticatedBeneficiariesRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDataImportRoute: AuthenticatedDataImportRoute,
   AuthenticatedDonationsRoute: AuthenticatedDonationsRoute,
   AuthenticatedDonorsRoute: AuthenticatedDonorsRoute,
   AuthenticatedExpensesRoute: AuthenticatedExpensesRoute,

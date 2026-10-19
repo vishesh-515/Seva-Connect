@@ -1,0 +1,26 @@
+beneficiary_id,full_name,date_of_birth,gender,city,state,primary_support_need,priority,status,registration_date,assigned_worker_id,consent_status,email,phone,household_size,monthly_income_band_inr
+BEN-0001,Aarav Sharma,2001-04-12,Male,Ludhiana,Punjab,Food and nutrition,High,Active,2026-10-01,CW-001,Consent recorded,demo.01@example.test,9000000001,3,0-10000
+BEN-0002,Meera Kaur,1992-08-23,Female,Ludhiana,Punjab,Healthcare,Urgent,Active,2026-10-02,CW-002,Consent recorded,demo.02@example.test,9000000002,4,0-10000
+BEN-0003,Kabir Singh,2010-02-16,Male,Jalandhar,Punjab,Education,Medium,Active,2026-10-03,CW-001,Consent recorded,demo.03@example.test,9000000003,5,10000-20000
+BEN-0004,Anaya Verma,1987-11-04,Female,Amritsar,Punjab,Shelter and housing,Urgent,Active,2026-10-03,CW-003,Consent recorded,demo.04@example.test,9000000004,2,0-10000
+BEN-0005,Ishaan Gill,1970-06-19,Male,Ludhiana,Punjab,Livelihood and employment,Normal,Active,2026-10-04,CW-002,Consent recorded,demo.05@example.test,9000000005,4,10000-20000
+BEN-0006,Simran Joshi,2004-01-28,Female,Patiala,Punjab,Education,High,Active,2026-10-05,CW-001,Consent recorded,demo.06@example.test,9000000006,6,0-10000
+BEN-0007,Dev Malhotra,1954-09-10,Male,Bathinda,Punjab,Healthcare,High,Active,2026-10-05,CW-003,Consent recorded,demo.07@example.test,9000000007,2,10000-20000
+BEN-0008,Riya Bedi,1998-03-30,Female,Ludhiana,Punjab,Food and nutrition,Medium,Active,2026-10-06,CW-002,Consent recorded,demo.08@example.test,9000000008,3,0-10000
+BEN-0009,Arjun Saini,1983-12-08,Male,Hoshiarpur,Punjab,Livelihood and employment,Normal,Active,2026-10-06,CW-001,Consent recorded,demo.09@example.test,9000000009,5,20000-30000
+BEN-0010,Nisha Kapoor,2014-07-17,Female,Amritsar,Punjab,Education,High,Active,2026-10-07,CW-003,Consent recorded,demo.10@example.test,9000000010,4,0-10000
+BEN-0011,Rehan Ali,1995-05-09,Male,Jalandhar,Punjab,Emergency relief,Urgent,Active,2026-10-07,CW-002,Consent recorded,demo.11@example.test,9000000011,3,0-10000
+BEN-0012,Tara Mehta,1961-10-21,Female,Patiala,Punjab,Healthcare,Medium,Active,2026-10-08,CW-003,Consent recorded,demo.12@example.test,9000000012,2,10000-20000
+BEN-0013,Manav Dhillon,2002-02-02,Male,Ludhiana,Punjab,Education,Normal,Active,2026-10-08,CW-001,Consent recorded,demo.13@example.test,9000000013,5,20000-30000
+BEN-0014,Pooja Arora,1989-06-14,Female,Bathinda,Punjab,Shelter and housing,High,Active,2026-10-09,CW-002,Consent recorded,demo.14@example.test,9000000014,4,0-10000
+BEN-0015,Yuvraj Chawla,1978-01-06,Male,Amritsar,Punjab,Food and nutrition,Medium,Active,2026-10-09,CW-003,Consent recorded,demo.15@example.test,9000000015,3,10000-20000
+BEN-0016,Zoya Khan,2007-09-25,Female,Hoshiarpur,Punjab,Education,High,Active,2026-10-10,CW-001,Consent recorded,demo.16@example.test,9000000016,6,0-10000
+BEN-0017,Aditya Rao,1990-04-03,Male,Ludhiana,Punjab,Healthcare,Normal,Active,2026-10-10,CW-002,Consent recorded,demo.17@example.test,9000000017,2,20000-30000
+BEN-0018,Ira Sandhu,1985-12-15,Female,Jalandhar,Punjab,Livelihood and employment,Medium,Active,2026-10-11,CW-003,Consent recorded,demo.18@example.test,9000000018,4,10000-20000
+BEN-0019,Veer Ahuja,2012-05-22,Male,Patiala,Punjab,Emergency relief,Urgent,Active,2026-10-11,CW-001,Consent recorded,demo.19@example.test,9000000019,3,0-10000
+BEN-0020,Sana Grewal,1997-07-01,Female,Bathinda,Punjab,Food and nutrition,Normal,Active,2026-10-12,CW-002,Consent recorded,demo.20@example.test,9000000020,5,10000-20000
+BEN-0021,Om Prakash,1948-02-11,Male,Amritsar,Punjab,Healthcare,High,Active,2026-10-12,CW-003,Consent recorded,demo.21@example.test,9000000021,2,0-10000
+BEN-0022,Kiara Sood,2005-10-13,Female,Ludhiana,Punjab,Education,Medium,Pending Verification,2026-10-13,CW-001,Consent pending,demo.22@example.test,9000000022,4,0-10000
+BEN-0023,Rohan Basra,1981-03-08,Male,Hoshiarpur,Punjab,Shelter and housing,Normal,Inactive,2026-10-14,CW-002,Consent recorded,demo.23@example.test,9000000023,3,10000-20000
+BEN-0024,Myra Thakur,1993-09-18,Female,Jalandhar,Punjab,Financial assistance,High,Active,2026-10-15,CW-003,Consent recorded,demo.24@example.test,9000000024,5,0-10000
+BEN-0025,Neil Khanna,2000-12-27,Male,Patiala,Punjab,Disability support,Medium,Active,2026-10-16,CW-001,Consent recorded,demo.25@example.test,9000000025,2,10000-20000

@@ -1,0 +1,7 @@
+notification_id,recipient_user_id,title,related_record_id,read_status,created_at
+NTF-0001,CW-002,Urgent case assigned,CASE-0001,Unread,2026-10-19 09:00:00
+NTF-0002,CW-003,Follow-up overdue,FUP-0003,Unread,2026-10-19 09:05:00
+NTF-0003,CW-002,Distribution recorded,AST-0002,Read,2026-10-18 12:30:00
+NTF-0004,CW-001,Programme referral updated,MAT-0006,Unread,2026-10-19 10:15:00
+NTF-0005,CW-002,Duplicate assistance warning,AST-0011,Unread,2026-10-18 12:35:00
+NTF-0006,CW-003,Housing case requires attention,CASE-0012,Unread,2026-10-19 08:45:00

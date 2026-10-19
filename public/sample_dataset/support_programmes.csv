@@ -1,0 +1,9 @@
+programme_id,programme_name,support_category,status,eligible_locations,capacity,current_enrolments,start_date,end_date,eligibility_summary,remaining_capacity,coordinator_id
+PRG-001,Community Food Support,Food and nutrition,Active,Ludhiana;Amritsar;Jalandhar,100,38,2026-10-01,2027-03-31,Household food support; local service area,62,PC-001
+PRG-002,Mobile Health Access,Healthcare,Active,Ludhiana;Patiala;Amritsar,60,24,2026-09-01,2027-06-30,Healthcare support; location must be served,36,PC-001
+PRG-003,Learning Pathways Fund,Education,Active,Ludhiana;Jalandhar;Hoshiarpur;Patiala,80,52,2026-08-01,2027-05-31,Education support; school-age or enrolled learners,28,PC-002
+PRG-004,Safe Shelter Referral,Shelter and housing,Active,Amritsar;Bathinda;Jalandhar,35,30,2026-10-01,2027-02-28,Housing support; capacity subject to assessment,5,PC-002
+PRG-005,Skills to Work,Livelihood and employment,Active,Ludhiana;Bathinda;Hoshiarpur,50,19,2026-07-01,2027-04-30,Employment readiness and skills support,31,PC-003
+PRG-006,Rapid Relief Kits,Emergency relief,Active,Ludhiana;Jalandhar;Bathinda;Amritsar,40,40,2026-10-01,2026-12-31,Emergency support; currently at capacity,0,PC-001
+PRG-007,Senior Health Outreach,Healthcare,Paused,All Punjab,25,10,2026-05-01,2026-10-31,Programme paused; not currently accepting referrals,15,PC-003
+PRG-008,Inclusive Living Support,Disability support,Active,All Punjab,30,12,2026-09-01,2027-08-31,Disability-related support; assessment required,18,PC-002

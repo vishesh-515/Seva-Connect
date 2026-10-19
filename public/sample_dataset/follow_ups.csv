@@ -1,0 +1,9 @@
+follow_up_id,beneficiary_id,case_id,assigned_to,due_date,status,notes
+FUP-0001,BEN-0002,CASE-0001,CW-002,2026-10-19,Scheduled,Urgent healthcare check-in
+FUP-0002,BEN-0004,CASE-0002,CW-003,2026-10-19,Scheduled,Shelter referral review
+FUP-0003,BEN-0007,CASE-0008,CW-003,2026-10-19,Overdue,Healthcare follow-up
+FUP-0004,BEN-0014,CASE-0012,CW-002,2026-10-18,Overdue,Housing assessment follow-up
+FUP-0005,BEN-0001,CASE-0005,CW-001,2026-10-20,Scheduled,Food support check-in
+FUP-0006,BEN-0006,CASE-0007,CW-001,2026-10-20,Scheduled,Education referral update
+FUP-0007,BEN-0011,CASE-0003,CW-002,2026-10-19,Scheduled,Emergency support review
+FUP-0008,BEN-0012,CASE-0011,CW-003,2026-10-12,Completed,Health outreach follow-up

@@ -20,6 +20,7 @@ import {
   Clock,
   Calendar,
   Layers,
+  FileSpreadsheet,
 } from "lucide-react";
 import {
   Bar,
@@ -246,6 +247,13 @@ function Dashboard() {
             >
               <Sparkles className="h-3.5 w-3.5 text-amber-500 animate-pulse" />
               <span>{isSeedingDemo ? "Seeding..." : "Demo Dataset"}</span>
+            </Button>
+
+            <Button asChild variant="outline" size="sm" className="gap-1.5 text-xs font-semibold border-border">
+              <Link to="/data-import">
+                <FileSpreadsheet className="h-3.5 w-3.5 text-primary" />
+                <span>Import Centre</span>
+              </Link>
             </Button>
           </div>
         </div>

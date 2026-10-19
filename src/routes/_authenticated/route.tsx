@@ -25,6 +25,7 @@ import {
   Moon,
   Sun,
   Barcode,
+  FileSpreadsheet,
 } from "lucide-react";
 import { SevaLogo } from "@/components/brand/SevaLogo";
 import { DistributionScanner } from "@/components/scanner/DistributionScanner";
@@ -86,6 +87,7 @@ const NAV: { to: string; label: string; icon: typeof Users; perm?: Permission }[
   { to: "/assistance", label: "Distributions", icon: PackageCheck },
   { to: "/expenses", label: "Expenses", icon: Receipt },
   { to: "/reports", label: "Reports", icon: BarChart3 },
+  { to: "/data-import", label: "Data Import", icon: FileSpreadsheet },
   { to: "/team", label: "Team & Access", icon: UserCog },
   { to: "/settings", label: "Profile", icon: Building2 },
 ];

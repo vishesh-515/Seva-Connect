@@ -1,0 +1,13 @@
+task_id,title,beneficiary_id,case_id,assigned_to,priority,due_date,status,description,created_at
+TSK-0001,Call beneficiary for urgent healthcare follow-up,BEN-0002,CASE-0001,CW-002,Urgent,2026-10-19,To Do,Synthetic demo task,2026-10-19
+TSK-0002,Confirm temporary shelter referral,BEN-0004,CASE-0002,CW-003,Urgent,2026-10-19,In Progress,Synthetic demo task,2026-10-19
+TSK-0003,Review food support request,BEN-0001,CASE-0005,CW-001,High,2026-10-20,To Do,Synthetic demo task,2026-10-19
+TSK-0004,Complete school support referral,BEN-0006,CASE-0007,CW-001,High,2026-10-20,In Progress,Synthetic demo task,2026-10-19
+TSK-0005,Arrange senior health follow-up,BEN-0007,CASE-0008,CW-003,High,2026-10-19,To Do,Synthetic demo task,2026-10-19
+TSK-0006,Review housing assessment,BEN-0014,CASE-0012,CW-002,High,2026-10-18,To Do,Synthetic demo task,2026-10-19
+TSK-0007,Check education documents,BEN-0016,CASE-0013,CW-001,Medium,2026-10-23,To Do,Synthetic demo task,2026-10-19
+TSK-0008,Complete employment programme intake,BEN-0018,CASE-0014,CW-003,Normal,2026-10-28,To Do,Synthetic demo task,2026-10-19
+TSK-0009,Review financial support documents,BEN-0024,CASE-0016,CW-003,Medium,2026-10-25,In Progress,Synthetic demo task,2026-10-19
+TSK-0010,Close completed health case notes,BEN-0012,CASE-0011,CW-003,Normal,2026-10-12,Completed,Synthetic demo task,2026-10-19
+TSK-0011,Verify consent record,BEN-0022,,CW-001,Medium,2026-10-21,To Do,Synthetic demo task,2026-10-19
+TSK-0012,Contact senior beneficiary,BEN-0021,CASE-0015,CW-003,High,2026-10-19,To Do,Synthetic demo task,2026-10-19
