@@ -24,6 +24,7 @@ import {
   LogOut,
   Leaf,
   Moon,
+  Sun,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { OrgProvider, useOrg } from "@/lib/org-context";
