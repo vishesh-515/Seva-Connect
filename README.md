@@ -81,10 +81,3 @@
    ```
 
 ---
-
-## License
-
-Private and proprietary. Built for Seva Connect.
-=======
-# Seva-Connect
->>>>>>> a69e4503e216ffd40ad7086762e91cdc022bd160
