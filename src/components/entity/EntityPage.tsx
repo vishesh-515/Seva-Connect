@@ -320,14 +320,14 @@ export function EntityPage({
         }
       />
 
-      <div className="rounded-lg border bg-card shadow-xs">
-        <div className="flex flex-col gap-2 border-b p-3 lg:flex-row lg:items-center">
+      <div className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-xs">
+        <div className="flex flex-col gap-2.5 border-b border-border/70 bg-card/60 p-3.5 lg:flex-row lg:items-center backdrop-blur-xs">
           <div className="relative flex-1">
-            <Search className="pointer-events-none absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               aria-label={`Search ${config.title.toLowerCase()}`}
-              placeholder="Search…"
-              className="pl-8"
+              placeholder={`Search ${config.title.toLowerCase()}…`}
+              className="pl-9 h-9 rounded-xl bg-background/80"
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -420,23 +420,23 @@ export function EntityPage({
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b bg-muted/50 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr className="border-b border-border/70 bg-muted/40 text-left text-[11px] uppercase font-bold tracking-wider text-muted-foreground">
                   {config.columns.map((c) => (
                     <th
                       key={c.key}
-                      className={`whitespace-nowrap px-4 py-2.5 font-medium ${c.className ?? ""}`}
+                      className={`whitespace-nowrap px-4 py-3 font-semibold ${c.className ?? ""}`}
                     >
                       {c.sortable ? (
                         <button
-                          className="inline-flex items-center gap-1 hover:text-foreground"
+                          className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors"
                           onClick={() => toggleSort(c.key)}
                         >
                           {c.label}
                           {sort.column === c.key &&
                             (sort.ascending ? (
-                              <ArrowUp className="h-3 w-3" />
+                              <ArrowUp className="h-3 w-3 text-primary" />
                             ) : (
-                              <ArrowDown className="h-3 w-3" />
+                              <ArrowDown className="h-3 w-3 text-primary" />
                             ))}
                         </button>
                       ) : (
@@ -447,11 +447,11 @@ export function EntityPage({
                   <th className="w-10 px-2" aria-label="Actions" />
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-border/50">
                 {query.data!.rows.map((row) => (
-                  <tr key={row["id"]} className="border-b last:border-0 hover:bg-muted/40">
+                  <tr key={row["id"]} className="hover:bg-muted/30 transition-colors">
                     {config.columns.map((c, i) => (
-                      <td key={c.key} className={`px-4 py-3 align-middle ${c.className ?? ""}`}>
+                      <td key={c.key} className={`px-4 py-3.5 align-middle ${c.className ?? ""}`}>
                         {i === 0 && config.detailPath ? (
                           <Link
                             to={config.detailPath(row) as any}

@@ -91,41 +91,93 @@ function Shell() {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const navigate = useNavigate();
   const qc = useQueryClient();
+  const [isDark, setIsDark] = useState(() =>
+    typeof document !== "undefined" ? document.documentElement.classList.contains("dark") : false
+  );
+
   const signOut = async () => {
     await qc.cancelQueries();
     qc.clear();
     await supabase.auth.signOut();
     navigate({ to: "/auth", replace: true });
   };
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("sevaconnect-theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("sevaconnect-theme", "light");
+    }
+  };
+
   return (
     <div className="flex min-h-screen bg-background">
-      <aside className="no-print hidden w-60 shrink-0 flex-col border-r bg-sidebar md:flex">
-        <div className="flex items-center gap-2 border-b px-4 py-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <Leaf className="h-4 w-4" />
+      <aside className="no-print hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar md:flex">
+        {/* Brand header */}
+        <div className="flex items-center gap-3 border-b border-sidebar-border/70 px-4 py-4">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-primary/80 text-primary-foreground shadow-sm shadow-primary/25">
+            <Leaf className="h-5 w-5" />
           </div>
-          <div className="min-w-0">
-            <div className="truncate text-sm font-semibold">{org!.name}</div>
-            <div className="text-xs text-muted-foreground">{role && ROLE_LABELS[role]}</div>
+          <div className="min-w-0 flex-1">
+            <div className="truncate text-sm font-bold text-sidebar-foreground">{org!.name}</div>
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>{role && ROLE_LABELS[role]}</span>
+            </div>
           </div>
         </div>
-        <nav className="flex-1 space-y-0.5 p-2">
-          {NAV.filter((n) => !n.perm || can(n.perm)).map((n) => (
-            <Link
-              key={n.to}
-              to={n.to as any}
-              className={`flex items-center gap-2.5 rounded-md px-3 py-2 text-sm ${path.startsWith(n.to) ? "bg-sidebar-accent font-medium text-sidebar-accent-foreground" : "text-sidebar-foreground hover:bg-sidebar-accent/60"}`}
-            >
-              <n.icon className="h-4 w-4" /> {n.label}
-            </Link>
-          ))}
+
+        {/* Sidebar Navigation */}
+        <nav className="flex-1 space-y-1 p-3">
+          {NAV.filter((n) => !n.perm || can(n.perm)).map((n) => {
+            const isActive = path.startsWith(n.to);
+            return (
+              <Link
+                key={n.to}
+                to={n.to as any}
+                className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
+                  isActive
+                    ? "bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground font-semibold shadow-2xs"
+                    : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+                }`}
+              >
+                <div
+                  className={`flex h-7 w-7 items-center justify-center rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-primary-foreground shadow-xs"
+                      : "text-muted-foreground group-hover:text-sidebar-foreground"
+                  }`}
+                >
+                  <n.icon className="h-4 w-4" />
+                </div>
+                <span>{n.label}</span>
+              </Link>
+            );
+          })}
         </nav>
+
+        {/* Sidebar Footer info */}
+        <div className="border-t border-sidebar-border/70 p-3">
+          <div className="rounded-xl border border-sidebar-border/60 bg-card/50 p-2.5 text-xs text-muted-foreground">
+            <div className="flex items-center justify-between font-semibold text-foreground">
+              <span>Dual-Tone Workspace</span>
+              <span className="text-[10px] text-tone-accent font-bold">PRO</span>
+            </div>
+            <div className="mt-1 text-[11px] truncate">Role: {role && ROLE_LABELS[role]}</div>
+          </div>
+        </div>
       </aside>
+
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="no-print flex items-center gap-3 border-b bg-card px-4 py-2.5">
+        {/* Top Header */}
+        <header className="sticky top-0 z-40 no-print flex items-center gap-3 border-b border-border/70 bg-card/80 px-4 py-3 backdrop-blur-md">
           <select
             aria-label="Navigate"
-            className="rounded-md border bg-background px-2 py-1.5 text-sm md:hidden"
+            className="rounded-lg border border-border bg-background px-2.5 py-1.5 text-sm font-medium md:hidden"
             value={path}
             onChange={(e) => navigate({ to: e.target.value as any })}
           >
@@ -136,9 +188,10 @@ function Shell() {
             ))}
           </select>
           <div className="flex-1" />
+          
           {memberships.length > 1 && (
             <Select value={org!.id} onValueChange={setOrgId}>
-              <SelectTrigger className="w-48" aria-label="Organization">
+              <SelectTrigger className="w-48 text-xs font-semibold" aria-label="Organization">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -150,24 +203,30 @@ function Shell() {
               </SelectContent>
             </Select>
           )}
+
           <NotificationBell />
+
           <Button
             variant="ghost"
             size="icon"
             aria-label="Toggle theme"
-            onClick={() => {
-              const d = document.documentElement.classList.toggle("dark");
-              localStorage.setItem("sevaconnect-theme", d ? "dark" : "light");
-            }}
+            onClick={toggleTheme}
+            className="rounded-lg hover:bg-muted"
           >
-            <Moon className="h-4 w-4" />
+            {isDark ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4" />}
           </Button>
-          <span className="hidden text-sm text-muted-foreground sm:inline">{email}</span>
-          <Button variant="outline" size="sm" onClick={signOut}>
-            <LogOut className="mr-1.5 h-4 w-4" />
-            Sign out
+
+          <div className="hidden items-center gap-2 rounded-lg border border-border/60 bg-card px-2.5 py-1 text-xs sm:flex">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="font-medium text-foreground truncate max-w-[140px]">{email}</span>
+          </div>
+
+          <Button variant="outline" size="sm" onClick={signOut} className="gap-1.5 border-border/80 hover:border-destructive/40 hover:text-destructive">
+            <LogOut className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Sign out</span>
           </Button>
         </header>
+
         <main className="mx-auto w-full max-w-7xl flex-1 p-4 md:p-8">
           <Outlet />
         </main>

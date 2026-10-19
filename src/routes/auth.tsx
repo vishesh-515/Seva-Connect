@@ -128,94 +128,162 @@ function Auth() {
     }
   };
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <form
-        onSubmit={submit}
-        className="w-full max-w-sm space-y-4 rounded-lg border bg-card p-6 shadow-xs"
-      >
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <Leaf className="h-4 w-4" />
-          </div>
-          <span className="font-semibold">Seva Connect</span>
-        </div>
-        <h1 className="text-lg font-semibold">
-          {mode === "in" ? "Sign in" : mode === "up" ? "Create account" : "Reset password"}
-        </h1>
-        <div>
-          <Label htmlFor="email" className="mb-1.5 block">
-            Email
-          </Label>
-          <Input
-            id="email"
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        {mode !== "reset" && (
-          <div>
-            <Label htmlFor="pw" className="mb-1.5 block">
-              Password
-            </Label>
-            <Input
-              id="pw"
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        )}
-        <Button type="submit" className="w-full" disabled={busy}>
-          {busy
-            ? "Please wait…"
-            : mode === "in"
-              ? "Sign in"
-              : mode === "up"
-                ? "Sign up"
-                : "Send reset link"}
-        </Button>
-        {mode !== "reset" && (
-          <>
-            <div className="relative my-2 flex items-center justify-center">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-border" />
-              </div>
-              <span className="relative bg-card px-2 text-xs uppercase tracking-wider text-muted-foreground">
-                Or continue with
-              </span>
+    <div className="relative flex min-h-screen items-center justify-center bg-background p-4 dualtone-mesh overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="pointer-events-none absolute -top-28 -left-28 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-tone-accent/20 blur-3xl" />
+
+      <div className="w-full max-w-md">
+        <form
+          onSubmit={submit}
+          className="relative rounded-2xl border border-border/80 bg-card/90 p-8 shadow-xl backdrop-blur-xl space-y-5"
+        >
+          {/* Brand & Title */}
+          <div className="flex flex-col items-center text-center">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary to-primary/80 text-primary-foreground shadow-md shadow-primary/25 mb-3">
+              <Leaf className="h-6 w-6" />
             </div>
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full gap-2"
-              onClick={google}
-              disabled={busy}
-            >
-              <GoogleIcon className="h-4 w-4" />
-              <span>Google</span>
-            </Button>
-          </>
-        )}
-        <div className="flex justify-between text-sm">
-          <button
-            type="button"
-            className="text-primary hover:underline"
-            onClick={() => setMode(mode === "up" ? "in" : "up")}
-          >
-            {mode === "up" ? "Have an account? Sign in" : "Create an account"}
-          </button>
-          <button
-            type="button"
-            className="text-muted-foreground hover:underline"
-            onClick={() => setMode("reset")}
-          >
-            Forgot password?
-          </button>
-        </div>
-      </form>
+            <span className="text-sm font-bold tracking-tight text-foreground">
+              Seva <span className="text-primary font-black">Connect</span>
+            </span>
+            <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-foreground">
+              {mode === "in" ? "Welcome back" : mode === "up" ? "Create your workspace" : "Reset your password"}
+            </h1>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {mode === "in"
+                ? "Enter your credentials to access your NGO operations"
+                : mode === "up"
+                  ? "Set up a new humanitarian management organization"
+                  : "Enter your email to receive a password reset link"}
+            </p>
+          </div>
+
+          {/* Mode Switcher Tabs */}
+          {mode !== "reset" && (
+            <div className="grid grid-cols-2 rounded-xl border border-border/70 bg-muted/40 p-1">
+              <button
+                type="button"
+                onClick={() => setMode("in")}
+                className={`rounded-lg py-1.5 text-xs font-bold transition-all ${
+                  mode === "in"
+                    ? "bg-card text-foreground shadow-xs border border-border/50"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Sign In
+              </button>
+              <button
+                type="button"
+                onClick={() => setMode("up")}
+                className={`rounded-lg py-1.5 text-xs font-bold transition-all ${
+                  mode === "up"
+                    ? "bg-card text-foreground shadow-xs border border-border/50"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Create Account
+              </button>
+            </div>
+          )}
+
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="email" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                Email Address
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                required
+                placeholder="director@ngo.org"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-10 rounded-xl bg-background/80"
+              />
+            </div>
+            {mode !== "reset" && (
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <Label htmlFor="pw" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    Password
+                  </Label>
+                  {mode === "in" && (
+                    <button
+                      type="button"
+                      className="text-xs font-semibold text-primary hover:underline"
+                      onClick={() => setMode("reset")}
+                    >
+                      Forgot?
+                    </button>
+                  )}
+                </div>
+                <Input
+                  id="pw"
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="h-10 rounded-xl bg-background/80"
+                />
+              </div>
+            )}
+          </div>
+
+          <Button type="submit" className="h-11 w-full rounded-xl font-bold shadow-md shadow-primary/20" disabled={busy}>
+            {busy
+              ? "Please wait…"
+              : mode === "in"
+                ? "Sign in to Workspace"
+                : mode === "up"
+                  ? "Create Organization"
+                  : "Send Reset Link"}
+          </Button>
+
+          {mode !== "reset" && (
+            <>
+              <div className="relative my-3 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t border-border/70" />
+                </div>
+                <span className="relative bg-card px-2.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  Or authenticate with
+                </span>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                className="h-11 w-full gap-2 rounded-xl border-border/80 bg-background/50 hover:bg-card"
+                onClick={google}
+                disabled={busy}
+              >
+                <GoogleIcon className="h-4 w-4" />
+                <span className="text-xs font-bold">Continue with Google</span>
+              </Button>
+            </>
+          )}
+
+          {mode === "reset" && (
+            <div className="text-center pt-2">
+              <button
+                type="button"
+                className="text-xs font-bold text-primary hover:underline"
+                onClick={() => setMode("in")}
+              >
+                ← Return to Sign In
+              </button>
+            </div>
+          )}
+
+          {/* Security footnote */}
+          <div className="border-t border-border/60 pt-4 text-center">
+            <span className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground font-medium">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Secured with Supabase RLS & Role-Based Permissions
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
