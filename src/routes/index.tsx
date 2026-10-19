@@ -128,9 +128,6 @@ function Index() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="h-12 px-6 text-base font-semibold border-border/80 bg-card/60 backdrop-blur-xs hover:border-primary/40">
-              <Link to="/dashboard">Explore Live Demo</Link>
-            </Button>
           </div>
 
           {/* Key Stat Ribbon */}
