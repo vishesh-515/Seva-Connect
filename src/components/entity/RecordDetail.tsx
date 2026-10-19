@@ -114,12 +114,14 @@ export function RecordDetail({
   id,
   back,
   titleKey,
+  extraActions,
   children,
 }: {
   config: EntityConfig;
   id: string;
   back: string;
   titleKey: string;
+  extraActions?: (row: Row) => ReactNode;
   children?: (row: Row) => ReactNode;
 }) {
   const { can } = useCurrentOrg();
@@ -155,12 +157,15 @@ export function RecordDetail({
           </Link>
           <h1 className="text-2xl font-semibold tracking-tight">{row[titleKey]}</h1>
         </div>
-        {can(config.writePermission) && (
-          <Button variant="outline" onClick={() => setEdit(true)}>
-            <Pencil className="mr-1.5 h-4 w-4" />
-            Edit
-          </Button>
-        )}
+        <div className="flex items-center gap-2">
+          {extraActions?.(row)}
+          {can(config.writePermission) && (
+            <Button variant="outline" onClick={() => setEdit(true)}>
+              <Pencil className="mr-1.5 h-4 w-4" />
+              Edit
+            </Button>
+          )}
+        </div>
       </div>
       <Section title="Details">
         <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

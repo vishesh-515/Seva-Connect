@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import {
-  Leaf,
   ShieldCheck,
   Users,
   Coins,
@@ -19,6 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { SevaBrand, SevaLogo } from "@/components/brand/SevaLogo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,12 +27,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Professional dual-tone NGO workspace for beneficiary care, urgent-case triage, assistance dispensation, and transparent audit trails.",
+          "Professional NGO workspace for beneficiary care, urgent-case triage, assistance dispensation, and transparent audit trails.",
       },
       { property: "og:title", content: "Seva Connect — Next-Gen NGO Management" },
       {
         property: "og:description",
-        content: "Modern dual-tone workspace designed for high-impact humanitarian operations.",
+        content: "Modern humanitarian workspace designed for high-impact operations.",
       },
     ],
   }),
@@ -64,18 +64,8 @@ function Index() {
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link to="/" className="group flex items-center gap-2.5 font-bold tracking-tight">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-primary/80 text-primary-foreground shadow-md shadow-primary/25 transition-transform duration-200 group-hover:scale-105">
-              <Leaf className="h-5 w-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-base text-foreground leading-none font-bold">
-                Seva <span className="text-primary font-black">Connect</span>
-              </span>
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
-                Humanitarian OS
-              </span>
-            </div>
+          <Link to="/" className="transition-opacity hover:opacity-95">
+            <SevaBrand size={38} />
           </Link>
 
           <div className="flex items-center gap-3">
@@ -102,17 +92,17 @@ function Index() {
       {/* Hero Section */}
       <main className="mx-auto max-w-6xl px-6 pt-12 pb-24">
         <div className="flex flex-col items-center text-center">
-          {/* Dual-tone announcement badge */}
+          {/* Announcement badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-semibold text-primary backdrop-blur-xs mb-8 transition-all hover:border-primary/40 hover:bg-primary/10">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Dual-Tone Enterprise Architecture</span>
+            <span>Enterprise NGO Architecture</span>
             <span className="text-muted-foreground">·</span>
-            <span className="text-tone-accent font-medium">Real-time NGO Operations</span>
+            <span className="text-tone-accent font-medium">Real-time Operations</span>
           </div>
 
           <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground">
             Smart Beneficiary Care &{" "}
-            <span className="dualtone-gradient-text">Urgent Relief Operations</span>
+            <span className="font-serif italic font-normal text-primary">Urgent Relief Operations</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
@@ -442,9 +432,7 @@ function Index() {
       <footer className="border-t border-border/60 bg-card/40 py-8 backdrop-blur-xs">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-xs text-muted-foreground sm:flex-row">
           <div className="flex items-center gap-2">
-            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <Leaf className="h-3 w-3" />
-            </div>
+            <SevaLogo size={20} variant="standalone" />
             <span className="font-semibold text-foreground">Seva Connect</span>
             <span>· Non-Profit Beneficiary Management System</span>
           </div>

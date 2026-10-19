@@ -169,7 +169,7 @@ function Page() {
           money: true,
         },
         {
-          title: "Assistance by type",
+          title: "Distributions by type",
           rows: group(
             data.assistance,
             (r) => humanize(r.assistance_type),
@@ -252,7 +252,7 @@ function Page() {
               hint={`Net ${formatCurrency(sum(data.donations) - sum(data.expenses), cur)}`}
             />
             <StatCard
-              label="Assistance given"
+              label="Distributions given"
               value={data.assistance.length}
               icon={PackageCheck}
               hint={`${new Set(data.assistance.map((a) => a.beneficiary_id)).size} people reached`}

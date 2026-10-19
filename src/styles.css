@@ -49,6 +49,7 @@
   --color-tone-accent-foreground: var(--tone-accent-foreground);
   --color-tone-accent-subtle: var(--tone-accent-subtle);
   --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", Georgia, serif;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -61,96 +62,94 @@
 
 :root {
   --radius: 0.65rem;
-  /* Tone 1: Deep Indigo Chrome on Crisp Pure Canvas */
-  --background: oklch(0.985 0.006 250);
-  --foreground: oklch(0.18 0.03 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.03 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.03 260);
-  --primary: oklch(0.42 0.16 262);
-  --primary-foreground: oklch(0.99 0.005 260);
+  /* BIOS 2026 Refined Identity: Warm Ivory, Forest Green, Charcoal & Muted Sage */
+  --background: #F7F3EB; /* Warm ivory */
+  --foreground: #242820; /* Charcoal */
+  --card: #FFFFFF;       /* Pure white */
+  --card-foreground: #242820;
+  --popover: #FFFFFF;
+  --popover-foreground: #242820;
+  --primary: #176B4D;    /* Forest green */
+  --primary-foreground: #FFFFFF;
   
-  /* Tone 2: Warm Solar Amber Accent */
-  --secondary: oklch(0.96 0.03 75);
-  --secondary-foreground: oklch(0.32 0.09 60);
-  --muted: oklch(0.955 0.01 250);
-  --muted-foreground: oklch(0.46 0.03 260);
-  --accent: oklch(0.94 0.04 75);
-  --accent-foreground: oklch(0.34 0.12 60);
-  --tone-accent: oklch(0.72 0.17 65);
-  --tone-accent-foreground: oklch(0.20 0.06 60);
-  --tone-accent-subtle: oklch(0.96 0.035 75);
+  --secondary: #E5EDE4;  /* Muted sage */
+  --secondary-foreground: #104B38; /* Deep green */
+  --muted: #EFECE4;
+  --muted-foreground: #636A5E;
+  --accent: #E5EDE4;
+  --accent-foreground: #104B38;
+  --tone-accent: #104B38; /* Deep green */
+  --tone-accent-foreground: #FFFFFF;
+  --tone-accent-subtle: #E5EDE4;
 
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.99 0 0);
-  --success: oklch(0.58 0.16 150);
-  --warning: oklch(0.72 0.17 65);
-  --border: oklch(0.91 0.01 250);
-  --input: oklch(0.895 0.012 250);
-  --ring: oklch(0.42 0.16 262);
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --success: #176B4D;
+  --warning: #D97706;
+  --border: #E4DED2;     /* Warm neutral border */
+  --input: #E4DED2;
+  --ring: #176B4D;
   
-  /* Dual-tone Chart palette: Indigo + Amber + Seafoam + Coral */
-  --chart-1: oklch(0.52 0.17 262);
-  --chart-2: oklch(0.74 0.17 65);
-  --chart-3: oklch(0.65 0.14 185);
-  --chart-4: oklch(0.60 0.19 30);
-  --chart-5: oklch(0.68 0.12 300);
+  /* Natural Editorial Palette for Analytics */
+  --chart-1: #176B4D;
+  --chart-2: #2E7D5E;
+  --chart-3: #529679;
+  --chart-4: #D97706;
+  --chart-5: #B45309;
 
-  --sidebar: oklch(0.99 0.005 250);
-  --sidebar-foreground: oklch(0.26 0.03 260);
-  --sidebar-primary: oklch(0.42 0.16 262);
-  --sidebar-primary-foreground: oklch(0.99 0.005 260);
-  --sidebar-accent: oklch(0.94 0.025 260);
-  --sidebar-accent-foreground: oklch(0.28 0.14 262);
-  --sidebar-border: oklch(0.92 0.01 250);
-  --sidebar-ring: oklch(0.42 0.16 262);
+  --sidebar: #F4EFE6;
+  --sidebar-foreground: #242820;
+  --sidebar-primary: #176B4D;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E5EDE4;
+  --sidebar-accent-foreground: #104B38;
+  --sidebar-border: #E4DED2;
+  --sidebar-ring: #176B4D;
 }
 
 .dark {
-  /* Tone 1: Obsidian Midnight Slate */
-  --background: oklch(0.13 0.02 260);
-  --foreground: oklch(0.96 0.01 250);
-  --card: oklch(0.17 0.025 260);
-  --card-foreground: oklch(0.96 0.01 250);
-  --popover: oklch(0.17 0.025 260);
-  --popover-foreground: oklch(0.96 0.01 250);
-  --primary: oklch(0.68 0.18 255);
-  --primary-foreground: oklch(0.12 0.03 260);
+  /* Dark Mode: Deep Forest Charcoal Slate */
+  --background: #141813;
+  --foreground: #F2EFE9;
+  --card: #1C221B;
+  --card-foreground: #F2EFE9;
+  --popover: #1C221B;
+  --popover-foreground: #F2EFE9;
+  --primary: #2BA075;
+  --primary-foreground: #0B241A;
   
-  /* Tone 2: Radiant Solar Gold Accent in Dark Mode */
-  --secondary: oklch(0.24 0.04 70);
-  --secondary-foreground: oklch(0.94 0.08 75);
-  --muted: oklch(0.21 0.02 260);
-  --muted-foreground: oklch(0.66 0.02 250);
-  --accent: oklch(0.26 0.05 70);
-  --accent-foreground: oklch(0.92 0.12 75);
-  --tone-accent: oklch(0.78 0.16 68);
-  --tone-accent-foreground: oklch(0.14 0.03 60);
-  --tone-accent-subtle: oklch(0.24 0.05 70);
+  --secondary: #263125;
+  --secondary-foreground: #A7D8B9;
+  --muted: #222B21;
+  --muted-foreground: #98A495;
+  --accent: #263125;
+  --accent-foreground: #A7D8B9;
+  --tone-accent: #2BA075;
+  --tone-accent-foreground: #0B241A;
+  --tone-accent-subtle: #222B21;
 
-  --destructive: oklch(0.62 0.20 25);
-  --destructive-foreground: oklch(0.99 0 0);
-  --success: oklch(0.68 0.15 150);
-  --warning: oklch(0.78 0.16 68);
-  --border: oklch(0.26 0.02 260);
-  --input: oklch(0.28 0.02 260);
-  --ring: oklch(0.68 0.18 255);
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --success: #2BA075;
+  --warning: #F59E0B;
+  --border: #2B362A;
+  --input: #2B362A;
+  --ring: #2BA075;
   
-  --chart-1: oklch(0.68 0.18 255);
-  --chart-2: oklch(0.78 0.16 68);
-  --chart-3: oklch(0.70 0.13 185);
-  --chart-4: oklch(0.68 0.18 30);
-  --chart-5: oklch(0.72 0.11 300);
+  --chart-1: #2BA075;
+  --chart-2: #34D399;
+  --chart-3: #6EE7B7;
+  --chart-4: #F59E0B;
+  --chart-5: #FB923C;
 
-  --sidebar: oklch(0.15 0.025 260);
-  --sidebar-foreground: oklch(0.92 0.01 250);
-  --sidebar-primary: oklch(0.68 0.18 255);
-  --sidebar-primary-foreground: oklch(0.12 0.03 260);
-  --sidebar-accent: oklch(0.22 0.035 260);
-  --sidebar-accent-foreground: oklch(0.96 0.02 250);
-  --sidebar-border: oklch(0.22 0.02 260);
-  --sidebar-ring: oklch(0.68 0.18 255);
+  --sidebar: #121511;
+  --sidebar-foreground: #F2EFE9;
+  --sidebar-primary: #2BA075;
+  --sidebar-primary-foreground: #0B241A;
+  --sidebar-accent: #222B21;
+  --sidebar-accent-foreground: #A7D8B9;
+  --sidebar-border: #263025;
+  --sidebar-ring: #2BA075;
 }
 
 @layer base {
@@ -169,6 +168,25 @@
   @media print {
     .no-print {
       display: none !important;
+    }
+  }
+
+  @media print {
+    body {
+      background: #ffffff !important;
+      color: #000000 !important;
+    }
+    .no-print, header, aside, nav, button, [role="dialog"] > button {
+      display: none !important;
+    }
+    .id-card-print-target {
+      border: 1.5px solid #000000 !important;
+      box-shadow: none !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      page-break-inside: avoid;
+      max-width: 440px;
+      margin: 20px auto !important;
     }
   }
 }

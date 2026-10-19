@@ -22,14 +22,17 @@ import {
   UserCog,
   Building2,
   LogOut,
-  Leaf,
   Moon,
   Sun,
+  Barcode,
 } from "lucide-react";
+import { SevaLogo } from "@/components/brand/SevaLogo";
+import { DistributionScanner } from "@/components/scanner/DistributionScanner";
 import { supabase } from "@/integrations/supabase/client";
 import { OrgProvider, useOrg } from "@/lib/org-context";
 import { NotificationBell } from "@/components/NotificationBell";
 import { ROLE_LABELS, type Permission } from "@/lib/permissions";
+import { humanize } from "@/lib/format";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -79,8 +82,8 @@ const NAV: { to: string; label: string; icon: typeof Users; perm?: Permission }[
   { to: "/volunteers", label: "Volunteers", icon: HandHeart },
   { to: "/donors", label: "Donors", icon: HeartHandshake, perm: "donors.read" },
   { to: "/donations", label: "Donations", icon: Coins },
-  { to: "/projects", label: "Projects", icon: FolderKanban },
-  { to: "/assistance", label: "Assistance", icon: PackageCheck },
+  { to: "/projects", label: "Programmes", icon: FolderKanban },
+  { to: "/assistance", label: "Distributions", icon: PackageCheck },
   { to: "/expenses", label: "Expenses", icon: Receipt },
   { to: "/reports", label: "Reports", icon: BarChart3 },
   { to: "/team", label: "Team & Access", icon: UserCog },
@@ -89,6 +92,7 @@ const NAV: { to: string; label: string; icon: typeof Users; perm?: Permission }[
 
 function Shell() {
   const { org, role, memberships, setOrgId, can, email } = useOrg();
+  const [scannerOpen, setScannerOpen] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
   const navigate = useNavigate();
   const qc = useQueryClient();
@@ -117,9 +121,7 @@ function Shell() {
       <aside className="no-print hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar md:flex">
         {/* Brand header */}
         <div className="flex items-center gap-3 border-b border-sidebar-border/70 px-4 py-4">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-primary/80 text-primary-foreground shadow-sm shadow-primary/25">
-            <Leaf className="h-5 w-5" />
-          </div>
+          <SevaLogo size={24} />
           <div className="min-w-0 flex-1">
             <div className="truncate text-sm font-bold text-sidebar-foreground">{org?.name ?? "Organization"}</div>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -128,6 +130,20 @@ function Shell() {
             </div>
           </div>
         </div>
+
+        {/* Quick Launch Station */}
+        {can("assistance.write") && (
+          <div className="px-3 pt-3">
+            <Button
+              size="sm"
+              onClick={() => setScannerOpen(true)}
+              className="w-full gap-2 shadow-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <Barcode className="h-4 w-4" />
+              <span>Scan to Distribute</span>
+            </Button>
+          </div>
+        )}
 
         {/* Sidebar Navigation */}
         <nav className="flex-1 space-y-1 p-3">
@@ -158,14 +174,13 @@ function Shell() {
           })}
         </nav>
 
-        {/* Sidebar Footer info */}
-        <div className="border-t border-sidebar-border/70 p-3">
-          <div className="rounded-xl border border-sidebar-border/60 bg-card/50 p-2.5 text-xs text-muted-foreground">
-            <div className="flex items-center justify-between font-semibold text-foreground">
-              <span>Dual-Tone Workspace</span>
-              <span className="text-[10px] text-tone-accent font-bold">PRO</span>
+        <div className="p-3 border-t border-sidebar-border/60">
+          <div className="rounded-xl border border-border/70 bg-card p-3 shadow-2xs">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-foreground">NGO Workspace</span>
+              <span className="rounded bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-bold text-amber-600 dark:text-amber-400">PRO</span>
             </div>
-            <div className="mt-1 text-[11px] truncate">Role: {role && ROLE_LABELS[role]}</div>
+            <p className="mt-1 text-[11px] text-muted-foreground capitalize">Role: {role ? (ROLE_LABELS[role] ?? humanize(role)) : "Owner"}</p>
           </div>
         </div>
       </aside>
@@ -186,6 +201,17 @@ function Shell() {
             ))}
           </select>
           <div className="flex-1" />
+
+          {can("assistance.write") && (
+            <Button
+              size="sm"
+              onClick={() => setScannerOpen(true)}
+              className="md:hidden gap-1.5 h-8 px-2.5 text-xs font-semibold"
+            >
+              <Barcode className="h-3.5 w-3.5" />
+              <span>Scan</span>
+            </Button>
+          )}
           
           {memberships.length > 1 && org && (
             <Select value={org.id} onValueChange={setOrgId}>
@@ -229,6 +255,16 @@ function Shell() {
           <Outlet />
         </main>
       </div>
+
+      {/* Global Distribution Scanner */}
+      {org && (
+        <DistributionScanner
+          open={scannerOpen}
+          onOpenChange={setScannerOpen}
+          orgId={org.id}
+          userRole={role}
+        />
+      )}
     </div>
   );
 }

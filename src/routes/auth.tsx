@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { Leaf } from "lucide-react";
+import { SevaLogo } from "@/components/brand/SevaLogo";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -140,13 +140,16 @@ function Auth() {
         >
           {/* Brand & Title */}
           <div className="flex flex-col items-center text-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary to-primary/80 text-primary-foreground shadow-md shadow-primary/25 mb-3">
-              <Leaf className="h-6 w-6" />
+            <div className="mb-3">
+              <SevaLogo size={40} />
             </div>
             <span className="text-sm font-bold tracking-tight text-foreground">
               Seva <span className="text-primary font-black">Connect</span>
             </span>
-            <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-foreground">
+            <span className="text-[10px] tracking-wider text-muted-foreground font-medium mt-0.5">
+              Every Need. The Right Support.
+            </span>
+            <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-foreground">
               {mode === "in" ? "Welcome back" : mode === "up" ? "Create your workspace" : "Reset your password"}
             </h1>
             <p className="mt-1 text-xs text-muted-foreground">

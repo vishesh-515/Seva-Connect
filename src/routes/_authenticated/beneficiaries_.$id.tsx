@@ -10,7 +10,11 @@ import {
   FolderPlus,
   HeartHandshake,
   PackagePlus,
+  QrCode,
+  Barcode,
 } from "lucide-react";
+import { BeneficiaryCardModal } from "@/components/beneficiary/BeneficiaryCardModal";
+import { DistributionScanner } from "@/components/scanner/DistributionScanner";
 import { beneficiariesConfig, assistanceConfig } from "@/lib/entities";
 import { RecordDetail, Section, MiniTable, useRelated } from "@/components/entity/RecordDetail";
 import { QuickAdd } from "@/components/entity/QuickAdd";
@@ -78,6 +82,8 @@ function Page() {
 
   const [openAidDialog, setOpenAidDialog] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState<string | undefined>(undefined);
+  const [idCardOpen, setIdCardOpen] = useState(false);
+  const [scannerOpen, setScannerOpen] = useState(false);
 
   // Enroll beneficiary into a project mutation
   const enrollMutation = useMutation({
@@ -101,7 +107,35 @@ function Page() {
   });
 
   return (
-    <RecordDetail config={beneficiariesConfig} id={id} back="/beneficiaries" titleKey="full_name">
+    <RecordDetail
+      config={beneficiariesConfig}
+      id={id}
+      back="/beneficiaries"
+      titleKey="full_name"
+      extraActions={(beneficiary) => (
+        <>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIdCardOpen(true)}
+            className="gap-1.5"
+          >
+            <QrCode className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">View ID Pass</span>
+          </Button>
+          {can("assistance.write") && (
+            <Button
+              size="sm"
+              onClick={() => setScannerOpen(true)}
+              className="gap-1.5 shadow-sm shadow-primary/25"
+            >
+              <Barcode className="h-4 w-4" />
+              <span>Quick Distribute</span>
+            </Button>
+          )}
+        </>
+      )}
+    >
       {(beneficiary) => {
         const urgency = assessUrgency(beneficiary, aid.data ?? []);
         const enrolledProjectIds = (linkedProjects.data ?? [])
@@ -274,9 +308,9 @@ function Page() {
               </div>
             </Section>
 
-            {/* Assistance History */}
+            {/* Distribution History */}
             <Section
-              title="Assistance delivery record"
+              title="Distribution records"
               actions={
                 can("assistance.write") && (
                   <Button
@@ -371,6 +405,23 @@ function Page() {
                   ? { assistance_type: beneficiary["support_category"] }
                   : {}),
               }}
+            />
+
+            {/* Beneficiary ID Pass Modal */}
+            <BeneficiaryCardModal
+              open={idCardOpen}
+              onOpenChange={setIdCardOpen}
+              beneficiary={beneficiary}
+              orgName={org.name}
+              onQuickDistribute={() => setScannerOpen(true)}
+            />
+
+            {/* Quick Distribution Scanner */}
+            <DistributionScanner
+              open={scannerOpen}
+              onOpenChange={setScannerOpen}
+              orgId={org.id}
+              initialBeneficiary={beneficiary}
             />
           </>
         );
