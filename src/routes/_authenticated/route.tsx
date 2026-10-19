@@ -103,15 +103,12 @@ function Shell() {
   };
 
   const toggleTheme = () => {
-    const next = !isDark;
-    setIsDark(next);
-    if (next) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("sevaconnect-theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("sevaconnect-theme", "light");
-    }
+    if (typeof document === "undefined") return;
+    const isNowDark = document.documentElement.classList.toggle("dark");
+    setIsDark(isNowDark);
+    try {
+      localStorage.setItem("sevaconnect-theme", isNowDark ? "dark" : "light");
+    } catch {}
   };
 
   return (

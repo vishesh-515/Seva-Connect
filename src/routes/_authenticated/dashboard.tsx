@@ -295,29 +295,33 @@ function Dashboard() {
               </div>
               <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={s.monthly} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.6} />
-                  <XAxis dataKey="month" fontSize={11} stroke="var(--muted-foreground)" />
-                  <YAxis fontSize={11} stroke="var(--muted-foreground)" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#888888" strokeOpacity={0.2} />
+                  <XAxis dataKey="month" fontSize={11} stroke="#888888" />
+                  <YAxis fontSize={11} stroke="#888888" />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "var(--card)",
                       borderColor: "var(--border)",
                       borderRadius: "0.75rem",
                       boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)",
+                      color: "var(--foreground)",
                     }}
+                    itemStyle={{ color: "var(--foreground)" }}
                   />
                   <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "12px" }} />
                   <Bar
                     dataKey="donations"
                     name="Donations"
-                    fill="var(--chart-1)"
+                    fill="#6366f1"
                     radius={[6, 6, 0, 0]}
+                    isAnimationActive={false}
                   />
                   <Bar
                     dataKey="expenses"
                     name="Expenses"
-                    fill="var(--chart-2)"
+                    fill="#f59e0b"
                     radius={[6, 6, 0, 0]}
+                    isAnimationActive={false}
                   />
                 </BarChart>
               </ResponsiveContainer>
