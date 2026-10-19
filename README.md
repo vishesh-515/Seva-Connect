@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Seva Connect
 
 **Seva Connect** is a complete, production-ready NGO & Non-Profit Beneficiary Management System designed to streamline charitable operations, track assistance, manage volunteers, engage donors, and provide financial transparency.
@@ -85,3 +86,6 @@
 ## License
 
 Private and proprietary. Built for Seva Connect.
+=======
+# Seva-Connect
+>>>>>>> a69e4503e216ffd40ad7086762e91cdc022bd160
